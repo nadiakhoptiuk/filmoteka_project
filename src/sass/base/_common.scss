@@ -1,8 +1,25 @@
 .page {
-  // font-family:
-  // color:
-  // font-size:
-  // line-height: 1.76
+  font-family: Roboto, sans-serif;
+  color: var(--gallery-text-color);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+}
+
+.btn-light {
+  height: 44px;
+
+  color: var(--header-text-color);
+  background-color: transparent;
+  @include font(500, 12, 1.33, null, uppercase);
+}
+
+.btn-accent {
+  height: 44px;
+
+  color: var(--header-text-color);
+  background-color: var(--accent-text-color);
+  @include font(500, 12, 1.33, null, uppercase);
 }
 
 .visually-hidden {
