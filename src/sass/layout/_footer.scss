@@ -1,0 +1,42 @@
+.footer {
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  background-color: var(--bg-color-footer);
+  color: var(--footer-text-color);
+  padding-top: 30px;
+  padding-bottom: 30px;
+  @include media(768px) {
+    font-size: 16px;
+    line-height: 1.17;
+  }
+}
+.footer__svg {
+  margin-right: 8px;
+  margin-left: 8px;
+}
+.footer__info {
+  margin: auto;
+  text-align: center;
+  width: 250px;
+
+  @include media(768px) {
+    width: 744px;
+  }
+  @include media(1280px) {
+    width: 1256px;
+  }
+}
+.footer__btn {
+  text-decoration: underline;
+  text-align: center;
+  border: none;
+  color: inherit;
+  background-color: inherit;
+  cursor: pointer;
+}
+.footer__btn:hover,
+.footer__btn:focus {
+  color: var(--accent-text-color);
+
+}
