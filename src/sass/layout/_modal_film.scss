@@ -1,0 +1,140 @@
+.backdrop__modal-film {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    background-color: rgba(000, 000, 000, 0.25);
+    border: 1px solid #000000;
+    // overflow-y: scroll;
+    z-index: 0;
+
+    & .is-hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+}
+
+.modal-film {
+    padding: 40 20 20 20;
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    overflow: scroll;
+
+    background-color: var(--header-text-color);
+
+    @include media(768px) {
+        padding: 40 72 40 36;
+        display: flex;
+        width: 704px;
+        height: 552px;
+        overflow: hidden;
+    }
+
+    @include media(1280px) {
+        padding: 40 12 40 12;
+        width: 806px;
+        height: 558px;
+    }
+
+    &--style {
+        background: #FF6B01;
+        border-radius: 5px;
+        padding: 1 10;
+    }
+
+    &__btn {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+    }
+
+    &__close {
+        stroke: #000000;
+    }
+
+    &__img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        width: 240px;
+        height: 357px;
+        border-radius: 5px;
+
+        @include media(768px) {
+            margin-right: 68px;
+            width: 264px;
+            height: 374px;
+        }
+
+        @include media(1280px) {
+            margin-right: 16px;
+            width: 375px;
+            height: 478px;
+        }
+    }
+
+    &__name {
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    &__rating {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    &__list-name {
+        margin-right: 41px;
+
+        @include media(1280px) {
+            margin-right: 85px;
+        }
+    }
+
+    &__title {
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+
+    &__description {
+        margin-bottom: 20px;
+    }
+
+    &__to-watcheed {
+        color: var(--header-text-color);
+        margin-right: 20px;
+        background-color: var(--accent-text-color);
+
+        @include media(768px) {
+            margin-right: 15px;
+        }
+    }
+
+    &__to-queue {
+        border: 1px solid #000000;
+    }
+}
+
+.btn {
+    width: 110px;
+    height: 44px;
+    border-radius: 5px;
+    text-transform: uppercase;
+
+    @include media(768px) {
+        width: 125px;
+    }
+
+    @include media(1280px) {
+        width: 136px;
+    }
+}
