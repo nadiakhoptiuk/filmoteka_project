@@ -46,20 +46,17 @@
   position: absolute;
   top: 8px;
   right: 8px;
-  &:hover {
-    fill: var(--accent-text-color);
-  }
 }
-// .close-footer-modal:hover {
-//   fill: var(--accent-text-color);
-// }
+.close-footer-modal:hover {
+  fill: var(--accent-text-color);
+}
 .modal-title {
   text-align: center;
 }
 .social-svg {
   transition-duration: 500ms;
-  &:hover,
-  &:focus {
-    transform: scale(1.3);
-  }
+}
+.social-svg:hover,
+.social-svg:focus {
+  transform: scale(1.3);
 }
