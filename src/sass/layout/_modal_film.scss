@@ -5,28 +5,73 @@
     height: 100%;
     width: 100%;
 
-    background: #000000;
-    opacity: 0.25;
+    background-color: rgba(000, 000, 000,0.25);
     border: 1px solid #000000;
-    overflow-y: scroll;
-    z-index: 3;
-    // & .is-hidden {
-    // opacity: 0;
-    // pointer-events: none;
-    // }
+    // overflow-y: scroll;
+    z-index: 0;
+    & .is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    }
 }
-// .backdrop__modal-film .is-hidden {
-// opacity: 0;
-// pointer-events: none;
-// }
+
 .modal-film{
+padding: 40 20 20 20;
+width: 90%;
+height: 90%;
 position: absolute;
 top: 50%;
 left: 50%;
+z-index: 3;
 transform: translate(-50%, -50%);
 overflow: scroll;
 
-// background-color: 
+background-color: var(--header-text-color); 
+&__btn{
+position: absolute;
+    right: 8px;
+    top: 8px;
+}
+&__close{
+    stroke: #000000;
+}
+&__img{
+    margin-bottom: 20px;
+    min-width: 240px;
+    min-height: 357px;
+}
+&__name{
+margin-bottom: 20px;
+text-transform: uppercase;
+}
+&__rating{
+    display: flex;
+    margin-bottom: 20px;
+}
+&__list-name{
+    margin-right: 41px;
+}
+&__title{
+text-transform: uppercase;
+margin-bottom: 8px;
+}
+&__description{
+margin-bottom: 20px;
+}
+&__to-watcheed{
+    color: var(--header-text-color);
+    margin-right: 20px;
+    background-color: var(--accent-text-color);
+}
+&__to-queue{
+    border: 1px solid #000000;
+}
+}
+.btn {
+    width: 110px;
+    height: 44px;
+    border-radius: 5px;
+    text-transform: uppercase;
 }
 // font-family: 'Roboto';
 // font-style: normal;
