@@ -1,0 +1,35 @@
+.backdrop__modal-film {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    background: #000000;
+    opacity: 0.25;
+    border: 1px solid #000000;
+    overflow-y: scroll;
+    z-index: 3;
+    // & .is-hidden {
+    // opacity: 0;
+    // pointer-events: none;
+    // }
+}
+// .backdrop__modal-film .is-hidden {
+// opacity: 0;
+// pointer-events: none;
+// }
+.modal-film{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+overflow: scroll;
+
+// background-color: 
+}
+// font-family: 'Roboto';
+// font-style: normal;
+// font-weight: 500;
+// font-size: 12px;
+// line-height: 20px;
