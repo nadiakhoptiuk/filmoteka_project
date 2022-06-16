@@ -18,13 +18,9 @@
 .footer__info {
   margin: auto;
   text-align: center;
-  width: 250px;
-
+  max-width: 250px;
   @include media(768px) {
-    width: 744px;
-  }
-  @include media(1280px) {
-    width: 1256px;
+    max-width: 744px;
   }
 }
 .footer__btn {
@@ -38,5 +34,4 @@
 .footer__btn:hover,
 .footer__btn:focus {
   color: var(--accent-text-color);
-
 }
