@@ -1,0 +1,123 @@
+.overlay-auth {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(80, 80, 80, 0.5);
+  @include media(480px, max-width) {
+    padding-left: 30px;
+  }
+}
+
+.modal-auth {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 315px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background-color: #fff;
+  @include media(768px, min-width) {
+    width: 704px;
+    height: 552px;
+  }
+}
+
+.modal-auth__container {
+  width: 290px;
+  margin: 0 auto;
+  @include media(768px, min-width) {
+    width: 336px;
+  }
+}
+
+.modal-auth__btn-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 14px;
+  height: 14px;
+}
+
+.modal-auth__head {
+  position: relative;
+  display: flex;
+
+  &::after {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: #ff001b;
+  }
+}
+
+.modal-auth__title {
+  margin-right: 46px;
+  font-family: 'Roboto', sans-serif;
+  @include font(500, 20px, 1.15, null, uppercase);
+
+  color: #000000;
+}
+
+.modal-auth__button {
+  @include font(500, 12px, 1.17, null, uppercase);
+  font-family: 'Roboto', sans-serif;
+
+  color: #ff6b01;
+}
+
+.auth-form {
+  margin-top: 46px;
+}
+
+.auth-form__input {
+  width: 100%;
+  margin-bottom: 25px;
+  padding: 11 12 11 12;
+  border: 1px solid #8c8c8c;
+  border-radius: 2px;
+}
+
+.auth-form__text {
+  @include font(500, 12px, 1.67, null, null);
+  font-family: 'Roboto', sans-serif;
+
+  color: #888888;
+}
+
+.auth-form__text {
+  margin-bottom: 19px;
+  text-align: center;
+  @include font(500, 12px, 1.67, null, null);
+}
+
+.auth-form__button {
+  display: block;
+  width: 100%;
+  margin-bottom: 28px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-radius: 5px;
+  background-color: #ff6b01;
+  color: #ffffff;
+
+  @include font(500, 12px, 1.33, null, uppercase);
+  font-family: 'Roboto', sans-serif;
+}
+
+.auth-form__link {
+  @include font(500, 12px, 1.67, null, null);
+  font-family: 'Roboto', sans-serif;
+  color: #888888;
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
