@@ -1,8 +1,9 @@
-const modalAuthEl = document.querySelector('.modal-auth__btn-close');
-const overlayEl = document.querySelector('.overlay-auth');
+// const modalAuthEl = document.querySelector('.modal-auth__btn-close');
+// const overlayEl = document.querySelector('.overlay-auth');
+import refs from './refs';
 
-modalAuthEl.addEventListener('click', closeModal);
+refs.modalAuthEl.addEventListener('click', closeModal);
 
 function closeModal() {
-  overlayEl.classList.add('is-hidden');
+  refs.overlayEl.classList.add('is-hidden');
 }
