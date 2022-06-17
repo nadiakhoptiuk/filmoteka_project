@@ -1,9 +1,8 @@
 import refs from './refs';
+import { userRegistration, userSignIn } from './service/service_fb';
+import { closeModalAuth } from './modal-auth';
 
 let formType = 'registration';
-
-console.log(refs.formSubmitBtn);
-console.log(refs.formTitle);
 
 function updateForm() {
   if (formType === 'registration') {
@@ -11,7 +10,6 @@ function updateForm() {
   } else {
     formType = 'registration';
   }
-  console.log(formType);
 
   const formTitle = formType === 'registration' ? 'Registration' : 'Sign In';
   const formSwitchBtnText =
@@ -21,10 +19,23 @@ function updateForm() {
   refs.formSwitchBtn.textContent = formSwitchBtnText;
   refs.formSubmitBtn.textContent = textSubmit;
   refs.formTitle.textContent = formTitle;
+  refs.form.reset();
 }
 
 function onFormSubmit(evt) {
-  console.log(evt.target);
+  evt.preventDefault();
+  const { email, password } = evt.target.elements;
+
+  console.log(formType);
+  if (formType === 'registration') {
+    userRegistration(email.value, password.value);
+    updateForm();
+  } else {
+    userSignIn(email.value, password.value);
+    // модалка закривається
+    closeModalAuth();
+    // TODO і відкривається сторінка myLibrary
+  }
 }
 
 export { onFormSubmit, updateForm };
