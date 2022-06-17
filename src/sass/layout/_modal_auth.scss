@@ -78,10 +78,10 @@
   font-family: 'Roboto', sans-serif;
 
   color: #ff6b01;
-  &:hover,
-  &:focus {
-    color: #000000;
-  }
+  // &:hover,
+  // &:focus {
+  //   color: #000000;
+  // }
 }
 
 .auth-form {
@@ -109,6 +109,11 @@
   @include font(500, 12px, 1.67, null, null);
 }
 
+.auth-form__sign-text {
+  color: #888888;
+  @include font(500, 12px, 1.67, null, null);
+}
+
 .auth-form__button {
   display: block;
   width: 100%;
@@ -126,10 +131,10 @@
 .auth-form__link {
   @include font(500, 12px, 1.67, null, null);
   font-family: 'Roboto', sans-serif;
-  color: #888888;
+  color: #ff6b01;
   &:hover,
   &:focus {
-    color: #ff6b01;
+    color: #000000;
   }
 }
 
