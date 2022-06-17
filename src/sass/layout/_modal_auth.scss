@@ -37,8 +37,17 @@
   position: absolute;
   top: 16px;
   right: 16px;
-  width: 14px;
-  height: 14px;
+  width: 30px;
+  height: 30px;
+}
+
+.icon {
+  stroke: #000000;
+}
+
+.modal-auth__btn-close:hover .icon,
+.modal-auth__btn-close:focus .icon {
+  stroke: #ff6b01;
 }
 
 .modal-auth__head {
@@ -69,6 +78,10 @@
   font-family: 'Roboto', sans-serif;
 
   color: #ff6b01;
+  &:hover,
+  &:focus {
+    color: #000000;
+  }
 }
 
 .auth-form {
@@ -114,6 +127,10 @@
   @include font(500, 12px, 1.67, null, null);
   font-family: 'Roboto', sans-serif;
   color: #888888;
+  &:hover,
+  &:focus {
+    color: #ff6b01;
+  }
 }
 
 .is-hidden {
