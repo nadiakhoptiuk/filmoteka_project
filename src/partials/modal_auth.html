@@ -1,4 +1,4 @@
-<div class="overlay-auth is-hidden">
+<div class="overlay-auth">
   <div class="modal-auth">
     <div class="modal-auth__container">
       <button class="modal-auth__btn-close" type="button">
@@ -42,12 +42,14 @@
         <button class="auth-form__button js-form__submit" type="submit">
           Register now
         </button>
-        <p class="auth-form__sign-text">Sign in with:</p>
-        <button class="auth-form__button-google">
-          <svg width="30" height="30">
-            <use href="./images/sprite.svg#icon-logout-icon"></use>
-          </svg>
-        </button>
+        <div class="auth-form__autorization">
+          <p class="auth-form__sign-text">Sign in with:</p>
+          <button class="auth-form__button-google">
+            <svg width="15" height="15">
+              <use href="./images/sprite.svg#google-icon"></use>
+            </svg>
+          </button>
+        </div>
       </form>
     </div>
   </div>
