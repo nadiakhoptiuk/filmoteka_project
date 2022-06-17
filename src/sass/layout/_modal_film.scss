@@ -1,4 +1,5 @@
 .backdrop__modal-film {
+    display: none;// реалізується на етапі js
     position: fixed;
     top: 0;
     left: 0;
@@ -6,7 +7,7 @@
     width: 100%;
 
     background-color: rgba(000, 000, 000, 0.25);
-    border: 1px solid #000000;
+    border: 1px solid var(--gallery-text-color);
     // overflow-y: scroll;
     z-index: 0;
 
@@ -31,7 +32,7 @@
     background-color: var(--header-text-color);
 
     @include media(768px) {
-        padding: 40 72 40 36;
+        padding: 40px 72px 40px 36px;
         display: flex;
         width: 704px;
         height: 552px;
@@ -39,7 +40,7 @@
     }
 
     @include media(1280px) {
-        padding: 40 12 40 12;
+        padding: 40px 12px;
         width: 806px;
         height: 558px;
     }
@@ -47,7 +48,7 @@
     &--style {
         background: #FF6B01;
         border-radius: 5px;
-        padding: 1 10;
+        padding: 1px 10px;
     }
 
     &__btn {
@@ -57,7 +58,7 @@
     }
 
     &__close {
-        stroke: #000000;
+        stroke:var(--gallery-text-color);
     }
 
     &__img {
@@ -85,19 +86,33 @@
     &__name {
         margin-bottom: 20px;
         text-transform: uppercase;
+        font-size: 20px;
+        line-height: 1, 15;
+        @include media(1280px) {
+            font-size: 30px;
+            line-height: 1,16;
+            }
     }
 
     &__rating {
         display: flex;
         margin-bottom: 20px;
     }
-
-    &__list-name {
-        margin-right: 41px;
-
-        @include media(1280px) {
+    &__item-name{
+    margin-right: 41px;
+    color: var(--category-text-color);
+    @include media(1280px) {
             margin-right: 85px;
         }
+    &:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+
+    &__item-description{
+        &:not(:last-child) {
+                margin-bottom: 8px;
+            }
     }
 
     &__title {
@@ -107,12 +122,11 @@
 
     &__description {
         margin-bottom: 20px;
+        line-height: 1.66;
     }
 
     &__to-watcheed {
-        color: var(--header-text-color);
         margin-right: 20px;
-        background-color: var(--accent-text-color);
 
         @include media(768px) {
             margin-right: 15px;
@@ -120,16 +134,22 @@
     }
 
     &__to-queue {
-        border: 1px solid #000000;
+        border: 1px solid var(--gallery-text-color);
+        color: var(--gallery-text-color);
+    }
+    &__buttons{
+        display: flex;
+        @include media(767px, max-width) {
+   justify-content: center;
+}
+ @include media(768px) {
+    justify-content: flex-start;
+ }
     }
 }
-
 .btn {
     width: 110px;
-    height: 44px;
     border-radius: 5px;
-    text-transform: uppercase;
-
     @include media(768px) {
         width: 125px;
     }
