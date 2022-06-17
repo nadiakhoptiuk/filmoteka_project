@@ -1,9 +1,7 @@
 import moment from 'moment';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { MoviesService } from './fetch';
-import getRefs from "./refs";
-
-const refs = getRefs();
+import refs from "./refs";
 
 export async function markupMoviesGallery() {
   try {
@@ -17,7 +15,7 @@ export async function markupMoviesGallery() {
           <img
             class="card__img" 
             src="https://image.tmdb.org/t/p/original/${item.poster_path}"
-            alt=""
+            alt="poster"
           />
           <h2 class="card__title">${item.title}</h2>
           <p class="card__description">

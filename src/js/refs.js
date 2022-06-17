@@ -1,6 +1,4 @@
-export default function getRefs() {
-  return {
+export default refs = {
     galleryList: document.querySelector('.gallery__list'),
     paginationRef: document.querySelector('#tui-pagination-container'),
-  };
 }

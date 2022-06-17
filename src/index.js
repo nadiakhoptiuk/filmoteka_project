@@ -2,21 +2,30 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
 import { markupMoviesGallery } from "./js/template";
 import { MoviesService } from './js/fetch';
-import getRefs from './js/refs';
-
-const refs = getRefs();
+import refs from './js/refs';
 
 markupMoviesGallery();
 
+async function getTotalPage() {
+  const listMovies = await MoviesService.getMovies();
+  let getList = listMovies.total_pages;
+  if (getList > 1000) {
+    getList = 1000;
+  }
+  pagination.reset(getList);
+}
+
+getTotalPage()
+
 export const pagination = new Pagination(refs.paginationRef, {
   totalItems: 0,
-  visiblePages: 5,
+  visiblePages: 10,
 });
 
 function moviePagination(e) {
   MoviesService.page = e.page;
   refs.galleryList.innerHTML = '';
-  markupMoviesGallery()
+  markupMoviesGallery();
 }
 
 pagination.on('afterMove', moviePagination);
