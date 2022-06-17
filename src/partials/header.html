@@ -5,16 +5,27 @@
         <svg alt="filming tape image" width="24" height="24" class="logo-svg">
           <use href="./images/sprite.svg#icon-film"></use>
         </svg>
-        <span class="logo_header">Filmoteka</span></a>
+        <span class="logo_header">Filmoteka</span></a
+      >
     </div>
     <div class="menu-nav-container">
       <nav class="navbar">
         <ul class="navbar-menu">
           <li class="navbar-item_wrap" id="home">
-            <a class="navbar-item_link current" href="./index.html">Home</a>
+            <!-- клас nav-link--current потрібно динамічно додавати і забирати через js на одну з двох лішок -->
+            <a class="navbar-item_link nav-link--current" href="./index.html"
+              >Home</a
+            >
           </li>
           <li class="navbar-item_wrap" id="library">
-            <a class="navbar-item_btn" href="./index.html">My library</a>
+            <button class="navbar-item_btn">My library</button>
+          </li>
+          <li class="navbar-item_wrap" id="log_out">
+            <button class="navbar-item_btn_log_out">
+              <svg width="30" height="30" class="logout-svg">
+                <use href="./images/sprite.svg#logout-icon"></use>
+              </svg>
+            </button>
           </li>
         </ul>
       </nav>
@@ -24,9 +35,15 @@
   <!-- input form -->
   <div class="search-container">
     <form class="search-form" id="search-form">
-      <input class="input-box" type="text" name="searchQuery" autocomplete="off" placeholder="Searching movies..." />
+      <input
+        class="input-box"
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        placeholder="Movie search"
+      />
       <button class="search-btn" type="submit" name="submitBtn">
-        <svg class="search-icon" width="9" height="9">
+        <svg class="search-icon" width="12" height="12">
           <use href="./images/sprite.svg#icon-search-2"></use>
         </svg>
       </button>
