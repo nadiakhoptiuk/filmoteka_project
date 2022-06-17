@@ -161,14 +161,7 @@
 
 .btns-container {
   @include centeredFlex;
-
-  @include media(768px) {
-    margin-bottom: 60px;
-  }
-
-  @include media(1280px) {
-    margin-bottom: 60px;
-  }
+  color: var(--accent-text-color);
 }
 
 .button+.button {
@@ -204,7 +197,7 @@
 
 .active {
   background-color: var(--error-text-color);
-  border: transparent;
+  border: none;
 }
 
 .logo-svg {
