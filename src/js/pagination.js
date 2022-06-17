@@ -26,3 +26,4 @@ export function moviePagination(e) {
  
   markupMoviesGallery();
 }
+
