@@ -133,6 +133,11 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.auth-form__button-google {
+  width: 30px;
+  height: 30px;
+}
+
 .auth-form__link {
   @include font(500, 12px, 1.67, null, null);
   font-family: 'Roboto', sans-serif;
