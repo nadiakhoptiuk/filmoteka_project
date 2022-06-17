@@ -9,6 +9,7 @@ function onClick() {
 function onClickBackdrop(e) {
   if (e.target.classList.contains('backdrop') || e.key === 'Escape') {
     onClick();
+    document.removeEventListener('keydown', onClickBackdrop);
   }
 }
 
