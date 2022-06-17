@@ -63,7 +63,7 @@
   &__title {
     font-family: 'Roboto';
     @include font(500, 12px, 1.33, null, uppercase);
-    color: #000000;
+    color: var(--gallery-text-color);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -79,7 +79,7 @@
     @include font(500, 12px, 1.33, null, null);
     display: flex;
     align-items: flex-end;
-    color: #FF6B01;
+    color: var( --accent-text-color);
 
     @include media(1280px, min-width) {
       font-size: 20px;
@@ -91,13 +91,13 @@
     display: block;
     width: 36px;
     height: 16px;
-    background-color: #FF6B01;
+    background-color: var( --accent-text-color);
     @include centeredFlex;
     font-family: 'Roboto';
     @include font(500, 12px, 1.16, null, null);
     text-align: center;
     margin-left: 8px;
-    color: #FFFFFF;
+    color: var(--header-text-color);
     border-radius: 5px;
 
     @include media(1280px, min-width) {
@@ -115,9 +115,9 @@
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  background-color: #FF6B01;
+  background-color: var( --accent-text-color);
   opacity: 0.9;
-  color: #fff;
+  color: var(--header-text-color);
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
@@ -138,7 +138,7 @@
 }
 
 .tui-pagination .tui-is-selected, .tui-pagination strong{
-  background-color: #FF6B01 !important;
+  background-color: var( --accent-text-color) !important;
 }
 
 .tui-pagination .tui-page-btn{

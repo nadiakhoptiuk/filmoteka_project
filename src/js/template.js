@@ -1,8 +1,6 @@
 import moment from 'moment';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { MoviesService } from './fetch';
-import { getTotalPage } from './pagination';
-import { pagination } from './pagination';
 import refs from "./refs";
 
 export async function markupMoviesGallery() {
