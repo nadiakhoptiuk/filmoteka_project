@@ -29,8 +29,6 @@
     <symbol id="icon-film" viewBox="0 0 32 32">
       <path
         fill="transparent"
-        stroke="#818181"
-        style="stroke:var(--color1, #818181)"
         stroke-linejoin="round"
         stroke-linecap="round"
         stroke-width="2.667"
