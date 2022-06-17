@@ -7,6 +7,7 @@ const refs = {
   formInputPass: document.querySelector('.js-input__pass'),
   formSubmitBtn: document.querySelector('.js-form__submit'),
   formSwitchBtn: document.querySelector('.js-form__type-switch'),
+  formSignInWithGoogle: document.querySelector('.js-sign-google'),
   modalAuthEl: document.querySelector('.modal-auth__btn-close'),
   overlayEl: document.querySelector('.overlay-auth'),
 };

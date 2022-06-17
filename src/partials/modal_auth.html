@@ -19,7 +19,7 @@
             type="email"
             name="email"
             placeholder="Email"
-            required="required"
+            required
           />
         </label>
         <label>
@@ -30,7 +30,7 @@
             min="6"
             max="6"
             placeholder="Password"
-            required="required"
+            required
           />
         </label>
         <p class="auth-form__text">
@@ -42,15 +42,15 @@
         <button class="auth-form__button js-form__submit" type="submit">
           Register now
         </button>
-        <div class="auth-form__autorization">
-          <p class="auth-form__sign-text">Sign in with:</p>
-          <button class="auth-form__button-google">
-            <svg width="15" height="15">
-              <use href="./images/sprite.svg#google-icon"></use>
-            </svg>
-          </button>
-        </div>
       </form>
+      <div class="auth-form__autorization">
+        <p class="auth-form__sign-text">Sign in with:</p>
+        <button class="auth-form__button-google js-sign-google">
+          <svg width="15" height="15">
+            <use href="./images/sprite.svg#google-icon"></use>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </div>
