@@ -1,9 +1,14 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
-import { markupMoviesGallery } from "./js/template";
+import { markupMoviesGallery } from './js/template';
 import { MoviesService } from './js/fetch';
 import refs from './js/refs';
 
+//
+
+refs.form.addEventListener('submit', onSubmitForm);
+
+//
 markupMoviesGallery();
 
 async function getTotalPage() {
@@ -15,7 +20,7 @@ async function getTotalPage() {
   pagination.reset(getList);
 }
 
-getTotalPage()
+getTotalPage();
 
 export const pagination = new Pagination(refs.paginationRef, {
   totalItems: 0,

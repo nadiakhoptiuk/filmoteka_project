@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
 } from 'firebase/auth';
 import { firebaseConfig } from '../settings/fb_config';
+import refs from '../refs';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
