@@ -15,7 +15,7 @@ export async function markupMoviesGallery() {
           <img
             class="card__img" 
             src="https://image.tmdb.org/t/p/original/${item.poster_path}"
-            alt="poster"
+            alt="${item.title}"
           />
           <h2 class="card__title">${item.title}</h2>
           <p class="card__description">
