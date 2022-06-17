@@ -19,7 +19,7 @@ getTotalPage()
 
 export const pagination = new Pagination(refs.paginationRef, {
   totalItems: 0,
-  visiblePages: 10,
+  visiblePages: 5,
 });
 
 function moviePagination(e) {
