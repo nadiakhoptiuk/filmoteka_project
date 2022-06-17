@@ -3,10 +3,13 @@ import 'tui-pagination/dist/tui-pagination.min.css';
 import { markupMoviesGallery } from './js/template';
 import { MoviesService } from './js/fetch';
 import refs from './js/refs';
+// import { onFormSubmit } from './js/service/service_fb';
+import { updateForm } from './js/authForm';
 
 //
 
-refs.form.addEventListener('submit', onSubmitForm);
+// refs.form.addEventListener('submit', onFormSubmit);
+refs.formSwitchBtn.addEventListener('click', updateForm);
 
 //
 markupMoviesGallery();

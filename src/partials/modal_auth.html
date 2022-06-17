@@ -7,21 +7,33 @@
         </svg>
       </button>
       <div class="modal-auth__head">
-        <p class="modal-auth__title">Registration</p>
-        <button class="modal-auth__button" type="button">sign in</button>
+        <p class="modal-auth__title js-form-auth__title">Registration</p>
+        <button class="modal-auth__button js-form__type-switch" type="button">
+          sign in
+        </button>
       </div>
-      <form class="auth-form">
+      <form class="auth-form js-form-auth">
         <label>
-          <input class="auth-form__input" type="mail" name="email" />
+          <input
+            class="auth-form__input js-input__email"
+            type="mail"
+            name="email"
+          />
         </label>
         <label>
-          <input class="auth-form__input" type="text" name="password" />
+          <input
+            class="auth-form__input js-input__pass"
+            type="text"
+            name="password"
+          />
         </label>
         <p class="auth-form__text">
           By clicking Registration button, you are indicating that you have read
           and agree to the Terms of Use and Privacy Policy.
         </p>
-        <button class="auth-form__button" type="submit">Registration</button>
+        <button class="auth-form__button js-form__submit" type="submit">
+          Registration
+        </button>
         <a class="auth-form__link" href="">Sign with Google</a>
       </form>
     </div>
