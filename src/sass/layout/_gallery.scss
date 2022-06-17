@@ -64,6 +64,9 @@
     font-family: 'Roboto';
     @include font(500, 12px, 1.33, null, uppercase);
     color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     @include media(1280px, min-width) {
       font-size: 20px;
@@ -103,6 +106,31 @@
       line-height: 1.16;
     }
   }
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: #FF6B01;
+  opacity: 0.9;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  width: 240px;
+  top: 100%;
+  left: 20%;
+  margin-left: -50px; 
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
 .pagination-wrapper{
