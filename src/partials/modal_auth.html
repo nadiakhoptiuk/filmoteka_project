@@ -1,4 +1,4 @@
-<div class="overlay-auth">
+<div class="overlay-auth is-hidden">
   <div class="modal-auth">
     <div class="modal-auth__container">
       <button class="modal-auth__btn-close" type="button">
@@ -15,17 +15,21 @@
       <form class="auth-form js-form-auth">
         <label>
           <input
-            class="auth-form__input js-input__email"
-            type="mail"
+            class="auth-form__input auth-form__input--email js-input__email"
+            type="email"
             name="email"
+            placeholder="Email"
             required="required"
           />
         </label>
         <label>
           <input
-            class="auth-form__input js-input__pass"
-            type="text"
+            class="auth-form__input auth-form__input--password js-input__pass"
+            type="password"
             name="password"
+            min="6"
+            max="6"
+            placeholder="Password"
             required="required"
           />
         </label>
@@ -39,6 +43,11 @@
           Register now
         </button>
         <p class="auth-form__sign-text">Sign in with:</p>
+        <button class="auth-form__button-google">
+          <svg width="30" height="30">
+            <use href="./images/sprite.svg#icon-logout-icon"></use>
+          </svg>
+        </button>
       </form>
     </div>
   </div>
