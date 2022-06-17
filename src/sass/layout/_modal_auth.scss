@@ -18,7 +18,7 @@
   width: 315px;
   padding-top: 60px;
   padding-bottom: 60px;
-  background-color: #fff;
+  background-color: var(--header-text-color);
   @include media(768px, min-width) {
     width: 704px;
     height: 552px;
@@ -42,12 +42,12 @@
 }
 
 .icon {
-  stroke: #000000;
+  stroke: var(--gallery-text-color);
 }
 
 .modal-auth__btn-close:hover .icon,
 .modal-auth__btn-close:focus .icon {
-  stroke: #ff6b01;
+  stroke: var(--accent-text-color);
 }
 
 .modal-auth__head {
@@ -61,7 +61,7 @@
     content: '';
     width: 100%;
     height: 3px;
-    background-color: #ff001b;
+    background-color: var(--error-text-color);
   }
 }
 
@@ -70,14 +70,14 @@
   font-family: 'Roboto', sans-serif;
   @include font(500, 20px, 1.15, null, uppercase);
 
-  color: #000000;
+  color: var(--gallery-text-color);
 }
 
 .modal-auth__button {
   @include font(500, 12px, 1.17, null, uppercase);
   font-family: 'Roboto', sans-serif;
 
-  color: #ff6b01;
+  color: var(--accent-text-color);
   // &:hover,
   // &:focus {
   //   color: #000000;
@@ -92,7 +92,7 @@
   width: 100%;
   margin-bottom: 25px;
   padding: 11 12 11 12;
-  border: 1px solid #8c8c8c;
+  border: 1px solid var(--category-text-color);
   border-radius: 2px;
 }
 
@@ -100,7 +100,7 @@
   @include font(500, 12px, 1.67, null, null);
   font-family: 'Roboto', sans-serif;
 
-  color: #888888;
+  color: var(--category-text-color);
 }
 
 .auth-form__text {
@@ -110,7 +110,7 @@
 }
 
 .auth-form__sign-text {
-  color: #888888;
+  color: var(--category-text-color);
   @include font(500, 12px, 1.67, null, null);
 }
 
@@ -121,8 +121,8 @@
   padding-top: 14px;
   padding-bottom: 14px;
   border-radius: 5px;
-  background-color: #ff6b01;
-  color: #ffffff;
+  background-color: var(--accent-text-color);
+  color: var(--header-text-color);
 
   @include font(500, 12px, 1.33, null, uppercase);
   font-family: 'Roboto', sans-serif;
@@ -131,10 +131,10 @@
 .auth-form__link {
   @include font(500, 12px, 1.67, null, null);
   font-family: 'Roboto', sans-serif;
-  color: #ff6b01;
+  color: var(--accent-text-color);
   &:hover,
   &:focus {
-    color: #000000;
+    color: var(--gallery-text-color);
   }
 }
 
