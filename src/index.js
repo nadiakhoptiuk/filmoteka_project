@@ -5,11 +5,13 @@ import { MoviesService } from './js/fetch';
 import refs from './js/refs';
 // import { onFormSubmit } from './js/service/service_fb';
 import { updateForm } from './js/authForm';
+import { closeModalAuth } from './js/modal-auth';
 
 //
 
 // refs.form.addEventListener('submit', onFormSubmit);
 refs.formSwitchBtn.addEventListener('click', updateForm);
+refs.modalAuthEl.addEventListener('click', closeModalAuth);
 
 //
 markupMoviesGallery();
