@@ -1,17 +1,14 @@
 .header-container {
   margin: 0 auto;
-  padding: 0;
-  width: 320px;
+  //padding: 0;
   height: 230px;
-  background-image: url('../images/main_bg_img_tablet_1x-min.jpeg');
+  background-image: url('../images/main_bg_img_mobile_1x-min.jpeg');
   // background-image: -webkit-image-set(url('../images/main_bg_img_desktop_1x-min.jpeg') 1x,
   //     url('../images/main_bg_img_desktop_2x-min.jpeg') 2x);
   background-repeat: no-repeat;
   background-size: cover;
-  border: 1px solid rgba(0, 0, 0, 1);
 
   @include media(768px) {
-    width: 768px;
     height: 216px;
     background-image: 
       url('../images/main_bg_img_tablet_1x-min.jpeg');
@@ -19,19 +16,15 @@
         url('../images/main_bg_img_tablet_2x-min.jpeg') 2x);
     background-repeat: no-repeat;
     background-size: cover;
-    border: 1px solid rgba(0, 0, 0, 1);
   }
 
   @include media(1280px) {
-    width: 1280px;
-    height: 216px;
     background-image:
       url('../images/main_bg_img_desktop_1x-min.jpeg');
     background-image: -webkit-image-set(url('../images/main_bg_img_desktop_1x-min.jpeg') 1x,
         url('../images/main_bg_img_desktop_2x-min.jpeg') 2x);
     background-repeat: no-repeat;
     background-size: cover;
-    border: 1px solid rgba(0, 0, 0, 1);
   }
 }
 
@@ -57,7 +50,7 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 30px;
-  line-height: (35px/30px);
+  line-height: calc(35 / 30);
   display: none;
 
   @include media(768px) {
@@ -70,18 +63,15 @@
 }
 
 .menu-container {
-  margin: 0;
+  
+  //margin: 0;
   padding-top: 40px;
-  padding-left: 32px;
-  padding-right: 32px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
   @include media(320px) {
     padding-top: 44px;
-    padding-left: 32px;
-    padding-right: 32px;
   }
 }
 
@@ -103,7 +93,7 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 12px;
-  line-height: (14px/12px);
+  line-height: calc(14 / 12);
 }
 
 .navbar-item_wrap {
@@ -157,7 +147,7 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 14px;
-  line-height: (16px/14px);
+  line-height: calc(16 / 14);
 }
 
 ::placeholder {
@@ -192,7 +182,7 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 12px;
-  line-height: (16px/12px);
+  line-height: calc(16 / 12);
   border-radius: 5px;
   min-width: 130px;
   height: 44px;
