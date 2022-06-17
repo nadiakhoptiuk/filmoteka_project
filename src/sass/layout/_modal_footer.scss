@@ -1,5 +1,5 @@
-.hidden{
-    overflow: hidden
+.hidden {
+  overflow: hidden;
 }
 .modal {
   position: absolute;
@@ -7,8 +7,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 30px;
-  // min-height: 609px;
-  // width: 450px;
   background-color: #ffffff;
   border-radius: 5px;
   display: inline-block;
@@ -20,9 +18,6 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  //   overflow-y: scroll;
-
-//   transition: opacity .25s cubic-bezier(.07,.96,.54,.88);
 }
 .socials-link__list {
   display: flex;
@@ -59,7 +54,7 @@
   text-align: center;
 }
 .social-svg {
-  transition-duration: 500ms;
+  transition-duration: 300ms;
 }
 .social-svg:hover,
 .social-svg:focus {
