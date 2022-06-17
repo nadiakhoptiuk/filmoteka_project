@@ -1,5 +1,8 @@
-.hidden {
+.page.hidden {
   overflow: hidden;
+}
+.isHide {
+  display: none;
 }
 .modal {
   position: absolute;
@@ -7,9 +10,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 30px;
-  background-color: #ffffff;
+  background-color: var(--header-text-color);
   border-radius: 5px;
   display: inline-block;
+}
+.modal-title {
+  text-align: center;
 }
 .backdrop {
   position: fixed;
@@ -31,12 +37,12 @@
 .card-info {
   padding: 5px;
 }
-.card-link {
-  border: 1px solid rgba(73, 68, 68, 0.3);
-}
-.card-link:hover {
-  border: 1px solid var(--accent-text-color);
-}
+// .card-link {
+//   border: 1px solid rgba(73, 68, 68, 0.3);
+// }
+// .card-link:hover {
+//   border: 1px solid var(--accent-text-color);
+// }
 .card-info__pretitle {
   text-align: center;
   margin-top: 5px;
@@ -50,9 +56,7 @@
 .close-footer-modal:hover {
   fill: var(--accent-text-color);
 }
-.modal-title {
-  text-align: center;
-}
+
 .social-svg {
   transition-duration: 300ms;
 }
