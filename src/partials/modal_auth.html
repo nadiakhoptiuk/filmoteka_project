@@ -15,18 +15,22 @@
       <form class="auth-form js-form-auth">
         <label>
           <input
-            class="auth-form__input js-input__email"
-            type="mail"
+            class="auth-form__input auth-form__input--email js-input__email"
+            type="email"
             name="email"
-            required="required"
+            placeholder="Email"
+            required
           />
         </label>
         <label>
           <input
-            class="auth-form__input js-input__pass"
-            type="text"
+            class="auth-form__input auth-form__input--password js-input__pass"
+            type="password"
             name="password"
-            required="required"
+            min="6"
+            max="6"
+            placeholder="Password"
+            required
           />
         </label>
         <p class="auth-form__text">
@@ -38,8 +42,15 @@
         <button class="auth-form__button js-form__submit" type="submit">
           Register now
         </button>
-        <p class="auth-form__sign-text">Sign in with:</p>
       </form>
+      <div class="auth-form__autorization">
+        <p class="auth-form__sign-text">Sign in with:</p>
+        <button class="auth-form__button-google js-sign-google">
+          <svg width="15" height="15">
+            <use href="./images/sprite.svg#google-icon"></use>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </div>

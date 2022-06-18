@@ -96,6 +96,11 @@
   border-radius: 2px;
 }
 
+.auth-form__input--email::placeholder,
+.auth-form__input--password::placeholder {
+  color: var(--accent-text-color);
+}
+
 .auth-form__text {
   @include font(500, 12px, 1.67, null, null);
   font-family: 'Roboto', sans-serif;
@@ -128,6 +133,11 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.auth-form__button-google {
+  width: 30px;
+  height: 30px;
+}
+
 .auth-form__link {
   @include font(500, 12px, 1.67, null, null);
   font-family: 'Roboto', sans-serif;
@@ -136,6 +146,11 @@
   &:focus {
     color: var(--gallery-text-color);
   }
+}
+
+.auth-form__autorization {
+  display: flex;
+  align-items: center;
 }
 
 .is-hidden {
