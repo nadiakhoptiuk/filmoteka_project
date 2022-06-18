@@ -16,10 +16,15 @@ const refs = {
   modalAuthEl: document.querySelector('.modal-auth__btn-close'),
   overlayEl: document.querySelector('.overlay-auth'),
 
+  buttonPopular: document.querySelector('[data-id="popular"]'),
+  buttonTopRated: document.querySelector('[data-id="top_rated"]'),
+  buttonNowPlaying: document.querySelector('[data-id="now_playing"]'),
+
   loader: document.querySelector('.ring'),
 
   btnCloseFilm: document.querySelector('.modal-film__btn'),
   body: document.body,
+
   addToWatchedBtn: document.querySelector('#add-to-watched'),
   addToQueueBtn: document.querySelector('#add-to-queue'),
 };

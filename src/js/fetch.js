@@ -11,9 +11,10 @@ export async function getGenres() {
 }
 export let copy=null;
 export const MoviesService = {
-  _page: '',
+  _page: 1,
+  _param: 'popular',
   async getMovies() {
-    const response = await axios.get(`/movie/popular?api_key=${API_KEY}&page=${this.page}`);
+    const response = await axios.get(`/movie/${this.param}?api_key=${API_KEY}&page=${this.page}`);
     const genres = await getGenres();
     let { results, total_pages } = response.data;
 
@@ -27,13 +28,22 @@ export const MoviesService = {
     })
     copy = JSON.stringify({ results });
       return { results, total_pages };
-    },
+  },
+  
     get page() {
       return this._page;
     },
     
     set page(newPage) {
       this._page = newPage;
+  },
+    
+    get param() {
+      return this._param;
+    },
+    
+    set param(newParam) {
+      this._param = newParam;
     },
   };
   
