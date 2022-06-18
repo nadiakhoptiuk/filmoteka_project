@@ -12,6 +12,7 @@ const refs = {
   signOutWrap: document.querySelector('#sign_out'),
   modalAuthEl: document.querySelector('.modal-auth__btn-close'),
   overlayEl: document.querySelector('.overlay-auth'),
+  buttonWrap: document.querySelector('.button-wrap'),
   buttonPopular: document.querySelector('[data-id="popular"]'),
   buttonTopRated: document.querySelector('[data-id="top_rated"]'),
   buttonNowPlaying: document.querySelector('[data-id="now_playing"]'),

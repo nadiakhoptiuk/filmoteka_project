@@ -12,9 +12,7 @@ refs.modalAuthEl.addEventListener('click', closeModalAuth);
 refs.formSignInWithGoogle.addEventListener('click', userSignInWithGoogle);
 //
 
-refs.buttonPopular.addEventListener('click', onFilterButtonClick)
-refs.buttonTopRated.addEventListener('click', onFilterButtonClick)
-refs.buttonNowPlaying.addEventListener('click', onFilterButtonClick)
+refs.buttonWrap.addEventListener('click', onFilterButtonClick);
 
 document.addEventListener('DOMContentLoaded', getTotalPage);
 pagination.on('afterMove', moviePagination);
