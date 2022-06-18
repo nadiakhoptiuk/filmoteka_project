@@ -18,6 +18,8 @@ const refs = {
 
   loader: document.querySelector('.ring'),
 
+  btnCloseFilm: document.querySelector('.modal-film__btn'),
+  body: document.body,
   addToWatchedBtn: document.querySelector('#add-to-watched'),
   addToQueueBtn: document.querySelector('#add-to-queue'),
 };
