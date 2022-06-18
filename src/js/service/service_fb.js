@@ -10,6 +10,7 @@ import {
 } from 'firebase/auth';
 import { firebaseConfig } from '../settings/fb_config';
 import { closeModalAuth } from '../modal-auth';
+import { getUserId } from '../user-data';
 import refs from '../refs';
 
 const app = initializeApp(firebaseConfig);
@@ -76,15 +77,17 @@ onAuthStateChanged(auth, user => {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = user.uid;
+    getUserId(uid);
     refs.signOutBtn.addEventListener('click', userSignOut);
     refs.signOutWrap.classList.remove('is-hidden');
 
+    console.log(uid);
     console.log(user);
 
     // ...
   } else {
     console.log(null);
-
+    getUserId(null);
     // User is signed out
     // ...
   }

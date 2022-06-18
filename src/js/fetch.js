@@ -9,7 +9,7 @@ export async function getGenres() {
   const response = await axios.get(`genre/movie/list?api_key=${API_KEY}&language=en-US`);
   return response.data.genres;
 }
-
+export let copy=null;
 export const MoviesService = {
   _page: 1,
   _param: 'popular',
@@ -17,7 +17,7 @@ export const MoviesService = {
     const response = await axios.get(`/movie/${this.param}?api_key=${API_KEY}&page=${this.page}`);
     const genres = await getGenres();
     let { results, total_pages } = response.data;
-    
+
     results = results.map(result => {
       const arrayOfGenresName = result.genre_ids.map(id => genres.find(genre => genre.id === id).name)
       return {
@@ -26,6 +26,7 @@ export const MoviesService = {
         previewGenres: `${arrayOfGenresName.slice(0, 2).join(', ')}${arrayOfGenresName.length > 2 ? `, ...` : ''}`
       }
     })
+    copy = JSON.stringify({ results });
       return { results, total_pages };
   },
   
