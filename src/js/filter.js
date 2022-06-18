@@ -4,7 +4,7 @@ import { pagination } from "./pagination";
 import refs from "./refs";
 import { pagination } from "./pagination";
 
-export async function onBtnClick(e) {
+export async function onFilterButtonClick(e) {
   MoviesService.param = e.target.dataset.id; // отримуємо дата-атрибут як параметр запиту для фетча
   MoviesService.page = 1; // початкова сторінка
   const response = await MoviesService.getMovies();
