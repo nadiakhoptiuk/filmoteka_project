@@ -26,8 +26,6 @@ function onFormSubmit(evt) {
   evt.preventDefault();
   const { email, password } = evt.target.elements;
 
-  console.log(evt.target);
-  console.log(evt.currentTarget);
   console.log(formType);
   if (formType === 'registration') {
     userRegistration(email.value, password.value);

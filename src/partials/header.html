@@ -1,13 +1,12 @@
 <header class="header-container">
   <div class="menu-container container">
-    <div class="menu-logo_container">
-      <a class="logo" href="./index.html">
-        <svg alt="filming tape image" width="24" height="24" class="logo-svg">
-          <use href="./images/sprite.svg#icon-film"></use>
-        </svg>
-        <span class="logo_header">Filmoteka</span></a
-      >
-    </div>
+    <a class="logo" href="./index.html">
+      <svg alt="filming tape image" width="24" height="24" class="logo-svg">
+        <use href="./images/sprite.svg#icon-film"></use>
+      </svg>
+      <span class="logo_header">Filmoteka</span></a
+    >
+
     <div class="menu-nav-container">
       <nav class="navbar">
         <ul class="navbar-menu">
@@ -20,15 +19,15 @@
           <li class="navbar-item_wrap" id="library">
             <button class="navbar-item_btn">My library</button>
           </li>
-          <li class="navbar-item_wrap" id="log_out">
-            <button class="navbar-item_btn_log_out">
-              <svg width="30" height="30" class="logout-svg">
-                <use href="./images/sprite.svg#logout-icon"></use>
-              </svg>
-            </button>
-          </li>
         </ul>
       </nav>
+      <div class="sign_out_wrap is-hidden" id="sign_out">
+        <button class="sign_out_btn js-sign-out-btn">
+          <svg width="30" height="30" class="logout-svg">
+            <use href="./images/sprite.svg#logout-icon"></use>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -48,9 +47,10 @@
         </svg>
       </button>
     </form>
-    <div class="btns-container visually-hidden">
-      <button class="button watched active">Watched</button>
-      <button class="button queued">Queue</button>
-    </div>
+  </div>
+
+  <div class="btns-container visually-hidden">
+    <button class="button watched active">Watched</button>
+    <button class="button queued">Queue</button>
   </div>
 </header>

@@ -8,9 +8,12 @@ const refs = {
   formSubmitBtn: document.querySelector('.js-form__submit'),
   formSwitchBtn: document.querySelector('.js-form__type-switch'),
   formSignInWithGoogle: document.querySelector('.js-sign-google'),
+  signOutBtn: document.querySelector('.js-sign-out-btn'),
+
+  signOutWrap: document.querySelector('#sign_out'),
   modalAuthEl: document.querySelector('.modal-auth__btn-close'),
   overlayEl: document.querySelector('.overlay-auth'),
-  loader: document.querySelector('.ring')
+  loader: document.querySelector('.ring'),
 };
 
 export default refs;
