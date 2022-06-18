@@ -5,14 +5,18 @@ import { markupMoviesGallery } from './template';
 import refs from '../js/refs';
 
 export async function getTotalPage() {
-  const listOfMovies = await MoviesService.getMovies();
-  const getListOfMovies = await listOfMovies.results;
-  let getList = listOfMovies.total_pages;
-  if (getList > 1000) {
-    getList = 1000;
+  try {
+    const listOfMovies = await MoviesService.getMovies();
+    const getListOfMovies = listOfMovies.results;
+    let quantityOfPages = listOfMovies.total_pages;
+    if (quantityOfPages > 1000) {
+      quantityOfPages = 1000;
+    }
+    markupMoviesGallery(getListOfMovies);
+    pagination.reset(quantityOfPages);
+  } catch (error) {
+    console.log(error.message)
   }
-  markupMoviesGallery(getListOfMovies)
-  pagination.reset(getList);
 }
 
 export const pagination = new Pagination(refs.paginationRef, {
@@ -21,11 +25,15 @@ export const pagination = new Pagination(refs.paginationRef, {
 });
 
 export async function moviePagination(e) {
-  MoviesService.page = e.page;
-  const {results} = await MoviesService.getMovies();
-  refs.galleryList.innerHTML = '';
-  markupMoviesGallery(results);
-  scrollTo()
+  try {
+    MoviesService.page = e.page;
+    const {results} = await MoviesService.getMovies();
+    refs.galleryList.innerHTML = '';
+    markupMoviesGallery(results);
+    scrollTo();
+  } catch (error) {
+    console.log(error.message)
+  }
 }
 
 function scrollTo() {

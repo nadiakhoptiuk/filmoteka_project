@@ -9,11 +9,12 @@ const refs = {
   formSwitchBtn: document.querySelector('.js-form__type-switch'),
   formSignInWithGoogle: document.querySelector('.js-sign-google'),
   signOutBtn: document.querySelector('.js-sign-out-btn'),
-
   signOutWrap: document.querySelector('#sign_out'),
   modalAuthEl: document.querySelector('.modal-auth__btn-close'),
   overlayEl: document.querySelector('.overlay-auth'),
-  loader: document.querySelector('.ring'),
+  buttonPopular: document.querySelector('[data-id="popular"]'),
+  buttonTopRated: document.querySelector('[data-id="top_rated"]'),
+  buttonNowPlaying: document.querySelector('[data-id="now_playing"]'),
 };
 
 export default refs;
