@@ -1,6 +1,4 @@
 import axios from 'axios';
-// import Pagination from 'tui-pagination';
-// import { pagination } from '..';
 import 'tui-pagination/dist/tui-pagination.min.css';
 
 const API_KEY = 'e7e97d56d25ec1e4b049a81d5db4fb3b';
@@ -13,7 +11,7 @@ export async function getGenres() {
 }
 
 export const MoviesService = {
-  _page: 1,
+  _page: '',
   async getMovies() {
     const response = await axios.get(`/movie/popular?api_key=${API_KEY}&page=${this.page}`);
     const genres = await getGenres();

@@ -9,6 +9,7 @@ const refs = {
   formSwitchBtn: document.querySelector('.js-form__type-switch'),
   modalAuthEl: document.querySelector('.modal-auth__btn-close'),
   overlayEl: document.querySelector('.overlay-auth'),
+  loader: document.querySelector('.ring')
 };
 
 export default refs;
