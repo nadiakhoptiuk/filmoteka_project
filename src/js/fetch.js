@@ -16,6 +16,7 @@ export const MoviesService = {
     const response = await axios.get(`/movie/popular?api_key=${API_KEY}&page=${this.page}`);
     const genres = await getGenres();
     let { results, total_pages } = response.data;
+    console.log(response.data)
 
     results = results.map(result => {
       const arrayOfGenresName = result.genre_ids.map(id => genres.find(genre => genre.id === id).name)
@@ -25,6 +26,7 @@ export const MoviesService = {
         previewGenres: `${arrayOfGenresName.slice(0, 2).join(', ')}${arrayOfGenresName.length > 2 ? `, ...` : ''}`
       }
     })
+     console.log({ results, total_pages });
       return { results, total_pages };
     },
     

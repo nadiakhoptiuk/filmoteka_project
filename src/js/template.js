@@ -1,3 +1,4 @@
+
 import moment from 'moment';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { MoviesService } from './fetch';
@@ -7,11 +8,10 @@ export async function markupMoviesGallery() {
   try {
     const listOfMovies = await MoviesService.getMovies();
     const getListOfMovies = await listOfMovies.results;
-
     const markup = getListOfMovies.map((item) => {
 
     return `<li class="card">
-        <a href="#">
+        <a href="#" data-id="${item.id}">
           <img
             class="card__img" 
             src="https://image.tmdb.org/t/p/original/${item.poster_path}"

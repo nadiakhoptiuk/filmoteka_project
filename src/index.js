@@ -3,8 +3,10 @@ import 'tui-pagination/dist/tui-pagination.min.css';
 import { markupMoviesGallery } from "./js/template";
 import { MoviesService } from './js/fetch';
 import refs from './js/refs';
+import {test} from './js/modal-film'
 
 markupMoviesGallery();
+test();
 
 async function getTotalPage() {
   const listMovies = await MoviesService.getMovies();
