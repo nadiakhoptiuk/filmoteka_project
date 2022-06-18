@@ -24,8 +24,8 @@ export function createModalFilm(ev) {
             <h3 class="modal-film__title">ABOUT</h3>
             <p class="modal-film__description">${overview}</p>
             <div class="modal-film__buttons">
-                <button type="button" class="modal-film__to-watcheed btn btn-accent">add to Watched</button>
-                <button type="button" class="modal-film__to-queue btn btn-light">add to queue</button>
+                <button type="button" class="modal-film__to-watcheed btn btn-accent" id="add-to-watched">add to Watched</button>
+                <button type="button" class="modal-film__to-queue btn btn-light" id="add-to-queue">add to queue</button>
             </div>
         </div>
        `
