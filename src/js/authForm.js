@@ -32,7 +32,6 @@ function onFormSubmit(evt) {
     updateForm();
   } else {
     userSignIn(email.value, password.value);
-    // модалка закривається
     closeModalAuth();
     // TODO і відкривається сторінка myLibrary
   }
