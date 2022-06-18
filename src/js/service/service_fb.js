@@ -9,6 +9,7 @@ import {
   signOut,
 } from 'firebase/auth';
 import { firebaseConfig } from '../settings/fb_config';
+import { closeModalAuth } from '../modal-auth';
 import refs from '../refs';
 
 const app = initializeApp(firebaseConfig);
@@ -32,9 +33,7 @@ function userSignIn(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       // Signed in
-      console.log(refs.signOutWrap);
       console.log(user);
-      console.log(refs.signOutBtn);
 
       const user = userCredential.user;
       refs.signOutBtn.addEventListener('click', userSignOut);
@@ -54,7 +53,7 @@ function userSignInWithGoogle(evt) {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      console.log(evt.target);
+      closeModalAuth();
 
       console.log(user);
 
@@ -80,9 +79,7 @@ onAuthStateChanged(auth, user => {
     refs.signOutBtn.addEventListener('click', userSignOut);
     refs.signOutWrap.classList.remove('is-hidden');
 
-    console.log(refs.signOutWrap);
     console.log(user);
-    console.log(refs.signOutBtn);
 
     // ...
   } else {
