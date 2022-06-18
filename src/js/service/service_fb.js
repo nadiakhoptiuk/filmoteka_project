@@ -5,8 +5,11 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  onAuthStateChanged,
+  signOut,
 } from 'firebase/auth';
 import { firebaseConfig } from '../settings/fb_config';
+import refs from '../refs';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
@@ -29,8 +32,13 @@ function userSignIn(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       // Signed in
-      const user = userCredential.user;
+      console.log(refs.signOutWrap);
       console.log(user);
+      console.log(refs.signOutBtn);
+
+      const user = userCredential.user;
+      refs.signOutBtn.addEventListener('click', userSignOut);
+      refs.signOutWrap.classList.remove('is-hidden');
     })
     .catch(error => {
       const errorCode = error.code;
@@ -61,6 +69,39 @@ function userSignInWithGoogle(evt) {
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
       // ...
+    });
+}
+
+onAuthStateChanged(auth, user => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    refs.signOutBtn.addEventListener('click', userSignOut);
+    refs.signOutWrap.classList.remove('is-hidden');
+
+    console.log(refs.signOutWrap);
+    console.log(user);
+    console.log(refs.signOutBtn);
+
+    // ...
+  } else {
+    console.log(null);
+
+    // User is signed out
+    // ...
+  }
+});
+
+function userSignOut(evt) {
+  signOut(auth)
+    .then(() => {
+      refs.signOutWrap.classList.add('is-hidden');
+      refs.signOutBtn.removeEventListener('click', userSignOut);
+      // Sign-out successful.
+    })
+    .catch(error => {
+      // An error happened.
     });
 }
 

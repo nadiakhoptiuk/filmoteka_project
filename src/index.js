@@ -11,6 +11,5 @@ refs.modalAuthEl.addEventListener('click', closeModalAuth);
 refs.formSignInWithGoogle.addEventListener('click', userSignInWithGoogle);
 //
 
-document.addEventListener('DOMContentLoaded', getTotalPage)
+document.addEventListener('DOMContentLoaded', getTotalPage);
 pagination.on('afterMove', moviePagination);
-
