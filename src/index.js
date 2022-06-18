@@ -1,33 +1,15 @@
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.min.css';
-import { markupMoviesGallery } from "./js/template";
-import { MoviesService } from './js/fetch';
+import { getTotalPage } from './js/pagination';
+import { pagination, moviePagination } from './js/pagination';
+import { closeModalAuth } from './js/modal-auth';
+import { onFormSubmit, updateForm } from './js/authForm';
+import { userSignInWithGoogle } from './js/service/service_fb';
 import refs from './js/refs';
-import {test} from './js/modal-film'
+//
+refs.form.addEventListener('submit', onFormSubmit);
+refs.formSwitchBtn.addEventListener('click', updateForm);
+refs.modalAuthEl.addEventListener('click', closeModalAuth);
+refs.formSignInWithGoogle.addEventListener('click', userSignInWithGoogle);
+//
 
-markupMoviesGallery();
-test();
-
-async function getTotalPage() {
-  const listMovies = await MoviesService.getMovies();
-  let getList = listMovies.total_pages;
-  if (getList > 1000) {
-    getList = 1000;
-  }
-  pagination.reset(getList);
-}
-
-getTotalPage()
-
-export const pagination = new Pagination(refs.paginationRef, {
-  totalItems: 0,
-  visiblePages: 10,
-});
-
-function moviePagination(e) {
-  MoviesService.page = e.page;
-  refs.galleryList.innerHTML = '';
-  markupMoviesGallery();
-}
-
+document.addEventListener('DOMContentLoaded', getTotalPage);
 pagination.on('afterMove', moviePagination);

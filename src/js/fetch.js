@@ -1,4 +1,5 @@
 import axios from 'axios';
+import 'tui-pagination/dist/tui-pagination.min.css';
 
 const API_KEY = 'e7e97d56d25ec1e4b049a81d5db4fb3b';
 
@@ -11,12 +12,10 @@ export async function getGenres() {
 
 export const MoviesService = {
   _page: '',
-
   async getMovies() {
     const response = await axios.get(`/movie/popular?api_key=${API_KEY}&page=${this.page}`);
     const genres = await getGenres();
     let { results, total_pages } = response.data;
-    console.log(response.data)
 
     results = results.map(result => {
       const arrayOfGenresName = result.genre_ids.map(id => genres.find(genre => genre.id === id).name)
@@ -29,7 +28,6 @@ export const MoviesService = {
      console.log({ results, total_pages });
       return { results, total_pages };
     },
-    
     get page() {
       return this._page;
     },
