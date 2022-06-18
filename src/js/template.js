@@ -1,4 +1,3 @@
-
 import moment from 'moment';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import refs from "./refs";
@@ -14,7 +13,7 @@ export async function markupMoviesGallery(arr) {
             alt="${item.title}"
           />
           <h2 class="card__title">${item.title}</h2>
-          <p class="card__description">
+          <p class="card__description" data-id="${item.id}">
             <span class="card__genre tooltip">${item.previewGenres} <span class="tooltiptext">${item.allGenres}</span> | ${moment(item.release_date).format('YYYY')}</span>
             <span class="card__rating">${item.vote_average}</span>
           </p>

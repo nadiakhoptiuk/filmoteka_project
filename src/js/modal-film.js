@@ -1,31 +1,36 @@
-// import { MoviesService } from './fetch';
 import * as basicLightbox from 'basiclightbox'
 import "basiclightbox/dist/basicLightbox.min.css"
-import { MoviesService } from './fetch';
-// import refs from "./refs";
- const modal = basicLightbox.create(document.querySelector('#html'))
-export function test() {
-    
-    refs.galleryList.addEventListener("click", openModalFilm)
-   
-}
-function openModalFilm(ev) {
+import { copy } from './fetch';
+import refs from './refs';
+import {createModalFilm} from './created-modal-film'
+const modal = basicLightbox.create(document.querySelector('#html'))
+
+export function openModalFilm(ev) {
     ev.preventDefault();
-    const event = ev.target.parentNode;
-    const id = event.dataset.id;
+    const evn = ev.target.parentNode;
+    if (evn.nodeName !== 'A' && evn.nodeName!== "P") {
+        return
+    }
+    const id = evn.dataset.id;
     acceptIdInformation(Number(id));
-    modal.show()
 }
+
 async function acceptIdInformation(id) {
-    const listOfMovies = await MoviesService.getMovies();
-    const getListOfMovies = await listOfMovies.results;
-    const filterId = getListOfMovies.filter(ev => ev.id === id);
-    createModalFilm(filterId)
-    
+    const arr = JSON.parse(copy);
+    const filterId = arr.results.filter(ev => ev.id === id);
+    modal.show()
+    refs.body.style.overflow = "hidden"
+     createModalFilm(filterId);
+    window.addEventListener("keydown", closeModalFilmKey);
 }
-function createModalFilm(ev) {
-    const { original_title, title, vote_average, vote_count, poster_path, overview, popularity
-    } = ev[0];
-    const filmTitle = document.querySelector(".modal-film__name");
-    filmTitle.textContent = title;
+ function closeModalFilmKey(event) {
+     if (event.code === "Escape") {
+         closeModalFilm();     
+  }
 }
+export function closeModalFilm() {
+    modal.close()
+    refs.body.style.overflow = "visible"
+    window.removeEventListener("keydown",closeModalFilmKey)
+}
+

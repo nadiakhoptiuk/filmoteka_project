@@ -14,6 +14,9 @@ const refs = {
   modalAuthEl: document.querySelector('.modal-auth__btn-close'),
   overlayEl: document.querySelector('.overlay-auth'),
   loader: document.querySelector('.ring'),
+
+  btnCloseFilm: document.querySelector('.modal-film__btn'),
+  body: document.querySelector("body")
 };
 
 export default refs;
