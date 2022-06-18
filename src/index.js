@@ -1,4 +1,4 @@
-import { markupMoviesGallery } from './js/template';
+import { getTotalPage } from './js/pagination';
 import { pagination } from './js/pagination';
 import { moviePagination } from './js/pagination';
 import { closeModalAuth } from './js/modal-auth';
@@ -11,5 +11,6 @@ refs.formSwitchBtn.addEventListener('click', updateForm);
 refs.modalAuthEl.addEventListener('click', closeModalAuth);
 //
 
+document.addEventListener('DOMContentLoaded', getTotalPage)
 pagination.on('afterMove', moviePagination);
 

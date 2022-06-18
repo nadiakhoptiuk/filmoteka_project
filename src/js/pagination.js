@@ -4,8 +4,6 @@ import { MoviesService } from '../js/fetch';
 import { markupMoviesGallery } from './template';
 import refs from '../js/refs';
 
-getTotalPage()
-
 export async function getTotalPage() {
   const listOfMovies = await MoviesService.getMovies();
   const getListOfMovies = await listOfMovies.results;
