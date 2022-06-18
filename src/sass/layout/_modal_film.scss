@@ -35,6 +35,7 @@ padding: 40 20 20 20;
         border-radius: 5px;
         padding: 1px 10px;
     }
+  }
 
     &__btn {
         position: absolute;
@@ -89,59 +90,59 @@ padding: 40 20 20 20;
     margin-right: 41px;
     color: var(--category-text-color);
     @include media(1280px) {
-            margin-right: 85px;
-        }
+      margin-right: 85px;
+    }
     &:not(:last-child) {
-            margin-bottom: 8px;
-        }
+      margin-bottom: 8px;
     }
+  }
 
-    &__item-description{
-        &:not(:last-child) {
-                margin-bottom: 8px;
-            }
+  &__item-description {
+    &:not(:last-child) {
+      margin-bottom: 8px;
     }
+  }
 
-    &__title {
-        text-transform: uppercase;
-        margin-bottom: 8px;
-    }
+  &__title {
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
 
-    &__description {
-        margin-bottom: 20px;
-        line-height: 1.66;
-    }
+  &__description {
+    margin-bottom: 20px;
+    line-height: 1.66;
+  }
 
-    &__to-watcheed {
-        margin-right: 20px;
+  &__to-watched {
+    margin-right: 20px;
 
-        @include media(768px) {
-            margin-right: 15px;
-        }
+    @include media(768px) {
+      margin-right: 15px;
     }
+  }
 
-    &__to-queue {
-        border: 1px solid var(--gallery-text-color);
-        color: var(--gallery-text-color);
+  &__to-queue {
+    border: 1px solid var(--gallery-text-color);
+    color: var(--gallery-text-color);
+  }
+  &__buttons {
+    display: flex;
+    @include media(767px, max-width) {
+      justify-content: center;
     }
-    &__buttons{
-        display: flex;
-        @include media(767px, max-width) {
-   justify-content: center;
-}
- @include media(768px) {
-    justify-content: flex-start;
- }
+    @include media(768px) {
+      justify-content: flex-start;
     }
+  }
 }
 .btn {
-    width: 110px;
-    border-radius: 5px;
-    @include media(768px) {
-        width: 125px;
-    }
+  width: 110px;
+  border-radius: 5px;
+  @include media(768px) {
+    width: 125px;
+  }
 
-    @include media(1280px) {
-        width: 136px;
-    }
+  @include media(1280px) {
+    width: 136px;
+  }
 }

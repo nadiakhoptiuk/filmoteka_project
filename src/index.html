@@ -12,16 +12,22 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
   </head>
 
   <body class="page">
     <include src="./partials/header.html"></include>
     <main>
       <include src="./partials/gallery.html"></include>
+      <include src="./partials/gallery_watched.html"></include>
+      <include src="./partials/gallery_queue.html"></include>
     </main>
     <include src="./partials/footer.html"></include>
+
+    <!-- modal windows html partials -->
     <include src="./partials/modal_film.html"></include>
     <include src="./partials/modal_auth.html"></include>
+
+    <!-- main script -->
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
