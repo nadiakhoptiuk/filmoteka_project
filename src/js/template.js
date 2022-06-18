@@ -1,15 +1,10 @@
 import moment from 'moment';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { MoviesService } from './fetch';
 import refs from "./refs";
 
-export async function markupMoviesGallery() {
+export async function markupMoviesGallery(arr) {
   try {
-    const listOfMovies = await MoviesService.getMovies();
-    const getListOfMovies = await listOfMovies.results;
-
-    const markup = getListOfMovies.map((item) => {
-
+    const markup = arr.map((item) => {
     return `<li class="card">
         <a href="#">
           <img
@@ -26,7 +21,7 @@ export async function markupMoviesGallery() {
       </li>`
    }).join('');
     
-  refs.galleryList.innerHTML = markup;
+    refs.galleryList.innerHTML = markup;
   } catch (error) {
     Notify.failure(error.message);
   }

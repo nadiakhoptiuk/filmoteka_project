@@ -10,6 +10,7 @@ const refs = {
   formSignInWithGoogle: document.querySelector('.js-sign-google'),
   modalAuthEl: document.querySelector('.modal-auth__btn-close'),
   overlayEl: document.querySelector('.overlay-auth'),
+  loader: document.querySelector('.ring')
 };
 
 export default refs;

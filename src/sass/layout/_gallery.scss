@@ -136,6 +136,7 @@
 .pagination-wrapper{
   @include media(767px, max-width) {
     width: 300px !important;
+    margin-top: 40px;
   }
   margin-top: 60px;
 }

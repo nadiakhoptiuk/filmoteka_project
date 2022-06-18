@@ -4,14 +4,14 @@ import { MoviesService } from '../js/fetch';
 import { markupMoviesGallery } from './template';
 import refs from '../js/refs';
 
-getTotalPage()
-
 export async function getTotalPage() {
-  const listMovies = await MoviesService.getMovies();
-  let getList = listMovies.total_pages;
+  const listOfMovies = await MoviesService.getMovies();
+  const getListOfMovies = await listOfMovies.results;
+  let getList = listOfMovies.total_pages;
   if (getList > 1000) {
     getList = 1000;
   }
+  markupMoviesGallery(getListOfMovies)
   pagination.reset(getList);
 }
 
@@ -20,10 +20,14 @@ export const pagination = new Pagination(refs.paginationRef, {
   visiblePages: 5,
 });
 
-export function moviePagination(e) {
+export async function moviePagination(e) {
   MoviesService.page = e.page;
+  const {results} = await MoviesService.getMovies();
   refs.galleryList.innerHTML = '';
- 
-  markupMoviesGallery();
+  markupMoviesGallery(results);
+  scrollTo()
 }
 
+function scrollTo() {
+  window.scrollTo({ top: 230, behavior: 'smooth' });
+}
