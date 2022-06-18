@@ -1,97 +1,103 @@
 .modal-film {
-    width: 80vw;
-    height: 90vw;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow: scroll;
-    background-color: var(--header-text-color);
+  width: 80vw;
+  height: 90vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: scroll;
+  background-color: var(--header-text-color);
+
+  @include media(768px) {
+    width: 704px;
+    height: 552px;
+    overflow: hidden;
+  }
+
+  @include media(1280px) {
+    width: 806px;
+    height: 558px;
+  }
+
+  &--add {
+    padding: 40 20 20 20;
 
     @include media(768px) {
-        width: 704px;
-        height: 552px;
-        overflow: hidden;
+      padding: 40px 72px 40px 36px;
+      display: flex;
     }
 
     @include media(1280px) {
-        width: 806px;
-        height: 558px;
-    }
-&--add{
-padding: 40 20 20 20;
-@include media(768px) {
-        padding: 40px 72px 40px 36px;
-        display: flex;
-    }
+      padding: 40px 12px;
 
-    @include media(1280px) {
-        padding: 40px 12px;
-       
-    }
-}
-    &--style {
-        background: var(--accent-text-color);
-        border-radius: 5px;
-        padding: 1px 10px;
     }
   }
 
-    &__btn {
-        position: absolute;
-        right: 8px;
-        top: 8px;
-        z-index: 1;
+  &--style {
+    background: var(--accent-text-color);
+    border-radius: 5px;
+    padding: 1px 10px;
+  }
+
+  &__btn {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    z-index: 1;
+  }
+
+  &__close {
+    stroke: var(--gallery-text-color);
+
+  }
+
+  &__img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 240px;
+    height: 357px;
+    border-radius: 5px;
+
+    @include media(768px) {
+      margin-right: 68px;
+      width: 264px;
+      height: 374px;
     }
 
-    &__close {
-        stroke:var(--gallery-text-color);
-        
+    @include media(1280px) {
+      margin-right: 16px;
+      width: 375px;
+      height: 478px;
     }
+  }
 
-    &__img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 20px;
-        width: 240px;
-        height: 357px;
-        border-radius: 5px;
+  &__name {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 20px;
+    line-height: 1.15;
 
-        @include media(768px) {
-            margin-right: 68px;
-            width: 264px;
-            height: 374px;
-        }
-
-        @include media(1280px) {
-            margin-right: 16px;
-            width: 375px;
-            height: 478px;
-        }
+    @include media(1280px) {
+      font-size: 30px;
+      line-height: 1.16;
     }
+  }
 
-    &__name {
-        margin-bottom: 20px;
-        text-transform: uppercase;
-        font-size: 20px;
-        line-height: 1.15;
-        @include media(1280px) {
-            font-size: 30px;
-            line-height: 1.16;
-            }
-    }
+  &__rating {
+    display: flex;
+    margin-bottom: 20px;
+  }
 
-    &__rating {
-        display: flex;
-        margin-bottom: 20px;
-    }
-    &__item-name{
+  &__item-name {
     margin-right: 41px;
     color: var(--category-text-color);
+
     @include media(1280px) {
       margin-right: 85px;
     }
+
     &:not(:last-child) {
       margin-bottom: 8px;
     }
@@ -113,7 +119,7 @@ padding: 40 20 20 20;
     line-height: 1.66;
   }
 
-  &__to-watched {
+  &__to-watcheed {
     margin-right: 20px;
 
     @include media(768px) {
@@ -125,19 +131,24 @@ padding: 40 20 20 20;
     border: 1px solid var(--gallery-text-color);
     color: var(--gallery-text-color);
   }
+
   &__buttons {
     display: flex;
+
     @include media(767px, max-width) {
       justify-content: center;
     }
+
     @include media(768px) {
       justify-content: flex-start;
     }
   }
 }
+
 .btn {
   width: 110px;
   border-radius: 5px;
+
   @include media(768px) {
     width: 125px;
   }
