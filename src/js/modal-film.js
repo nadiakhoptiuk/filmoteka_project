@@ -3,7 +3,10 @@ import "basiclightbox/dist/basicLightbox.min.css"
 import { copy } from './fetch';
 import refs from './refs';
 import {createModalFilm} from './created-modal-film'
-const modal = basicLightbox.create(document.querySelector('#html'))
+const modal = basicLightbox.create(document.querySelector('#html'), {
+    onClose:()=>{refs.body.style.overflow = "visible"},
+    onShow:()=>{ refs.body.style.overflow = "hidden"}
+})
 
 export function openModalFilm(ev) {
     ev.preventDefault();
@@ -19,7 +22,6 @@ async function acceptIdInformation(id) {
     const arr = JSON.parse(copy);
     const filterId = arr.results.filter(ev => ev.id === id);
     modal.show()
-    refs.body.style.overflow = "hidden"
      createModalFilm(filterId);
     window.addEventListener("keydown", closeModalFilmKey);
 }
@@ -30,7 +32,6 @@ async function acceptIdInformation(id) {
 }
 export function closeModalFilm() {
     modal.close()
-    refs.body.style.overflow = "visible"
     window.removeEventListener("keydown",closeModalFilmKey)
 }
 
