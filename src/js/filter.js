@@ -5,38 +5,42 @@ import refs from "./refs";
 import { pagination } from "./pagination";
 
 export async function onFilterButtonClick(e) {
+  if (e.target.nodeName !== 'BUTTON') return;
   MoviesService.param = e.target.dataset.id; // отримуємо дата-атрибут як параметр запиту для фетча
   MoviesService.page = 1; // початкова сторінка
+
   const response = await MoviesService.getMovies();
   refs.galleryList.innerHTML = '';
+
   let totalPages = response.total_pages;
   if (totalPages > 1000) {
    totalPages = 1000;
   }
+
   markupMoviesGallery(response.results);// відмальовуємо результат
   pagination.reset(totalPages) // скидаємо початкову сторінку для пагінації
+  
+  removeClassAccentFromButton(); //знімаємо клас з натиснутої кнопки
+  e.target.classList.add('btn-accent');// додаємо клас на активну кнопку
 
   // перевірка на клас active та активну кнопку
   if (MoviesService.param === 'popular') {
-    refs.buttonPopular.classList.add('btn-accent');
-    refs.buttonNowPlaying.classList.remove('btn-accent');
-    refs.buttonTopRated.classList.remove('btn-accent');
-
     isButtonDisabled(true, false, false);
   }
   if (MoviesService.param === 'top_rated') {
-    refs.buttonTopRated.classList.add('btn-accent');
-    refs.buttonNowPlaying.classList.remove('btn-accent');
-    refs.buttonPopular.classList.remove('btn-accent');
-
     isButtonDisabled(false, true, false);
   }
   if (MoviesService.param === 'now_playing') {
-    refs.buttonNowPlaying.classList.add('btn-accent');
-    refs.buttonTopRated.classList.remove('btn-accent');
-    refs.buttonPopular.classList.remove('btn-accent');
-
     isButtonDisabled(false, false, true);
+  }
+}
+
+// функція для видалення класу
+function removeClassAccentFromButton() {
+  const activeButton = refs.buttonWrap.querySelector('.btn-accent');
+
+  if (activeButton) {
+    activeButton.classList.remove('btn-accent');
   }
 }
 
