@@ -6,7 +6,7 @@
   height: 100vh;
   z-index: 998;
 
-  background-color: rgba(80, 80, 80, 0.5);
+  background-color: #000c;
   @include media(480px, max-width) {
     padding-left: 30px;
   }
@@ -22,6 +22,7 @@
   transform: translate(-50%, -50%);
   z-index: 999;
 
+
   background-color: var(--header-text-color);
   @include media(768px, min-width) {
     max-width: 450px;
@@ -32,7 +33,7 @@
 }
 
 .modal-auth__container {
-  width: 290px;
+  width: 240px;
   margin: 0 auto;
   @include media(768px, min-width) {
     width: 336px;
