@@ -1,7 +1,5 @@
 import refs from './refs';
 
-// refs.modalAuthEl.addEventListener('click', closeModalAuth);
-
 export function openModalAuth() {
   refs.overlayEl.classList.remove('is-hidden');
   refs.body.classList.add('modal-auth-is-open');
@@ -13,3 +11,5 @@ export function closeModalAuth() {
 }
 
 openModalAuth();
+
+import { userId } from './user-data';

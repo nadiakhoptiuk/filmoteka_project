@@ -6,7 +6,7 @@ import { getDatabase, ref, push } from 'firebase/database';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const app = initializeApp(firebaseConfig);
-const db = getDatabase();
+export const db = getDatabase();
 
 let userId = null;
 let chosenMovie = null;
@@ -28,8 +28,6 @@ function onAddToWatchedBtnClick(evt) {
   if (isUserSignIn(data) && isNotInListYet(evt)) {
     addMovieToWatched(data);
   }
-  // для тесту бд
-  addMovieToWatched(data);
 }
 
 function onAddToQueueBtnClick(evt) {
@@ -37,8 +35,6 @@ function onAddToQueueBtnClick(evt) {
   if (isUserSignIn(data) && isNotInListYet(evt)) {
     addMovieToQueue(data);
   }
-  // для тесту бд
-  addMovieToQueue(data);
 }
 
 function isUserSignIn(data) {
@@ -71,11 +67,11 @@ function createMovieData(movieObj, userId) {
 
 // функція, яка додає у базу даних об'єкт з даними
 function addMovieToWatched(data) {
-  push(ref(db, 'movies/watched/'), data);
+  push(ref(db, userId + '/watched/'), data);
 }
 
 function addMovieToQueue(data) {
-  push(ref(db, 'movies/queue/'), data);
+  push(ref(db, userId + '/queue/'), data);
 }
 
 export {
