@@ -1,5 +1,5 @@
 .modal-film {
-  width: 80vw;
+width: 80vw;
   height: 90vw;
   position: absolute;
   top: 50%;
@@ -19,7 +19,8 @@
     height: 558px;
   }
 
-  &--add {
+&--add{margin-bottom: 20px;}
+  &--padding {
     padding: 40 20 20 20;
 
     @include media(768px) {
@@ -32,7 +33,6 @@
 
     }
   }
-
   &--style {
     background: var(--accent-text-color);
     border-radius: 5px;
@@ -50,24 +50,33 @@
     stroke: var(--gallery-text-color);
 
   }
-
+&__img-cont{
+  width: 100%;
+  margin-bottom: 20px;
+      @include media(768px) {
+        min-width: 264px;
+         margin-right: 68px;
+          margin-bottom: 0;
+        }
+      
+        @include media(1280px) {
+          margin-right: 16px;
+        }
+}
   &__img {
-    display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20px;
+    display: block;
     width: 240px;
     height: 357px;
     border-radius: 5px;
 
     @include media(768px) {
-      margin-right: 68px;
       width: 264px;
       height: 374px;
     }
 
     @include media(1280px) {
-      margin-right: 16px;
       width: 375px;
       height: 478px;
     }
@@ -115,11 +124,10 @@
   }
 
   &__description {
-    margin-bottom: 20px;
     line-height: 1.66;
   }
 
-  &__to-watcheed {
+  &__to-watched {
     margin-right: 20px;
 
     @include media(768px) {
@@ -133,6 +141,7 @@
   }
 
   &__buttons {
+    width: 100%;
     display: flex;
 
     @include media(767px, max-width) {
@@ -145,7 +154,7 @@
   }
 }
 
-.btn {
+.btns {
   width: 110px;
   border-radius: 5px;
 
