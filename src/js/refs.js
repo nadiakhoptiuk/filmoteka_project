@@ -21,8 +21,6 @@ const refs = {
   buttonTopRated: document.querySelector('[data-id="top_rated"]'),
   buttonNowPlaying: document.querySelector('[data-id="now_playing"]'),
 
-  loader: document.querySelector('.ring'),
-
   btnCloseFilm: document.querySelector('.modal-film__btn'),
   modalFilmImg: document.querySelector('.modal-film__img-cont'),
   modalFilmHtml:document.querySelector(".modal-film--add"),
