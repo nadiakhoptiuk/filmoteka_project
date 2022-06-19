@@ -4,6 +4,12 @@
   font-size: 12px;
   font-weight: 500;
   line-height: 1.33;
+
+  &.modal-film-is-open,
+  &.modal-auth-is-open,
+  &.modal-developers-is-open {
+    overflow: hidden;
+  }
 }
 
 .btn-light {
