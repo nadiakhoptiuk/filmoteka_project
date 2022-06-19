@@ -1,9 +1,10 @@
 import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, update, set } from 'firebase/database';
 import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import { firebaseConfig } from './settings/fb_config';
-import { getDatabase, ref, push } from 'firebase/database';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { openModalAuth } from './modal-auth';
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
@@ -15,43 +16,43 @@ function getUserId(id) {
   userId = id;
 }
 
-// функція, яка забирає дані про фільм і ід користувача, може викликатись при кліку на кнопку модалки
 function getMovieData(data) {
-  //повертає обєкт фільма з модалки
+  //повертає об'єкт фільму з модалки
   chosenMovie = data;
 }
 
 function onAddToWatchedBtnClick(evt) {
   const data = createMovieData(chosenMovie, userId);
-  console.log(data);
+  const btnTitle = evt.currentTarget.textContent;
 
-  if (isUserSignIn(data) && isNotInListYet(evt)) {
+  if (isUserSignIn(userId) && btnTitle.trim() === 'add to watched') {
+    addMovieToWatched(data);
+  }
+  if (isUserSignIn(userId) && btnTitle.trim() === 'remove from watched') {
+    removeMovieFromWatched(data);
+  }
+  if (isUserSignIn(userId) && btnTitle.trim() === 'move to watched') {
+    removeMovieFromQueue(data);
     addMovieToWatched(data);
   }
 }
 
 function onAddToQueueBtnClick(evt) {
   const data = createMovieData(chosenMovie, userId);
-  if (isUserSignIn(data) && isNotInListYet(evt)) {
+  const btnTitle = evt.currentTarget.textContent;
+
+  if (isUserSignIn(userId) && btnTitle.trim() === 'add to queue') {
     addMovieToQueue(data);
   }
+  if (isUserSignIn(userId) && btnTitle.trim() === 'remove from queue') {
+    removeMovieFromQueue(data);
+  }
 }
 
-function isUserSignIn(data) {
-  console.log(data.id);
-
-  if (data.id === null) {
+function isUserSignIn(userId) {
+  if (userId === null) {
     Notiflix.Notify.info('Please sign in to your account or register');
     // TODO відкрити модалку з входом?
-    return false;
-  }
-  return true;
-}
-
-function isNotInListYet(evt) {
-  if (evt.currentTarget.hasAttribute('disable')) {
-    Notiflix.Notify.info('<Title> is already in list Watched');
-
     return false;
   }
   return true;
@@ -67,11 +68,30 @@ function createMovieData(movieObj, userId) {
 
 // функція, яка додає у базу даних об'єкт з даними
 function addMovieToWatched(data) {
-  push(ref(db, userId + '/watched/'), data);
+  set(ref(db, userId + '/watched/' + data.movie.id), data);
 }
 
 function addMovieToQueue(data) {
-  push(ref(db, userId + '/queue/'), data);
+  set(ref(db, userId + '/queue/' + data.movie.id), data);
+}
+
+function removeMovieFromWatched(data) {
+  const folder = 'watched';
+  const movieId = data.movie.id;
+  removeMovieById(folder, movieId);
+}
+
+function removeMovieFromQueue(data) {
+  const folder = 'queue';
+  const movieId = data.movie.id;
+  removeMovieById(folder, movieId);
+}
+
+function removeMovieById(folder, movieId) {
+  const removedMovieData = {};
+  removedMovieData[userId + '/' + folder + '/' + movieId] = null;
+
+  return update(ref(db), removedMovieData);
 }
 
 export {
