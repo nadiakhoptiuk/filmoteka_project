@@ -9,6 +9,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 
 let userId = null;
+let chosenMovie = null;
 
 function getUserId(id) {
   userId = id;
@@ -17,38 +18,32 @@ function getUserId(id) {
 // функція, яка забирає дані про фільм і ід користувача, може викликатись при кліку на кнопку модалки
 function getMovieData(data) {
   //повертає обєкт фільма з модалки
-  return 'hello';
+  chosenMovie = data;
 }
 
 function onAddToWatchedBtnClick(evt) {
-  const movieData = getMovieData(); // передаємо обєкт фільма з модалки
-
-  const data = createMovieData(movieData);
-  console.log(createMovieData(movieData));
+  const data = createMovieData(chosenMovie, userId);
+  console.log(data);
 
   if (isUserSignIn(data) && isNotInListYet(evt)) {
     addMovieToWatched(data);
   }
-
   // для тесту бд
   addMovieToWatched(data);
 }
 
 function onAddToQueueBtnClick(evt) {
-  const movieData = getMovieData(); // передаємо обєкт фільма з модалки
-
-  const data = createMovieData(movieData);
-  console.log(createMovieData(movieData));
-
+  const data = createMovieData(chosenMovie, userId);
   if (isUserSignIn(data) && isNotInListYet(evt)) {
     addMovieToQueue(data);
   }
-
   // для тесту бд
   addMovieToQueue(data);
 }
 
 function isUserSignIn(data) {
+  console.log(data.id);
+
   if (data.id === null) {
     Notiflix.Notify.info('Please sign in to your account or register');
     // TODO відкрити модалку з входом?
@@ -67,7 +62,7 @@ function isNotInListYet(evt) {
 }
 
 // функція, яка створює об'єкт для бази даних, додаючи ід користувача
-function createMovieData(movieObj) {
+function createMovieData(movieObj, userId) {
   return {
     movie: movieObj,
     id: userId,
@@ -83,4 +78,10 @@ function addMovieToQueue(data) {
   push(ref(db, 'movies/queue/'), data);
 }
 
-export { getUserId, onAddToWatchedBtnClick, onAddToQueueBtnClick };
+export {
+  getUserId,
+  onAddToWatchedBtnClick,
+  onAddToQueueBtnClick,
+  chosenMovie,
+  getMovieData,
+};
