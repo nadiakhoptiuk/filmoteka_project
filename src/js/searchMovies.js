@@ -15,7 +15,7 @@ const loadMoreBtn = new LoadMoreBtn({
       JsLoadingOverlay.show(loadingSpinnerConfig);
       MoviesService.page += 1;
       const { results, total_pages } = await MoviesService.getMoviesBySearch();
-      if (MoviesService.page === total_pages) {
+      if (MoviesService.page === total_pages || results.length === 0) {
         loadMoreBtn.hide();
       }
       markupMoviesGalleryBySearch(results);
@@ -32,7 +32,7 @@ export async function onSearchMovieByKeyword(e) {
     MoviesService.query = e.target.elements.searchQuery.value.trim();
     MoviesService.page = 1;
     JsLoadingOverlay.show(loadingSpinnerConfig);
-    const { results } = await MoviesService.getMoviesBySearch();
+    const { results, total_pages } = await MoviesService.getMoviesBySearch();
     refs.buttonWrap.classList.add('visually-hidden');
     refs.paginationWrapper.classList.add('visually-hidden');
 
@@ -42,7 +42,10 @@ export async function onSearchMovieByKeyword(e) {
     refs.galleryList.innerHTML = '';
     markupMoviesGalleryBySearch(results);
     JsLoadingOverlay.hide();
-    loadMoreBtn.show();
+    if (total_pages > 1) {
+      loadMoreBtn.show();
+    }
+    
   } catch (error) {
     console.log(error)
   }

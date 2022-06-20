@@ -19,14 +19,7 @@ export const MoviesService = {
     const genres = await getGenres();
     let { results, total_pages } = response.data;
 
-    results = results.map(result => {
-      const arrayOfGenresName = result.genre_ids.map(id => genres.find(genre => genre.id === id).name)
-      return {
-        ...result,
-        allGenres: arrayOfGenresName.join(', '),
-        previewGenres: `${arrayOfGenresName.slice(0, 2).join(', ')}${arrayOfGenresName.length > 2 ? `, ...` : ''}`
-      }
-    })
+    getFilteredMovies(results, genres);
     copy = JSON.stringify({ results });
       return { results, total_pages };
   },
@@ -52,14 +45,8 @@ export const MoviesService = {
     const genres = await getGenres();
     let { results, total_pages } = response.data;
 
-    results = results.map(result => {
-      const arrayOfGenresName = result.genre_ids.map(id => genres.find(genre => genre.id === id).name)
-      return {
-        ...result,
-        allGenres: arrayOfGenresName.join(', '),
-        previewGenres: `${arrayOfGenresName.slice(0, 2).join(', ')}${arrayOfGenresName.length > 2 ? `, ...` : ''}`
-      }
-    })
+      getFilteredMovies(results, genres);
+      copy = JSON.stringify({ results });
       return { results, total_pages };
   },
     
@@ -72,4 +59,13 @@ export const MoviesService = {
 },
   };
   
-  
+function getFilteredMovies(arr, genresArr) {
+  arr.map(result => {
+    const arrayOfGenresName = result.genre_ids.map(id => genresArr.find(genre => genre.id === id).name)
+    return {
+      ...result,
+      allGenres: arrayOfGenresName.join(', '),
+      previewGenres: `${arrayOfGenresName.slice(0, 2).join(', ')}${arrayOfGenresName.length > 2 ? `, ...` : ''}`
+    }
+  })
+}
