@@ -1,6 +1,5 @@
 import throttle from 'lodash.throttle';
-import { getTotalPage } from './js/pagination';
-import { pagination, moviePagination, scrollTo, scrollToTopButton } from './js/pagination';
+import { getTotalPage, pagination, moviePagination, scrollTo, scrollToTopButton } from './js/pagination';
 import { onSearchMovieByKeyword } from './js/searchMovies';
 import { closeModalAuth } from './js/modal-auth';
 import { onFormSubmit, updateForm } from './js/authForm';
