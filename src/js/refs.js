@@ -25,7 +25,12 @@ const refs = {
 
   btnCloseFilm: document.querySelector('.modal-film__btn'),
   modalFilmImg: document.querySelector('.modal-film__img-cont'),
-  modalFilmHtml:document.querySelector(".modal-film--add"),
+  modalFilmHtml: document.querySelector('.modal-film--add'),
+  btnFilmTrailer: document.querySelector('.modal-film__to-trailer'),
+  modalTrailer: document.querySelector('.modal-trailer'),
+  iframeAtr: document.querySelector('#youtube'),
+  btnTrailerLeft: document.querySelector('.trailer__btn.left'),
+  btnTrailerRight: document.querySelector('.trailer__btn.right'),
   body: document.body,
 
   addToWatchedBtn: document.querySelector('#add-to-watched'),

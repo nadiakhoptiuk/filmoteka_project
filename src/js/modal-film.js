@@ -1,10 +1,10 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
-import { copy } from './fetch';
+import { copy, getMovieTrailer} from './fetch';
 import refs from './refs';
 import { createModalFilm } from './created-modal-film';
 import { getMovieData, chosenMovie } from './user-data';
-
+export let ID = null;
 const modal = basicLightbox.create(document.querySelector('#html'), {
   onClose: () => {
     refs.body.style.overflow = 'visible';
@@ -21,7 +21,8 @@ export function openModalFilm(ev) {
     return;
   }
   const id = evn.dataset.id;
-  acceptIdInformation(Number(id));
+  ID = Number(id);
+  acceptIdInformation(ID);
 }
 
 async function acceptIdInformation(id) {

@@ -47,4 +47,8 @@ export const MoviesService = {
     },
   };
   
+  export async function getMovieTrailer(idMovie) {
+    const response = await axios.get(`/movie/${idMovie}/videos?api_key=${API_KEY}&language=en-US`);
+    return response;
+}
   
