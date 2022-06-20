@@ -25,6 +25,7 @@
 }
 
 .card {
+  padding: 5px;
   &:not(:last-child) {
     @include media(767px, max-width) {
       margin-bottom: 20px;
@@ -40,6 +41,11 @@
   @include media(1280px, min-width) {
     width: calc(100% / 3 - 16px);
     margin-right: 16px;
+  }
+
+  &:hover,
+  &:focus{
+    box-shadow: 2px 7px 27px 1px var(--accent-text-color);
   }
 
   &__img {
@@ -61,7 +67,6 @@
   }
 
   &__title {
-    font-family: 'Roboto';
     @include font(500, 12px, 1.33, null, uppercase);
     color: var(--gallery-text-color);
     white-space: nowrap;
@@ -79,7 +84,7 @@
     @include font(500, 12px, 1.33, null, null);
     display: flex;
     align-items: center;
-    color: var( --accent-text-color);
+    color: var(--accent-text-color);
 
     @include media(1280px, min-width) {
       font-size: 20px;
@@ -91,7 +96,7 @@
     display: block;
     width: 36px;
     height: 16px;
-    background-color: var( --accent-text-color);
+    background-color: var(--accent-text-color);
     @include centeredFlex;
     font-family: 'Roboto';
     @include font(500, 12px, 1.16, null, null);
@@ -115,6 +120,7 @@
 
 .tooltip .tooltiptext {
   visibility: hidden;
+  pointer-events: none;
   background-color: var(--category-text-color);
   opacity: 0.9;
   font-size: 12px;
@@ -127,14 +133,14 @@
   width: 180px;
   top: -70%;
   left: 20%;
-  margin-left: -50px; 
+  margin-left: -50px;
 }
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
 
-.pagination-wrapper{
+.pagination-wrapper {
   @include media(767px, max-width) {
     width: 300px !important;
     margin-top: 40px;
@@ -142,20 +148,21 @@
   margin-top: 60px;
 }
 
-.tui-pagination .tui-is-selected, .tui-pagination strong{
-  background-color: var( --accent-text-color) !important;
+.tui-pagination .tui-is-selected,
+.tui-pagination strong {
+  background-color: var(--accent-text-color) !important;
 }
 
-.tui-pagination .tui-page-btn{
+.tui-pagination .tui-page-btn {
   @include media(767px, max-width) {
-  width: 25px !important;
-  height: 25px !important;
+    width: 25px !important;
+    height: 25px !important;
   }
   width: 40px !important;
   height: 40px !important;
   border: none !important;
   border-radius: 5px !important;
-  font-family: 'Roboto' !important;
+  font-family: inherit !important;
   font-weight: 500 !important;
   font-size: 12px !important;
   line-height: 1.33 !important;
@@ -165,40 +172,103 @@
   justify-content: center !important;
 }
 
-.tui-pagination .tui-next-is-ellip{
+.tui-pagination .tui-next-is-ellip {
   border: none !important;
 }
 
-.tui-pagination .tui-first, .tui-pagination .tui-last, .tui-pagination .tui-next, .tui-pagination .tui-next-is-ellip, .tui-pagination .tui-prev, .tui-pagination .tui-prev-is-ellip{
+.tui-pagination .tui-first,
+.tui-pagination .tui-last,
+.tui-pagination .tui-next,
+.tui-pagination .tui-next-is-ellip,
+.tui-pagination .tui-prev,
+.tui-pagination .tui-prev-is-ellip {
   font-size: 14px;
 }
 
-.btn{
+.btn-filter {
+    margin-right: 0;
   background-color: var(--header-text-color);
   color: var(--accent-text-color);
   border: 1px solid var(--accent-text-color);
-  @include font(500, 16px, 1.33, null, uppercase);
+  transform: scale(1);
+  transition: transform 200ms ease-in-out;
+
+  @include font(500, 12px, 1.33, null, uppercase);
   @include media(767px, max-width) {
-  min-width: 50px;
-  height: 20px;
-  @include font(500, 8px, 1.33, null, uppercase);
+    min-width: 60px;
+    height: 15px;
+    @include font(500, 8px, 1.33, null, uppercase);
   }
-  &:not(:last-child){
-    margin-right: -5px;
-  }
+
   &:hover,
-  &:focus{
-    background-color: var(--accent-text-color);  
+  &:focus {
+    transform: scale(1.1);
+    background-color: var(--accent-text-color);
     color: var(--header-text-color);
     border: 1px solid var(--header-text-color);
   }
 }
 
-.button-wrap{
+.btn-list{
+  display: flex;
+}
+
+.btn-list__item{
+  &:not(:last-child){
+    @include media(767px, max-width) {
+      margin-right: 8px;
+    }
+      margin-right: 15px;
+    }
+  }
+
+.button-wrap {
   margin-bottom: 20px;
 }
 
-.btn-accent{
-  background-color: var(--accent-text-color);  
-    color: var(--header-text-color);
+.btn-accent {
+  box-shadow: 0px 8px 43px rgb(255 107 1 / 60%);
+  background-color: var(--accent-text-color);
+  color: var(--header-text-color);
 }
+
+.load-more {
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+
+.error_container{
+  margin: 0 auto;
+  @include centeredFlex;
+  background-color: var(--bg-color-footer);
+  @include media(767px, max-width) {
+      width: 200px;
+      height: 50px;
+    }
+  @include media(768px, min-width) {
+      width: 350px;
+     height: 75px;
+  } 
+  @include media(1280px, min-width) {
+      width: 500px;
+      height: 100px;
+    }
+}
+
+.error-text{
+  @include centeredFlex;
+  font-family: inherit;
+  font-family: 'Roboto';
+  @include font(500, 14px, 1.14, null, null);
+
+  @include media(768px, min-width) {
+    @include font(500, 20px, 1.14, null, null);
+  } 
+  @include media(1280px, min-width) {
+    @include font(500, 25px, 1.14, null, null);
+    }
+
+  color: var(--error-text-color);
+}
+

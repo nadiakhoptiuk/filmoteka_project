@@ -1,16 +1,16 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
-import { copy } from './fetch';
+import { copy, getMovieTrailer} from './fetch';
 import refs from './refs';
 import { createModalFilm } from './created-modal-film';
 import { getMovieData, chosenMovie } from './user-data';
-
+export let openedFilmId = null;
 const modal = basicLightbox.create(document.querySelector('#html'), {
   onClose: () => {
-    refs.body.style.overflow = 'visible';
-  },
+    refs.body.classList.remove('modal-film-is-open');
+     },
   onShow: () => {
-    refs.body.style.overflow = 'hidden';
+    refs.body.classList.add('modal-film-is-open');
   },
 });
 
@@ -21,7 +21,8 @@ export function openModalFilm(ev) {
     return;
   }
   const id = evn.dataset.id;
-  acceptIdInformation(Number(id));
+  openedFilmId = Number(id);
+  acceptIdInformation(openedFilmId);
 }
 
 async function acceptIdInformation(id) {

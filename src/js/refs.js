@@ -1,4 +1,5 @@
 const refs = {
+  errorContainer: document.querySelector('.error_container'),
   galleryList: document.querySelector('.gallery__list'),
   paginationRef: document.querySelector('#tui-pagination-container'),
 
@@ -35,10 +36,27 @@ const refs = {
   btnCloseFilm: document.querySelector('.modal-film__btn'),
   modalFilmImg: document.querySelector('.modal-film__img-cont'),
   modalFilmHtml: document.querySelector('.modal-film--add'),
+
+  btnFilmTrailer: document.querySelector('.modal-film__to-trailer'),
+  modalTrailer: document.querySelector('.modal-trailer'),
+  iframeAtr: document.querySelector('#youtube'),
+  btnTrailerPrev: document.querySelector('.trailer__btn.prev'),
+  btnTrailerNext: document.querySelector('.trailer__btn.next'),
+
   body: document.body,
 
   addToWatchedBtn: document.querySelector('#add-to-watched'),
   addToQueueBtn: document.querySelector('#add-to-queue'),
+
+  searchForm: document.querySelector('#search-form'),
+  searchButton: document.querySelector('.search-btn'),
+  inputSearch: document.querySelector('.input-box'),
+  formTextErrSearch: document.querySelector('.form-text'),
+  loadMoreBtn: document.querySelector('.load-more'),
+
+  modalDevBtn: document.querySelector('.footer__btn'),
+  closeModalDevBtn: document.querySelector('.close-footer-modal'),
+  backdrop: document.querySelector('.backdrop'),
 };
 
 export default refs;

@@ -1,11 +1,15 @@
+import throttle from 'lodash.throttle';
 import { getTotalPage } from './js/pagination';
 import { pagination, moviePagination } from './js/pagination';
+import { onSearchMovieByKeyword } from './js/searchMovies';
 import { closeModalAuth } from './js/modal-auth';
 import { onFormSubmit, updateForm } from './js/authForm';
 import { userSignInWithGoogle } from './js/service/service_fb';
 import { onFilterButtonClick } from './js/filter';
 import { openModalFilm, closeModalFilm } from './js/modal-film';
 import { onAddToWatchedBtnClick, onAddToQueueBtnClick } from './js/user-data';
+import { openModalTrailer, addLink } from './js/modal-trailer';
+import { onModalOpen, onClickBackdrop } from './js/modal-close';
 import refs from './js/refs';
 import togglePages from './js/my-library';
 import colorSwitch from './js/my-library';
@@ -20,13 +24,38 @@ refs.galleryList.addEventListener('click', openModalFilm);
 refs.btnCloseFilm.addEventListener('click', closeModalFilm);
 refs.addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
 refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
+
 refs.navbarBtn.addEventListener('click', togglePages);
 refs.btnHome.addEventListener('click', colorSwitch);
 refs.btnWatched.addEventListener('click', getWatchedFilms);
 refs.btnQueue.addEventListener('click', getQueueFilm);
 
-//
+refs.btnFilmTrailer.addEventListener('click', openModalTrailer);
+refs.btnTrailerPrev.addEventListener('click', () => addLink());
+refs.btnTrailerNext.addEventListener('click', () => addLink(2));
 
+
+//
+refs.form.addEventListener('submit', onFormSubmit);
+refs.formSwitchBtn.addEventListener('click', updateForm);
+refs.modalAuthEl.addEventListener('click', closeModalAuth);
+refs.formSignInWithGoogle.addEventListener('click', userSignInWithGoogle);
+refs.galleryList.addEventListener('click', openModalFilm);
+refs.btnCloseFilm.addEventListener('click', closeModalFilm);
+refs.addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
+refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
+refs.btnFilmTrailer.addEventListener('click', openModalTrailer);
+refs.btnTrailerPrev.addEventListener('click', () => addLink());
+refs.btnTrailerNext.addEventListener('click', () => addLink(2));
+refs.modalDevBtn.addEventListener('click', onModalOpen);
+
+refs.searchForm.addEventListener('submit', throttle(onSearchMovieByKeyword, 1000));
+
+refs.closeModalDevBtn.addEventListener('click', onModalOpen);
+refs.backdrop.addEventListener('click', onClickBackdrop);
+
+
+refs.searchForm.addEventListener('submit', onSearchMovieByKeyword);
 refs.buttonWrap.addEventListener('click', onFilterButtonClick);
 
 document.addEventListener('DOMContentLoaded', getTotalPage);
