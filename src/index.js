@@ -11,6 +11,10 @@ import { onAddToWatchedBtnClick, onAddToQueueBtnClick } from './js/user-data';
 import { openModalTrailer, addLink } from './js/modal-trailer';
 import { onModalOpen, onClickBackdrop } from './js/modal-close';
 import refs from './js/refs';
+import togglePages from './js/my-library';
+import colorSwitch from './js/my-library';
+import { getWatchedFilms, getQueueFilm } from './js/render-gallery-my-library';
+
 //
 refs.form.addEventListener('submit', onFormSubmit);
 refs.formSwitchBtn.addEventListener('click', updateForm);
@@ -20,9 +24,16 @@ refs.galleryList.addEventListener('click', openModalFilm);
 refs.btnCloseFilm.addEventListener('click', closeModalFilm);
 refs.addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
 refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
+
+refs.navbarBtn.addEventListener('click', togglePages);
+refs.btnHome.addEventListener('click', colorSwitch);
+refs.btnWatched.addEventListener('click', getWatchedFilms);
+refs.btnQueue.addEventListener('click', getQueueFilm);
+
 refs.btnFilmTrailer.addEventListener('click', openModalTrailer);
 refs.btnTrailerPrev.addEventListener('click', () => addLink());
 refs.btnTrailerNext.addEventListener('click', () => addLink(2));
+
 
 //
 refs.form.addEventListener('submit', onFormSubmit);
