@@ -10,6 +10,7 @@ import { onAddToWatchedBtnClick, onAddToQueueBtnClick } from './js/user-data';
 import { openModalTrailer, addLink } from './js/modal-trailer';
 import { onModalOpen, onClickBackdrop } from './js/modal-close';
 import refs from './js/refs';
+
 //
 refs.form.addEventListener('submit', onFormSubmit);
 refs.formSwitchBtn.addEventListener('click', updateForm);
