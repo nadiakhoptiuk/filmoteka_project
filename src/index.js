@@ -1,6 +1,6 @@
 import throttle from 'lodash.throttle';
 import { getTotalPage } from './js/pagination';
-import { pagination, moviePagination } from './js/pagination';
+import { pagination, moviePagination, scrollTo, scrollToTopButton } from './js/pagination';
 import { onSearchMovieByKeyword } from './js/searchMovies';
 import { closeModalAuth } from './js/modal-auth';
 import { onFormSubmit, updateForm } from './js/authForm';
@@ -49,3 +49,6 @@ refs.buttonWrap.addEventListener('click', onFilterButtonClick);
 
 document.addEventListener('DOMContentLoaded', getTotalPage);
 pagination.on('afterMove', moviePagination);
+
+window.addEventListener('scroll', scrollToTopButton);
+refs.backToTopBtn.addEventListener('click', scrollTo);

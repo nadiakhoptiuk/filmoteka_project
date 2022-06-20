@@ -64,5 +64,13 @@ export async function moviePagination(e) {
 
 // Function for scroll to top(gallery) after move
 export function scrollTo() {
-  window.scrollTo({ top: 230, behavior: 'smooth' });
+  window.scrollTo({ top: 20, behavior: 'smooth' });
+}
+
+export function scrollToTopButton() {
+  if (window.scrollY > 600) {
+    refs.backToTopBtn.classList.remove('visually-hidden');
+  } else {
+    refs.backToTopBtn.classList.add('visually-hidden');
+  }
 }
