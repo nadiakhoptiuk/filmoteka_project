@@ -14,7 +14,10 @@ const loadMoreBtn = new LoadMoreBtn({
     try {
       JsLoadingOverlay.show(loadingSpinnerConfig);
       MoviesService.page += 1;
-      const { results } = await MoviesService.getMoviesBySearch();
+      const { results, total_pages } = await MoviesService.getMoviesBySearch();
+      if (MoviesService.page === total_pages) {
+        loadMoreBtn.hide();
+      }
       markupMoviesGalleryBySearch(results);
       JsLoadingOverlay.hide();
     } catch (error) {
