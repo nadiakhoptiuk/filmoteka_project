@@ -16,12 +16,11 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 312px;
+  min-width: min-content;
   max-width: 360px;
   padding: 60px 30px;
   transform: translate(-50%, -50%);
   z-index: 999;
-
 
   background-color: var(--header-text-color);
   @include media(768px, min-width) {
@@ -114,21 +113,18 @@
 }
 
 .auth-form__text {
-  @include font(500, 12px, 1.67, null, null);
+  margin-bottom: 10px;
+  text-align: center;
+
+  @include font(500, 12px, 1.6, null, null);
   font-family: 'Roboto', sans-serif;
 
   color: var(--category-text-color);
 }
 
-.auth-form__text {
-  margin-bottom: 19px;
-  text-align: center;
-  @include font(500, 12px, 1.67, null, null);
-}
-
 .auth-form__sign-text {
   color: var(--category-text-color);
-  @include font(500, 16px, 1.67, null, null);
+  @include font(500, 16px, 1.6, null, null);
 }
 
 .auth-form__button {
@@ -137,18 +133,21 @@
   margin-bottom: 28px;
   padding-top: 14px;
   padding-bottom: 14px;
+
   border-radius: 5px;
   background-color: var(--accent-text-color);
   color: var(--header-text-color);
 
-  @include font(500, 12px, 1.33, null, uppercase);
-  font-family: 'Roboto', sans-serif;
+  @include font(500, 20px, 1, null, uppercase);
+  font-family: inherit;
 }
 
 .auth-form__button-google {
-  width: 100px;
-  height: 100px;
-  padding: 20px;
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+  margin-left: 20px;
+
   border: 1px solid var(--category-text-color);
   border-radius: 10px;
 }
@@ -169,8 +168,7 @@
 }
 
 .auth-form__autorization {
-  display: flex;
-  align-items: center;
+  @include centeredFlex;
 }
 
 .is-hidden {
