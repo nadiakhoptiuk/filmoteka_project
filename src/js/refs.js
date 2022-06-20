@@ -1,4 +1,5 @@
 const refs = {
+  errorContainer: document.querySelector('.error_container'),
   galleryList: document.querySelector('.gallery__list'),
   paginationRef: document.querySelector('#tui-pagination-container'),
 
@@ -43,6 +44,8 @@ const refs = {
 
   searchForm: document.querySelector('#search-form'),
   searchButton: document.querySelector('.search-btn'),
+  inputSearch: document.querySelector('.input-box'),
+  formTextErrSearch: document.querySelector('.form-text'),
   loadMoreBtn: document.querySelector('.load-more'),
 
   modalDevBtn: document.querySelector('.footer__btn'),

@@ -1,3 +1,4 @@
+import throttle from 'lodash.throttle';
 import { getTotalPage } from './js/pagination';
 import { pagination, moviePagination } from './js/pagination';
 import { onSearchMovieByKeyword } from './js/searchMovies';
@@ -37,8 +38,11 @@ refs.btnTrailerPrev.addEventListener('click', () => addLink());
 refs.btnTrailerNext.addEventListener('click', () => addLink(2));
 refs.modalDevBtn.addEventListener('click', onModalOpen);
 
+refs.searchForm.addEventListener('submit', throttle(onSearchMovieByKeyword, 1000));
+
 refs.closeModalDevBtn.addEventListener('click', onModalOpen);
 refs.backdrop.addEventListener('click', onClickBackdrop);
+
 
 refs.searchForm.addEventListener('submit', onSearchMovieByKeyword);
 refs.buttonWrap.addEventListener('click', onFilterButtonClick);

@@ -135,6 +135,7 @@
 }
 
 .search-container {
+  position: relative;
   margin-top: 60px;
 
   @include centeredFlex;
@@ -227,4 +228,18 @@
 .active {
   background-color: var(--accent-text-color);
   border: none;
+}
+
+.form-text{
+  position: absolute;
+  top: 30px;
+  @include centeredFlex;
+  font-family: inherit;
+  @include font(400, 14px, 1.14, null, null);
+  color: var(--error-text-color);
+
+  @include media(767px, max-width) {
+    display: block;
+    width: 280px;
+    }
 }
