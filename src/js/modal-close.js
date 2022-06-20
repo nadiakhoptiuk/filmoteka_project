@@ -1,16 +1,15 @@
 import refs from './refs';
 
-function onClick() {
-  refs.body.classList.toggle('hidden');
+function onModalOpen() {
   refs.backdrop.classList.toggle('isHide');
   document.addEventListener('keydown', onClickBackdrop);
 }
 
 function onClickBackdrop(e) {
   if (e.target.classList.contains('backdrop') || e.key === 'Escape') {
-    onClick();
+    onModalOpen();
     document.removeEventListener('keydown', onClickBackdrop);
   }
 }
 
-export { onClick, onClickBackdrop };
+export { onModalOpen, onClickBackdrop };
