@@ -1,6 +1,5 @@
 import throttle from 'lodash.throttle';
-import { getTotalPage } from './js/pagination';
-import { pagination, moviePagination } from './js/pagination';
+import { pagination, moviePagination, getTotalPage } from './js/pagination';
 import { onSearchMovieByKeyword } from './js/searchMovies';
 import { closeModalAuth } from './js/modal-auth';
 import { onFormSubmit, updateForm } from './js/authForm';
@@ -10,11 +9,10 @@ import { openModalFilm, closeModalFilm } from './js/modal-film';
 import { onAddToWatchedBtnClick, onAddToQueueBtnClick } from './js/user-data';
 import { openModalTrailer, addLink } from './js/modal-trailer';
 import { onModalOpen, onClickBackdrop } from './js/modal-close';
-import refs from './js/refs';
-import togglePages from './js/my-library';
-import colorSwitch from './js/my-library';
+import { togglePages, colorSwitch } from './js/my-library';
 import { getWatchedFilms, getQueueFilm } from './js/render-gallery-my-library';
 
+import refs from './js/refs';
 //
 refs.form.addEventListener('submit', onFormSubmit);
 refs.formSwitchBtn.addEventListener('click', updateForm);
@@ -34,7 +32,6 @@ refs.btnFilmTrailer.addEventListener('click', openModalTrailer);
 refs.btnTrailerPrev.addEventListener('click', () => addLink());
 refs.btnTrailerNext.addEventListener('click', () => addLink(2));
 
-
 //
 refs.form.addEventListener('submit', onFormSubmit);
 refs.formSwitchBtn.addEventListener('click', updateForm);
@@ -49,11 +46,13 @@ refs.btnTrailerPrev.addEventListener('click', () => addLink());
 refs.btnTrailerNext.addEventListener('click', () => addLink(2));
 refs.modalDevBtn.addEventListener('click', onModalOpen);
 
-refs.searchForm.addEventListener('submit', throttle(onSearchMovieByKeyword, 1000));
+refs.searchForm.addEventListener(
+  'submit',
+  throttle(onSearchMovieByKeyword, 1000)
+);
 
 refs.closeModalDevBtn.addEventListener('click', onModalOpen);
 refs.backdrop.addEventListener('click', onClickBackdrop);
-
 
 refs.searchForm.addEventListener('submit', onSearchMovieByKeyword);
 refs.buttonWrap.addEventListener('click', onFilterButtonClick);
