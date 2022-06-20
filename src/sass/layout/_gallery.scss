@@ -25,6 +25,7 @@
 }
 
 .card {
+  padding: 5px;
   &:not(:last-child) {
     @include media(767px, max-width) {
       margin-bottom: 20px;

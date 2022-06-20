@@ -1,5 +1,4 @@
 const refs = {
-  gallery: document.querySelector('.gallery'),
   errorContainer: document.querySelector('.error_container'),
   galleryList: document.querySelector('.gallery__list'),
   paginationRef: document.querySelector('#tui-pagination-container'),
