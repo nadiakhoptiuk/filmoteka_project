@@ -24,6 +24,7 @@ const refs = {
   buttonPopular: document.querySelector('[data-id="popular"]'),
   buttonTopRated: document.querySelector('[data-id="top_rated"]'),
   buttonNowPlaying: document.querySelector('[data-id="now_playing"]'),
+  paginationWrapper: document.querySelector('.pagination-wrapper'),
 
   btnCloseFilm: document.querySelector('.modal-film__btn'),
   modalFilmImg: document.querySelector('.modal-film__img-cont'),

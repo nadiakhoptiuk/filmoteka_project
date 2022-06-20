@@ -12,9 +12,9 @@ export const loadingSpinnerConfig = {
   "spinnerIcon": "ball-grid-pulse",
   "spinnerColor": "#ff6b08",
   "spinnerSize": "3x",
-  "offsetY": '-8%',
-  "overlayZIndex": 9998,
-  "spinnerZIndex": 9999
+  "offsetY": 0,
+  "overlayZIndex": 10,
+  "spinnerZIndex": 20
 }
 
 // Function for getting quantity of pages and render markup for home page('Popular')
@@ -29,6 +29,10 @@ export async function getTotalPage() {
     
     JsLoadingOverlay.hide();
     markupMoviesGallery(getListOfMovies);
+
+    refs.buttonWrap.classList.remove('is-hidden');
+    refs.paginationWrapper.classList.remove('is-hidden');
+
     pagination.reset(quantityOfPages);
 
     if (MoviesService.param === 'popular') refs.buttonPopular.disabled = true;
