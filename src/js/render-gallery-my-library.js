@@ -7,7 +7,7 @@ import moment from 'moment';
 export let userAuthId = 'null';
 
 //  Функция забирает Watched фильмы из стораджа
-function getWatchedFilms() {
+export function getWatchedFilms() {
   const getWathed = ref(db, `pWLCEH2UHFfUjThU7uvvfA4Jreu2` + '/watched');
   onValue(getWathed, snapshot => {
     const data = snapshot.val();
@@ -17,7 +17,7 @@ function getWatchedFilms() {
 }
 
 //  Функция забирает Queue фильмы из стораджа
-function getQueueFilm() {
+export function getQueueFilm() {
   const getQueue = ref(db, `pWLCEH2UHFfUjThU7uvvfA4Jreu2` + '/queue');
   onValue(getQueue, snapshot => {
     const data = snapshot.val();
