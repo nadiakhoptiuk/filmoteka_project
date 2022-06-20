@@ -23,15 +23,14 @@ export async function getTotalPage() {
   try {
     const listOfMovies = await MoviesService.getMovies();
     const getListOfMovies = listOfMovies.results;
-
     let quantityOfPages = listOfMovies.total_pages;
     if (quantityOfPages > 1000) quantityOfPages = 1000;
     
     JsLoadingOverlay.hide();
     markupMoviesGallery(getListOfMovies);
 
-    refs.buttonWrap.classList.remove('is-hidden');
-    refs.paginationWrapper.classList.remove('is-hidden');
+    refs.buttonWrap.classList.remove('visually-hidden');
+    refs.paginationWrapper.classList.remove('visually-hidden');
 
     pagination.reset(quantityOfPages);
 
@@ -64,6 +63,6 @@ export async function moviePagination(e) {
 }
 
 // Function for scroll to top(gallery) after move
-function scrollTo() {
+export function scrollTo() {
   window.scrollTo({ top: 230, behavior: 'smooth' });
 }

@@ -1,5 +1,6 @@
 import { getTotalPage } from './js/pagination';
 import { pagination, moviePagination } from './js/pagination';
+import { onSearchMovieByKeyword } from './js/searchMovies';
 import { closeModalAuth } from './js/modal-auth';
 import { onFormSubmit, updateForm } from './js/authForm';
 import { userSignInWithGoogle } from './js/service/service_fb';
@@ -22,6 +23,8 @@ refs.btnTrailerPrev.addEventListener("click", ()=> addLink());
 refs.btnTrailerNext.addEventListener("click", () => addLink(2));
 
 //
+
+refs.searchForm.addEventListener('submit', onSearchMovieByKeyword);
 
 refs.buttonWrap.addEventListener('click', onFilterButtonClick);
 
