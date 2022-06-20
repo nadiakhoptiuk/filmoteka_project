@@ -6,7 +6,7 @@ import { getDatabase, ref, push } from 'firebase/database';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const app = initializeApp(firebaseConfig);
-export const db = getDatabase();
+const db = getDatabase();
 
 let userId = null;
 let chosenMovie = null;
@@ -80,4 +80,5 @@ export {
   onAddToQueueBtnClick,
   chosenMovie,
   getMovieData,
+  db,
 };
