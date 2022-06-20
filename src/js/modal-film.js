@@ -2,15 +2,25 @@ import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import { copy } from './fetch';
 import refs from './refs';
+import { openModalTrailer, addLink } from './modal-trailer';
 import { createModalFilm } from './created-modal-film';
-import { getMovieData } from './user-data';
+import { getMovieData, onAddToWatchedBtnClick, onAddToQueueBtnClick } from './user-data';
 import { watchedFilmsData,queuedFilmsData } from './render-gallery-my-library';
 export let openedFilmId = null;
 const modal = basicLightbox.create(document.querySelector('#html'), {
   onClose: () => {
     refs.body.classList.remove('modal-film-is-open');
+    refs.addToWatchedBtn.removeEventListener('click', onAddToWatchedBtnClick);
+    refs.addToQueueBtn.removeEventListener('click', onAddToQueueBtnClick);
+    refs.btnCloseFilm.removeEventListener('click', closeModalFilm);
+    refs.btnFilmTrailer.removeEventListener('click', openModalTrailer);
      },
   onShow: () => {
+    refs.btnCloseFilm.addEventListener('click', closeModalFilm);
+    refs.addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
+    refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
+    refs.btnFilmTrailer.addEventListener('click', openModalTrailer);
+   
     refs.body.classList.add('modal-film-is-open');
   },
 });

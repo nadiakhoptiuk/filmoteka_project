@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, update, set } from 'firebase/database';
 import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-// import { filterFilmByBtn,openedFilmId } from './modal-film';
+import { filterFilmByBtn,openedFilmId } from './modal-film';
 
 import { firebaseConfig } from './settings/fb_config';
 import { openModalAuth } from './modal-auth';
@@ -36,7 +36,7 @@ function onAddToWatchedBtnClick(evt) {
     removeMovieFromQueue(data);
     addMovieToWatched(data);
   }
-  //  filterFilmByBtn(openedFilmId)
+   filterFilmByBtn(openedFilmId)
 }
 
 function onAddToQueueBtnClick(evt) {
@@ -50,7 +50,7 @@ function onAddToQueueBtnClick(evt) {
   if (isUserSignIn(userId) && btnTitle.trim() === 'remove from queue') {
     removeMovieFromQueue(data);
   }
-  // filterFilmByBtn(openedFilmId)
+  filterFilmByBtn(openedFilmId)
 }
 
 function isUserSignIn(userId) {
