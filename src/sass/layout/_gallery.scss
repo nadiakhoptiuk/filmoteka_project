@@ -179,12 +179,12 @@
   border: 1px solid var(--accent-text-color);
   @include font(500, 16px, 1.33, null, uppercase);
   @include media(767px, max-width) {
-  min-width: 50px;
+  min-width: 80px;
   height: 20px;
   @include font(500, 8px, 1.33, null, uppercase);
   }
   &:not(:last-child){
-    margin-right: -5px;
+    margin-right: -10px;
   }
   &:hover,
   &:focus{
