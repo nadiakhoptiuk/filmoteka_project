@@ -115,6 +115,7 @@
 
 .tooltip .tooltiptext {
   visibility: hidden;
+  pointer-events: none;
   background-color: var(--category-text-color);
   opacity: 0.9;
   font-size: 12px;

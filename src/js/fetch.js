@@ -58,7 +58,7 @@ export const MoviesService = {
       this._query = newQuery;
 },
   };
-  
+
 function getFilteredMovies(arr, genresArr) {
   arr.map(result => {
     const arrayOfGenresName = result.genre_ids.map(id => genresArr.find(genre => genre.id === id).name)
@@ -69,3 +69,9 @@ function getFilteredMovies(arr, genresArr) {
     }
   })
 }
+
+  export async function getMovieTrailer(idMovie) {
+    const response = await axios.get(`/movie/${idMovie}/videos?api_key=${API_KEY}&language=en-US`);
+    return response;
+}
+

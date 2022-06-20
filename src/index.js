@@ -7,6 +7,7 @@ import { userSignInWithGoogle } from './js/service/service_fb';
 import { onFilterButtonClick } from './js/filter';
 import { openModalFilm, closeModalFilm } from './js/modal-film';
 import { onAddToWatchedBtnClick, onAddToQueueBtnClick } from './js/user-data';
+import { openModalTrailer, addLink } from './js/modal-trailer';
 import refs from './js/refs';
 //
 refs.form.addEventListener('submit', onFormSubmit);
@@ -17,6 +18,9 @@ refs.galleryList.addEventListener('click', openModalFilm);
 refs.btnCloseFilm.addEventListener('click', closeModalFilm);
 refs.addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
 refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
+refs.btnFilmTrailer.addEventListener('click', openModalTrailer);
+refs.btnTrailerPrev.addEventListener("click", ()=> addLink());
+refs.btnTrailerNext.addEventListener("click", () => addLink(2));
 
 //
 
