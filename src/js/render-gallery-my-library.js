@@ -8,22 +8,27 @@ export let queuedFilmsData = null;
 export let userAuthId = 'null';
 
 //  Функция забирает Watched фильмы из стораджа
-export function getWatchedFilms() {
-  const getWathed = ref(db, `V1NJMplMS3T7SF3Q57FxgxxQ4sh1` + '/watched');
+export function getWatchedFilms(userKey) {
+  console.log('RENDER WATCHED');
+  const getWathed = ref(db, `${userKey}` + '/watched');
+
   onValue(getWathed, snapshot => {
     const data = snapshot.val();
-    watchedFilmsData = Object.values(data);
-    // renderWatchedGallery(watchedFilms, 'queue');
+    const watchedFilms = Object.values(data);
+    console.log(watchedFilms);
+    renderWatchedGallery(watchedFilms, 'watched');
   });
 }
 
 //  Функция забирает Queue фильмы из стораджа
-export function getQueueFilm() {
-  const getQueue = ref(db, `V1NJMplMS3T7SF3Q57FxgxxQ4sh1` + '/queue');
+export function getQueueFilms(userKey) {
+  console.log('RENDER QUEUE');
+  const getQueue = ref(db, `${userKey}` + '/queue');
   onValue(getQueue, snapshot => {
     const data = snapshot.val();
-    queuedFilmsData = Object.values(data);
-    // renderWatchedGallery(queuedFilms, 'watched');
+    const queuedFilms = Object.values(data);
+    console.log(queuedFilms);
+    renderWatchedGallery(queuedFilms, 'queue');
   });
 }
 
@@ -54,10 +59,12 @@ async function renderWatchedGallery(data, nameGallery) {
       .join('');
 
     if (nameGallery === 'watched') {
+      refs.galleryQueueList.innerHTML = '';
       refs.galleryWatchedList.innerHTML = '';
       refs.galleryWatchedList.innerHTML = markup;
     }
     if (nameGallery === 'queue') {
+      refs.galleryWatchedList.innerHTML = '';
       refs.galleryQueueList.innerHTML = '';
       refs.galleryQueueList.innerHTML = markup;
     }
@@ -67,10 +74,18 @@ async function renderWatchedGallery(data, nameGallery) {
 }
 
 // Функция для переключения стилей кнопок Watched и Queue
-function changeMyLibraryBtnStyles(activeButton, disabledButton) {
+export function changeMyLibraryBtnStyles(activeButton, disabledButton) {
   activeButton.classList.add('active');
   activeButton.setAttribute('disabled', 'disabled');
   disabledButton.classList.remove('active');
+  disabledButton.removeAttribute('disabled', 'disabled');
+}
+
+// Функция для переключения стилей кнопок Home и My Library
+export function changeHeaderBtnStyles(activeButton, disabledButton) {
+  activeButton.classList.add('nav-link--current');
+  activeButton.setAttribute('disabled', 'disabled');
+  disabledButton.classList.remove('nav-link--current');
   disabledButton.removeAttribute('disabled', 'disabled');
 }
 

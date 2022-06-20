@@ -9,6 +9,12 @@ import { openModalFilm, closeModalFilm } from './js/modal-film';
 import { onModalOpen, onClickBackdrop } from './js/modal-close';
 import { togglePages, colorSwitch } from './js/my-library';
 import { getWatchedFilms, getQueueFilm } from './js/render-gallery-my-library';
+import {
+  onMyLibraryButton,
+  onBtnQueue,
+  onBtnWatched,
+  onBtnHome,
+} from './js/my-library';
 
 import refs from './js/refs';
 //
@@ -17,10 +23,16 @@ refs.formSwitchBtn.addEventListener('click', updateForm);
 refs.modalAuthEl.addEventListener('click', closeModalAuth);
 refs.formSignInWithGoogle.addEventListener('click', userSignInWithGoogle);
 refs.galleryList.addEventListener('click', openModalFilm);
-refs.navbarBtn.addEventListener('click', togglePages);
-refs.btnHome.addEventListener('click', colorSwitch);
-refs.btnWatched.addEventListener('click', getWatchedFilms);
-refs.btnQueue.addEventListener('click', getQueueFilm);
+
+refs.btnCloseFilm.addEventListener('click', closeModalFilm);
+refs.addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
+refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
+
+refs.myLibraryBtn.addEventListener('click', onMyLibraryButton);
+refs.btnHome.addEventListener('click', onBtnHome);
+
+refs.btnQueue.addEventListener('click', onBtnQueue);
+refs.btnWatched.addEventListener('click', onBtnWatched);
 
 refs.modalDevBtn.addEventListener('click', onModalOpen);
 
