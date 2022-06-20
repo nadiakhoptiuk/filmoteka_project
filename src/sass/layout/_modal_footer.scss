@@ -119,6 +119,7 @@
 .card-info__title {
   text-align: center;
   font-size: 22px;
+  margin-top: 10px;
   @include media(768px) {
     font-size: 20px;
   }
