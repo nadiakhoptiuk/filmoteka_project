@@ -11,6 +11,12 @@ import { openModalTrailer, addLink } from './js/modal-trailer';
 import { onModalOpen, onClickBackdrop } from './js/modal-close';
 import { togglePages, colorSwitch } from './js/my-library';
 import { getWatchedFilms, getQueueFilm } from './js/render-gallery-my-library';
+import {
+  onMyLibraryButton,
+  onBtnQueue,
+  onBtnWatched,
+  onBtnHome,
+} from './js/my-library';
 
 import refs from './js/refs';
 //
@@ -23,10 +29,11 @@ refs.btnCloseFilm.addEventListener('click', closeModalFilm);
 refs.addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
 refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
 
-refs.navbarBtn.addEventListener('click', togglePages);
-refs.btnHome.addEventListener('click', colorSwitch);
-refs.btnWatched.addEventListener('click', getWatchedFilms);
-refs.btnQueue.addEventListener('click', getQueueFilm);
+refs.myLibraryBtn.addEventListener('click', onMyLibraryButton);
+refs.btnHome.addEventListener('click', onBtnHome);
+
+refs.btnQueue.addEventListener('click', onBtnQueue);
+refs.btnWatched.addEventListener('click', onBtnWatched);
 
 refs.btnFilmTrailer.addEventListener('click', openModalTrailer);
 refs.btnTrailerPrev.addEventListener('click', () => addLink());
