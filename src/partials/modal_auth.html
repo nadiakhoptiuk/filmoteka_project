@@ -1,4 +1,4 @@
-<div class="overlay-auth">
+<div class="overlay-auth is-hidden">
   <div class="modal-auth">
     <div class="modal-auth__container">
       <button class="modal-auth__btn-close" type="button">
@@ -7,9 +7,9 @@
         </svg>
       </button>
       <div class="modal-auth__head">
-        <p class="modal-auth__title js-form-auth__title">Registration</p>
+        <p class="modal-auth__title js-form-auth__title">Sign In</p>
         <button class="modal-auth__button js-form__type-switch" type="button">
-          sign in
+          Registration
         </button>
       </div>
       <form class="auth-form js-form-auth">
@@ -18,7 +18,7 @@
             class="auth-form__input auth-form__input--email js-input__email"
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="e-mail"
             required
           />
         </label>
@@ -29,22 +29,25 @@
             name="password"
             min="6"
             max="6"
-            placeholder="Password"
+            placeholder="password"
             required
           />
         </label>
-        <p class="auth-form__text">
+        <p class="auth-form__text js-conditions" hidden>
           By clicking Registration button, you are indicating that you have read
           and agree to the
           <a class="auth-form__link" href="">Terms of Use</a> and
           <a class="auth-form__link" href="">Privacy Policy</a>.
         </p>
-        <button class="auth-form__button js-form__submit" type="submit">
-          Register now
+        <button
+          class="auth-form__button btn-accent js-form__submit"
+          type="submit"
+        >
+          Sign In
         </button>
       </form>
       <div class="auth-form__autorization">
-        <p class="auth-form__sign-text">Sign in with:</p>
+        <p class="auth-form__sign-text">Sign in with Google:</p>
         <button class="auth-form__button-google js-sign-google">
           <svg class="google-icon" width="15" height="15">
             <use href="./images/sprite.svg#google-icon"></use>

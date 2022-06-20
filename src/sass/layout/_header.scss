@@ -2,29 +2,45 @@
   margin: 0 auto;
   //padding: 0;
   height: 230px;
-  background-image: url('../images/main_bg_img_mobile_1x-min.jpeg');
-  // background-image: -webkit-image-set(url('../images/main_bg_img_desktop_1x-min.jpeg') 1x,
-  //     url('../images/main_bg_img_desktop_2x-min.jpeg') 2x);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../images/main_bg_img_mobile_1x-min.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: bottom;
 
-  @include media(768px) {
+  @include media(768px, min-width) {
     height: 216px;
     background-image: url('../images/main_bg_img_tablet_1x-min.jpeg');
-    background-image: -webkit-image-set(
-      url('../images/main_bg_img_tablet_1x-min.jpeg') 1x,
-      url('../images/main_bg_img_tablet_2x-min.jpeg') 2x
-    );
     background-repeat: no-repeat;
     background-size: cover;
   }
 
-  @include media(1280px) {
+  @include media(1280px, min-width) {
     background-image: url('../images/main_bg_img_desktop_1x-min.jpeg');
-    background-image: -webkit-image-set(
-      url('../images/main_bg_img_desktop_1x-min.jpeg') 1x,
-      url('../images/main_bg_img_desktop_2x-min.jpeg') 2x
-    );
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.header-container-my-library {
+  margin: 0 auto;
+  //padding: 0;
+  height: 230px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../images/library_bg_img_mobile_1x-min.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+
+  @include media(768px, min-width) {
+    height: 216px;
+    background-image: url('../images/library_bg_img_tablet_1x-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  @include media(1280px, min-width) {
+    background-image: url('../images/library_bg_img_desktop_1x-min.jpg');
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -135,6 +151,7 @@
 }
 
 .search-container {
+  position: relative;
   margin-top: 60px;
 
   @include centeredFlex;
@@ -198,9 +215,10 @@
 
 .button {
   border: 1px solid var(--header-text-color);
+  text-transform: uppercase;
   background-color: transparent;
   color: var(--header-text-color);
-  font-family: 'Roboto', sans-serif;
+  font-family: inherit;
   font-weight: 500;
   font-size: 12px;
   line-height: calc(16 / 12);
@@ -226,4 +244,18 @@
 .active {
   background-color: var(--accent-text-color);
   border: none;
+}
+
+.form-text{
+  position: absolute;
+  top: 30px;
+  @include centeredFlex;
+  font-family: inherit;
+  @include font(400, 14px, 1.14, null, null);
+  color: var(--error-text-color);
+
+  @include media(767px, max-width) {
+    display: block;
+    width: 280px;
+    }
 }

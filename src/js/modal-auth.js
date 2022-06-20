@@ -10,6 +10,7 @@ export function closeModalAuth() {
   refs.body.classList.remove('modal-auth-is-open');
 }
 
+import { userId } from './user-data';
+
 openModalAuth();
 
-import { userId } from './user-data';

@@ -1,21 +1,37 @@
 <section class="gallery">
   <div class="container">
-    <div class="button-wrap btns-container is-hidden">
-      <button type="button" class="button btn btn-accent" data-id="popular">
-        popular
-      </button>
-      <button type="button" class="button btn" data-id="top_rated">
-        top rated
-      </button>
-      <button type="button" class="button btn" data-id="now_playing">
-        now playing
-      </button>
+    <div class="error_container visually-hidden">
+      <p class="error-text">Sorry, nothing was found &#128546;</p>
+    </div>
+    <div class="button-wrap btns-container visually-hidden">
+      <ul class="btn-list">
+        <li class="btn-list__item">
+          <button
+            type="button"
+            class="button btn-filter btn-accent"
+            data-id="popular"
+          >
+            popular
+          </button>
+        </li>
+        <li class="btn-list__item">
+          <button type="button" class="button btn-filter" data-id="top_rated">
+            top rated
+          </button>
+        </li>
+        <li class="btn-list__item">
+          <button type="button" class="button btn-filter" data-id="now_playing">
+            now playing
+          </button>
+        </li>
+      </ul>
     </div>
     <h1 class="visually-hidden">Filmoteka</h1>
     <ul class="gallery__list"></ul>
 
-    <div class="pagination-wrapper is-hidden">
+    <div class="pagination-wrapper visually-hidden">
       <div id="tui-pagination-container" class="tui-pagination"></div>
     </div>
   </div>
+  <button type="button" class="load-more button btn-filter">Load more</button>
 </section>

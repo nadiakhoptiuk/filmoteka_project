@@ -1,4 +1,4 @@
-<header class="header-container">
+<header class="header-container js-header">
   <div class="menu-container container">
     <a class="logo" href="./index.html">
       <svg alt="filming tape image" width="24" height="24" class="logo-svg">
@@ -13,8 +13,7 @@
           <li class="navbar-item_wrap" id="home">
             <!-- клас nav-link--current потрібно динамічно додавати і забирати через js на одну з двох лішок -->
             <a class="navbar-item_link nav-link--current" href="./index.html"
-              >Home</a
-            >
+              >Home</a>
           </li>
           <li class="navbar-item_wrap" id="library">
             <button class="navbar-item_btn">My library</button>
@@ -40,6 +39,7 @@
         name="searchQuery"
         autocomplete="off"
         placeholder="Movie search"
+        required
       />
       <button class="search-btn" type="submit" name="submitBtn">
         <svg class="search-icon" width="12" height="12">
@@ -47,6 +47,9 @@
         </svg>
       </button>
     </form>
+    <p class="form-text visually-hidden">
+      Search result not successful. Enter the correct movie name.
+    </p>
   </div>
 
   <div class="btns-container visually-hidden">
