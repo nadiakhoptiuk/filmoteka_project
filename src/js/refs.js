@@ -44,6 +44,10 @@ const refs = {
   searchForm: document.querySelector('#search-form'),
   searchButton: document.querySelector('.search-btn'),
   loadMoreBtn: document.querySelector('.load-more'),
+
+  modalDevBtn: document.querySelector('.footer__btn'),
+  closeModalDevBtn: document.querySelector('.close-footer-modal'),
+  backdrop: document.querySelector('.backdrop'),
 };
 
 export default refs;
