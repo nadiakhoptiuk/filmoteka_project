@@ -3,26 +3,27 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 import { db } from './user-data';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import moment from 'moment';
-
+export let watchedFilmsData = null;
+export let queuedFilmsData = null;
 export let userAuthId = 'null';
 
 //  Функция забирает Watched фильмы из стораджа
-function getWatchedFilms() {
-  const getWathed = ref(db, `pWLCEH2UHFfUjThU7uvvfA4Jreu2` + '/watched');
+export function getWatchedFilms() {
+  const getWathed = ref(db, `V1NJMplMS3T7SF3Q57FxgxxQ4sh1` + '/watched');
   onValue(getWathed, snapshot => {
     const data = snapshot.val();
-    const watchedFilms = Object.values(data);
-    renderWatchedGallery(watchedFilms, 'queue');
+    watchedFilmsData = Object.values(data);
+    // renderWatchedGallery(watchedFilms, 'queue');
   });
 }
 
 //  Функция забирает Queue фильмы из стораджа
-function getQueueFilm() {
-  const getQueue = ref(db, `pWLCEH2UHFfUjThU7uvvfA4Jreu2` + '/queue');
+export function getQueueFilm() {
+  const getQueue = ref(db, `V1NJMplMS3T7SF3Q57FxgxxQ4sh1` + '/queue');
   onValue(getQueue, snapshot => {
     const data = snapshot.val();
-    const queuedFilms = Object.values(data);
-    renderWatchedGallery(queuedFilms, 'watched');
+    queuedFilmsData = Object.values(data);
+    // renderWatchedGallery(queuedFilms, 'watched');
   });
 }
 

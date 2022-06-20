@@ -1,9 +1,10 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
-import { copy, getMovieTrailer} from './fetch';
+import { copy } from './fetch';
 import refs from './refs';
 import { createModalFilm } from './created-modal-film';
-import { getMovieData, chosenMovie } from './user-data';
+import { getMovieData } from './user-data';
+import { watchedFilmsData,queuedFilmsData } from './render-gallery-my-library';
 export let openedFilmId = null;
 const modal = basicLightbox.create(document.querySelector('#html'), {
   onClose: () => {
@@ -13,7 +14,6 @@ const modal = basicLightbox.create(document.querySelector('#html'), {
     refs.body.classList.add('modal-film-is-open');
   },
 });
-
 export function openModalFilm(ev) {
   ev.preventDefault();
   const evn = ev.target.parentNode;
@@ -28,9 +28,9 @@ export function openModalFilm(ev) {
 async function acceptIdInformation(id) {
   const arr = JSON.parse(copy);
   const filteredFilmById = await arr.results.filter(ev => ev.id === id);
+  filterFilmByBtn(id);
   //
   const movieData = filteredFilmById[0];
-  console.log(movieData);
   
   getMovieData(movieData);
   //
@@ -46,4 +46,15 @@ function closeModalFilmKey(event) {
 export function closeModalFilm() {
   modal.close();
   window.removeEventListener('keydown', closeModalFilmKey);
+}
+export function filterFilmByBtn(id) {
+  const filteredFilmBtnByWatch = watchedFilmsData.some(ev => ev.movie.id === id);
+  const filteredFilmBtnByQueue = queuedFilmsData.some(ev => ev.movie.id === id);
+  renameBtnFilm(filteredFilmBtnByWatch, filteredFilmBtnByQueue)
+}
+function renameBtnFilm(watch, queue) {
+  queue ? refs.addToQueueBtn.textContent = 'remove from queue' : refs.addToQueueBtn.textContent = 'add to queue';
+  if (watch) {
+   refs.addToQueueBtn.textContent === "remove from queue" ? refs.addToWatchedBtn.textContent = 'move to watched' : refs.addToWatchedBtn.textContent = 'remove from watched'
+  } else { refs.addToWatchedBtn.textContent = 'add to watched' };
 }
