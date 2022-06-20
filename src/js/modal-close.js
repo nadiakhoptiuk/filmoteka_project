@@ -1,7 +1,7 @@
 import refs from './refs';
 
 function onModalOpen() {
-  refs.backdrop.classList.toggle('isDevModalHide');
+  refs.backdrop.classList.toggle('is-hidden');
   document.addEventListener('keydown', onClickBackdrop);
 }
 
