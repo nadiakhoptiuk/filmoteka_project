@@ -11,5 +11,3 @@ export function closeModalAuth() {
 }
 
 openModalAuth();
-
-import { userId } from './user-data';
