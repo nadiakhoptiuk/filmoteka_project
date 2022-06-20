@@ -74,7 +74,7 @@
 }
 .card-list {
   gap: 10px;
-  
+
   @include media(768px) {
     display: flex;
     flex-wrap: wrap;
@@ -85,9 +85,12 @@
   }
 }
 .card-link {
-  width: 230px;
+  width: 235px;
   height: 100%;
   margin: 0 auto;
+  @include media(768px) {
+    width: 250px;
+  }
   @include media(1280px) {
     width: 200px;
   }
