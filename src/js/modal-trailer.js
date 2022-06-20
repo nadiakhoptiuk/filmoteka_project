@@ -5,7 +5,14 @@ import { openedFilmId } from './modal-film';
 import refs from './refs';
 let links = null;
 
-const modal = basicLightbox.create(document.querySelector('#htmls'));
+const modal = basicLightbox.create(document.querySelector('#htmls'), {
+  onClose: () => {
+    refs.btnTrailerPrev.removeEventListener('click', () => addLink());
+    refs.btnTrailerNext.removeEventListener('click', () => addLink(2)); },
+  onShow: () => {
+    refs.btnTrailerPrev.addEventListener('click', () => addLink());
+    refs.btnTrailerNext.addEventListener('click', () => addLink(2)); }
+});
 
 export function openModalTrailer() {
     getMovieTrailer(openedFilmId)
