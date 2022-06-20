@@ -18,7 +18,7 @@
   display: block;
   overflow-y: scroll;
   @include media(1280px) {
-    width: 60%;
+    width: 50%;
     overflow-y: unset;
   }
 }
@@ -85,35 +85,30 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  @include media(768px) {
-    justify-content: space-evenly;
+  @include media(1280px) {
+    gap: 0;
   }
 }
 .card-link {
   width: 230px;
   height: 100%;
-  @include media(768px) {
-    // width: calc((100% - 40px) / 2);
-  }
   @include media(1280px) {
+    width: 200px;
   }
 }
 .photo-teammate {
-  // max-width: 230px;
-  // height: 240px;
   width: 100%;
   height: 100%;
   border-radius: 5px;
   object-fit: cover;
   @include media(768px) {
-    max-width: 277px;
+    width: 277px;
     height: 300px;
   }
   @include media(1280px) {
-    max-width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 160px;
     margin: auto;
-    border-radius: 50%;
   }
 }
 .card-info__title {
