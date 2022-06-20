@@ -27,8 +27,8 @@
             class="auth-form__input auth-form__input--password js-input__pass"
             type="password"
             name="password"
-            min="6"
-            max="6"
+            minlength="6"
+            maxlength="6"
             placeholder="password"
             required
           />
@@ -36,8 +36,13 @@
         <p class="auth-form__text js-conditions" hidden>
           By clicking Registration button, you are indicating that you have read
           and agree to the
-          <a class="auth-form__link" href="">Terms of Use</a> and
-          <a class="auth-form__link" href="">Privacy Policy</a>.
+          <a class="auth-form__link" href="https://www.google.com.ua/"
+            >Terms of Use</a
+          >
+          and
+          <a class="auth-form__link" href="https://www.google.com.ua/"
+            >Privacy Policy</a
+          >.
         </p>
         <button
           class="auth-form__button btn-accent js-form__submit"
@@ -48,7 +53,10 @@
       </form>
       <div class="auth-form__autorization">
         <p class="auth-form__sign-text">Sign in with Google:</p>
-        <button class="auth-form__button-google js-sign-google">
+        <button
+          class="auth-form__button-google js-sign-google"
+          aria-label="sign in with google"
+        >
           <svg class="google-icon" width="15" height="15">
             <use href="./images/sprite.svg#google-icon"></use>
           </svg>

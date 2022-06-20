@@ -3,7 +3,8 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 import { db } from './user-data';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import moment from 'moment';
-
+export let watchedFilmsData = null;
+export let queuedFilmsData = null;
 export let userAuthId = 'null';
 
 //  Функция забирает Watched фильмы из стораджа
