@@ -84,7 +84,7 @@
     @include font(500, 12px, 1.33, null, null);
     display: flex;
     align-items: center;
-    color: var( --accent-text-color);
+    color: var(--accent-text-color);
 
     @include media(1280px, min-width) {
       font-size: 20px;
@@ -96,7 +96,7 @@
     display: block;
     width: 36px;
     height: 16px;
-    background-color: var( --accent-text-color);
+    background-color: var(--accent-text-color);
     @include centeredFlex;
     font-family: 'Roboto';
     @include font(500, 12px, 1.16, null, null);
@@ -133,14 +133,14 @@
   width: 180px;
   top: -70%;
   left: 20%;
-  margin-left: -50px; 
+  margin-left: -50px;
 }
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
 
-.pagination-wrapper{
+.pagination-wrapper {
   @include media(767px, max-width) {
     width: 300px !important;
     margin-top: 40px;
@@ -148,20 +148,21 @@
   margin-top: 60px;
 }
 
-.tui-pagination .tui-is-selected, .tui-pagination strong{
-  background-color: var( --accent-text-color) !important;
+.tui-pagination .tui-is-selected,
+.tui-pagination strong {
+  background-color: var(--accent-text-color) !important;
 }
 
-.tui-pagination .tui-page-btn{
+.tui-pagination .tui-page-btn {
   @include media(767px, max-width) {
-  width: 25px !important;
-  height: 25px !important;
+    width: 25px !important;
+    height: 25px !important;
   }
   width: 40px !important;
   height: 40px !important;
   border: none !important;
   border-radius: 5px !important;
-  font-family: 'Roboto' !important;
+  font-family: inherit !important;
   font-weight: 500 !important;
   font-size: 12px !important;
   line-height: 1.33 !important;
@@ -171,21 +172,26 @@
   justify-content: center !important;
 }
 
-.tui-pagination .tui-next-is-ellip{
+.tui-pagination .tui-next-is-ellip {
   border: none !important;
 }
 
-.tui-pagination .tui-first, .tui-pagination .tui-last, .tui-pagination .tui-next, .tui-pagination .tui-next-is-ellip, .tui-pagination .tui-prev, .tui-pagination .tui-prev-is-ellip{
+.tui-pagination .tui-first,
+.tui-pagination .tui-last,
+.tui-pagination .tui-next,
+.tui-pagination .tui-next-is-ellip,
+.tui-pagination .tui-prev,
+.tui-pagination .tui-prev-is-ellip {
   font-size: 14px;
 }
 
 .btn-filter {
+    margin-right: 0;
   background-color: var(--header-text-color);
   color: var(--accent-text-color);
   border: 1px solid var(--accent-text-color);
   transform: scale(1);
   transition: transform 200ms ease-in-out;
-  margin-right: 0;
 
   @include font(500, 12px, 1.33, null, uppercase);
   @include media(767px, max-width) {
@@ -265,3 +271,4 @@
 
   color: var(--error-text-color);
 }
+

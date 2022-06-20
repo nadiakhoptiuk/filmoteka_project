@@ -2,19 +2,23 @@ import refs from './refs';
 import { userRegistration, userSignIn } from './service/service_fb';
 import { closeModalAuth } from './modal-auth';
 
-let formType = 'registration';
+let formType = 'authorization';
 
 function updateForm() {
-  if (formType === 'registration') {
-    formType = 'authorization';
-  } else {
+  const conditionsInfo = document.querySelector('.js-conditions');
+
+  if (formType === 'authorization') {
     formType = 'registration';
+    conditionsInfo.removeAttribute('hidden', '');
+  } else {
+    formType = 'authorization';
+    conditionsInfo.setAttribute('hidden', '');
   }
 
-  const formTitle = formType === 'registration' ? 'Registration' : 'Sign In';
+  const formTitle = formType === 'authorization' ? 'Sign In' : 'Registration';
   const formSwitchBtnText =
-    formType === 'registration' ? 'Sign In' : 'Registration';
-  const textSubmit = formType === 'registration' ? 'Register now' : 'Sign In';
+    formType === 'authorization' ? 'Registration' : 'Sign In';
+  const textSubmit = formType === 'authorization' ? 'Sign In' : 'Register now';
 
   refs.formSwitchBtn.textContent = formSwitchBtnText;
   refs.formSubmitBtn.textContent = textSubmit;
