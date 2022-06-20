@@ -46,7 +46,7 @@
     width: 280px;
     height: 398px;
     border-radius: 5px;
-    margin-bottom: 8px;
+    padding-bottom: 8px;
 
     @include media(768px, min-width) {
       width: 336px;
@@ -54,7 +54,7 @@
     }
 
     @include media(1280px, min-width) {
-      margin-bottom: 12px;
+      padding-bottom: 12px;
       width: 394px;
       height: 574px;
     }
@@ -63,7 +63,10 @@
   &__title {
     font-family: 'Roboto';
     @include font(500, 12px, 1.33, null, uppercase);
-    color: #000000;
+    color: var(--gallery-text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     @include media(1280px, min-width) {
       font-size: 20px;
@@ -75,8 +78,8 @@
     font-family: 'Roboto';
     @include font(500, 12px, 1.33, null, null);
     display: flex;
-    align-items: flex-end;
-    color: #FF6B01;
+    align-items: center;
+    color: var(--accent-text-color);
 
     @include media(1280px, min-width) {
       font-size: 20px;
@@ -88,13 +91,13 @@
     display: block;
     width: 36px;
     height: 16px;
-    background-color: #FF6B01;
+    background-color: var(--accent-text-color);
     @include centeredFlex;
     font-family: 'Roboto';
     @include font(500, 12px, 1.16, null, null);
     text-align: center;
     margin-left: 8px;
-    color: #FFFFFF;
+    color: var(--header-text-color);
     border-radius: 5px;
 
     @include media(1280px, min-width) {
@@ -103,4 +106,118 @@
       line-height: 1.16;
     }
   }
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  pointer-events: none;
+  background-color: var(--category-text-color);
+  opacity: 0.9;
+  font-size: 12px;
+  color: var(--header-text-color);
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  width: 180px;
+  top: -70%;
+  left: 20%;
+  margin-left: -50px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.pagination-wrapper {
+  @include media(767px, max-width) {
+    width: 300px !important;
+    margin-top: 40px;
+  }
+  margin-top: 60px;
+}
+
+.tui-pagination .tui-is-selected,
+.tui-pagination strong {
+  background-color: var(--accent-text-color) !important;
+}
+
+.tui-pagination .tui-page-btn {
+  @include media(767px, max-width) {
+    width: 25px !important;
+    height: 25px !important;
+  }
+  width: 40px !important;
+  height: 40px !important;
+  border: none !important;
+  border-radius: 5px !important;
+  font-family: inherit !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  line-height: 1.33 !important;
+  display: inline-flex !important;
+  position: relative !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.tui-pagination .tui-next-is-ellip {
+  border: none !important;
+}
+
+.tui-pagination .tui-first,
+.tui-pagination .tui-last,
+.tui-pagination .tui-next,
+.tui-pagination .tui-next-is-ellip,
+.tui-pagination .tui-prev,
+.tui-pagination .tui-prev-is-ellip {
+  font-size: 14px;
+}
+
+.btn {
+  background-color: var(--header-text-color);
+  color: var(--accent-text-color);
+  border: 1px solid var(--accent-text-color);
+  transform: scale(1);
+  transition: transform 200ms ease-in-out;
+
+  @include font(500, 12px, 1.33, null, uppercase);
+  @include media(767px, max-width) {
+    min-width: 60px;
+    height: 15px;
+    @include font(500, 8px, 1.33, null, uppercase);
+  }
+  &:not(:last-child) {
+    margin-right: -10px;
+  }
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    background-color: var(--accent-text-color);
+    color: var(--header-text-color);
+    border: 1px solid var(--header-text-color);
+  }
+}
+
+.button-wrap {
+  margin-bottom: 20px;
+}
+
+.btn-accent {
+  box-shadow: 0px 8px 43px rgb(255 107 1 / 60%);
+  background-color: var(--accent-text-color);
+  color: var(--header-text-color);
+}
+
+.load-more {
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 0;
 }

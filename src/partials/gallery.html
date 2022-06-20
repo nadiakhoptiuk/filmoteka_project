@@ -1,11 +1,22 @@
 <section class="gallery">
   <div class="container">
+    <div class="button-wrap btns-container visually-hidden">
+      <button type="button" class="button btn btn-accent" data-id="popular">
+        popular
+      </button>
+      <button type="button" class="button btn" data-id="top_rated">
+        top rated
+      </button>
+      <button type="button" class="button btn" data-id="now_playing">
+        now playing
+      </button>
+    </div>
     <h1 class="visually-hidden">Filmoteka</h1>
-    <ul class="gallery__list">
-    </ul>
+    <ul class="gallery__list"></ul>
 
-    <div class="pagination-wrapper">
-         <div id="tui-pagination-container" class="tui-pagination"></div>
+    <div class="pagination-wrapper visually-hidden">
+      <div id="tui-pagination-container" class="tui-pagination"></div>
     </div>
   </div>
+<button type="button" class="load-more button btn">Load more</button>
 </section>

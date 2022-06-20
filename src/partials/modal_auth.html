@@ -1,4 +1,4 @@
-<div class="overlay-auth is-hidden">
+<div class="overlay-auth">
   <div class="modal-auth">
     <div class="modal-auth__container">
       <button class="modal-auth__btn-close" type="button">
@@ -7,23 +7,53 @@
         </svg>
       </button>
       <div class="modal-auth__head">
-        <p class="modal-auth__title">Registration</p>
-        <button class="modal-auth__button" type="button">sign in</button>
+        <p class="modal-auth__title js-form-auth__title">Sign In</p>
+        <button class="modal-auth__button js-form__type-switch" type="button">
+          Registration
+        </button>
       </div>
-      <form class="auth-form" action="">
+      <form class="auth-form js-form-auth">
         <label>
-          <input class="auth-form__input" type="mail" name="email" />
+          <input
+            class="auth-form__input auth-form__input--email js-input__email"
+            type="email"
+            name="email"
+            placeholder="e-mail"
+            required
+          />
         </label>
         <label>
-          <input class="auth-form__input" type="text" name="password" />
+          <input
+            class="auth-form__input auth-form__input--password js-input__pass"
+            type="password"
+            name="password"
+            min="6"
+            max="6"
+            placeholder="password"
+            required
+          />
         </label>
-        <p class="auth-form__text">
+        <p class="auth-form__text js-conditions" hidden>
           By clicking Registration button, you are indicating that you have read
-          and agree to the Terms of Use and Privacy Policy.
+          and agree to the
+          <a class="auth-form__link" href="">Terms of Use</a> and
+          <a class="auth-form__link" href="">Privacy Policy</a>.
         </p>
-        <button class="auth-form__button">Registration</button>
-        <a class="auth-form__link" href="">Sign with Google</a>
+        <button
+          class="auth-form__button btn-accent js-form__submit"
+          type="submit"
+        >
+          Sign In
+        </button>
       </form>
+      <div class="auth-form__autorization">
+        <p class="auth-form__sign-text">Sign in with Google:</p>
+        <button class="auth-form__button-google js-sign-google">
+          <svg class="google-icon" width="15" height="15">
+            <use href="./images/sprite.svg#google-icon"></use>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </div>
