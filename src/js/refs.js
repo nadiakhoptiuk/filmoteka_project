@@ -19,11 +19,9 @@ const refs = {
   galleryQueueList: document.querySelector('.gallery-queue__list'),
   btnWatched: document.querySelector('.button.watched'),
   btnQueue: document.querySelector('.button.queued'),
-  galleryRef: document.querySelector('.gallery'),
-  btn: document.querySelector('.navbar-item_btn'),
+
   btnContainer: document.querySelector('.btns-container'),
   searchContainer: document.querySelector('.search-form'),
-  navbarLink: document.querySelector('.navbar-item_link'),
 
   buttonWrap: document.querySelector('.button-wrap'),
   buttonPopular: document.querySelector('[data-id="popular"]'),
@@ -33,7 +31,6 @@ const refs = {
   navbarBtn: document.querySelector('.navbar-item_btn'),
   headerEl: document.querySelector('.js-header'),
   btnHome: document.querySelector('.navbar-item_link'),
-  btnMyLibrary: document.querySelector('.navbar-item_btn'),
 
   btnCloseFilm: document.querySelector('.modal-film__btn'),
   modalFilmImg: document.querySelector('.modal-film__img-cont'),

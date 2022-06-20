@@ -7,17 +7,18 @@ const btnQueued = document.querySelector('.queued');
 
 // btns-container
 
-refs.btn.addEventListener('click', togglePages);
+refs.navbarBtn.addEventListener('click', togglePages);
 btnQueued.addEventListener('click', activeBtn);
 btnWatched.addEventListener('click', activeBtn);
 
 export function togglePages(e) {
   openModalAuth();
-  refs.galleryRef.innerHTML = '<div class=warn>ThereIsNoSpoon</div>';
+  refs.galleryWatchedList.innerHTML =
+    '<p class="no-films-in-list">You haven`t added anything yet...</p>';
   refs.btnContainer.classList.remove('visually-hidden');
   refs.searchContainer.classList.add('visually-hidden');
 
-  refs.navbarLink.classList.remove('current');
+  refs.btnHome.classList.remove('current');
   refs.navbarBtn.classList.add('current');
   refs.headerEl.classList.remove('header-container');
   refs.headerEl.classList.add('header-container-my-library');
