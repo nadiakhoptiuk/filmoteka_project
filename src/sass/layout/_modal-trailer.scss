@@ -2,11 +2,11 @@
 // width: 100%;
     &__btn{
      
-        &--left{
+        &--prev{
             
             fill: aqua;
         }
-        &--right{
+        &--next{
             
             stroke: aquamarine;
         }
@@ -16,10 +16,10 @@
     position: fixed;
     top: 10%;
     height: 90vh;
-    &.left{
+    &.prev{
         left:-30px;
     }
-    &.right{
+    &.next{
         right: -30px;
     }
     }
@@ -28,8 +28,4 @@
 #youtube{
     width: 90vw;
     height: 90vh;
-// position: fixed;
-// top: 50%;
-// left: 50%;
-// transform: translate(-50%, -50%);
 }

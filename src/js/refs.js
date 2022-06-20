@@ -29,8 +29,8 @@ const refs = {
   btnFilmTrailer: document.querySelector('.modal-film__to-trailer'),
   modalTrailer: document.querySelector('.modal-trailer'),
   iframeAtr: document.querySelector('#youtube'),
-  btnTrailerLeft: document.querySelector('.trailer__btn.left'),
-  btnTrailerRight: document.querySelector('.trailer__btn.right'),
+  btnTrailerPrev: document.querySelector('.trailer__btn.prev'),
+  btnTrailerNext: document.querySelector('.trailer__btn.next'),
   body: document.body,
 
   addToWatchedBtn: document.querySelector('#add-to-watched'),
