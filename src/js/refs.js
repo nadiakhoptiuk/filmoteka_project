@@ -45,9 +45,9 @@ const refs = {
 
   body: document.body,
 
-  addToWatchedBtn: document.querySelector('#add-to-watched'),
-  addToQueueBtn: document.querySelector('#add-to-queue'),
-
+  addToWatchedBtn: document.querySelector('.modal-film__to-watched'),
+  addToQueueBtn: document.querySelector('.modal-film__to-queue'),
+ 
   searchForm: document.querySelector('#search-form'),
   searchButton: document.querySelector('.search-btn'),
   inputSearch: document.querySelector('.input-box'),
@@ -58,5 +58,4 @@ const refs = {
   closeModalDevBtn: document.querySelector('.close-footer-modal'),
   backdrop: document.querySelector('.backdrop'),
 };
-
 export default refs;
