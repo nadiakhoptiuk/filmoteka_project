@@ -4,7 +4,6 @@ import { loadingSpinnerConfig } from "./pagination";
 import { LoadMoreBtn } from "./loadMoreBtn";
 import { MoviesService } from "./fetch";
 import { markupMoviesGalleryBySearch } from "./markupSearchMovie";
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const loadMoreBtn = new LoadMoreBtn({
   selector: '.load-more',
@@ -26,18 +25,31 @@ const loadMoreBtn = new LoadMoreBtn({
   }
 })
 
+export function onInputSearch(e) {
+  if (e.target.value.trim().length >= 1) {
+      refs.searchButton.removeAttribute('disabled');
+  }
+  if (e.target.value.length === 0) {
+      refs.searchButton.disabled = true;
+    }
+}
+
 export async function onSearchMovieByKeyword(e) {
   e.preventDefault();
   try {
+    refs.formTextErrSearch.classList.add('visually-hidden');
     MoviesService.query = e.target.elements.searchQuery.value.trim();
     MoviesService.page = 1;
     JsLoadingOverlay.show(loadingSpinnerConfig);
     const { results, total_pages } = await MoviesService.getMoviesBySearch();
     refs.buttonWrap.classList.add('visually-hidden');
     refs.paginationWrapper.classList.add('visually-hidden');
+    refs.errorContainer.classList.add('visually-hidden');
 
     if (results.length === 0) {
-      Notify.failure('Sorry, this request did not match.');
+      loadMoreBtn.hide();
+      refs.errorContainer.classList.remove('visually-hidden');
+      refs.formTextErrSearch.classList.remove('visually-hidden');
     }
     refs.galleryList.innerHTML = '';
     markupMoviesGalleryBySearch(results);
@@ -45,7 +57,6 @@ export async function onSearchMovieByKeyword(e) {
     if (total_pages > 1) {
       loadMoreBtn.show();
     }
-    
   } catch (error) {
     console.log(error)
   }

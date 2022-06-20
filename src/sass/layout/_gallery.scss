@@ -42,6 +42,11 @@
     margin-right: 16px;
   }
 
+  &:hover,
+  &:focus{
+    box-shadow: 2px 7px 27px 1px var(--accent-text-color);
+  }
+
   &__img {
     width: 280px;
     height: 398px;
@@ -61,7 +66,6 @@
   }
 
   &__title {
-    font-family: 'Roboto';
     @include font(500, 12px, 1.33, null, uppercase);
     color: var(--gallery-text-color);
     white-space: nowrap;
@@ -174,38 +178,89 @@
   font-size: 14px;
 }
 
-.btn{
+.btn-filter {
   background-color: var(--header-text-color);
   color: var(--accent-text-color);
   border: 1px solid var(--accent-text-color);
-  @include font(500, 16px, 1.33, null, uppercase);
+  transform: scale(1);
+  transition: transform 200ms ease-in-out;
+  margin-right: 0;
+
+  @include font(500, 12px, 1.33, null, uppercase);
   @include media(767px, max-width) {
-  min-width: 80px;
-  height: 20px;
-  @include font(500, 8px, 1.33, null, uppercase);
+    min-width: 60px;
+    height: 15px;
+    @include font(500, 8px, 1.33, null, uppercase);
   }
-  &:not(:last-child){
-    margin-right: -10px;
-  }
+
   &:hover,
-  &:focus{
-    background-color: var(--accent-text-color);  
+  &:focus {
+    transform: scale(1.1);
+    background-color: var(--accent-text-color);
     color: var(--header-text-color);
     border: 1px solid var(--header-text-color);
   }
 }
 
-.button-wrap{
+.btn-list{
+  display: flex;
+}
+
+.btn-list__item{
+  &:not(:last-child){
+    @include media(767px, max-width) {
+      margin-right: 8px;
+    }
+      margin-right: 15px;
+    }
+  }
+
+.button-wrap {
   margin-bottom: 20px;
 }
 
-.btn-accent{
-  background-color: var(--accent-text-color);  
-    color: var(--header-text-color);
+.btn-accent {
+  box-shadow: 0px 8px 43px rgb(255 107 1 / 60%);
+  background-color: var(--accent-text-color);
+  color: var(--header-text-color);
 }
 
-.load-more{
+.load-more {
   margin: auto;
   margin-top: 40px;
   margin-bottom: 0;
+}
+
+.error_container{
+  margin: 0 auto;
+  @include centeredFlex;
+  background-color: var(--bg-color-footer);
+  @include media(767px, max-width) {
+      width: 200px;
+      height: 50px;
+    }
+  @include media(768px, min-width) {
+      width: 350px;
+     height: 75px;
+  } 
+  @include media(1280px, min-width) {
+      width: 500px;
+      height: 100px;
+    }
+}
+
+.error-text{
+  @include centeredFlex;
+  font-family: inherit;
+  font-family: 'Roboto';
+  @include font(500, 14px, 1.14, null, null);
+
+  @include media(768px, min-width) {
+    @include font(500, 20px, 1.14, null, null);
+  } 
+  @include media(1280px, min-width) {
+    @include font(500, 25px, 1.14, null, null);
+    }
+
+  color: var(--error-text-color);
 }

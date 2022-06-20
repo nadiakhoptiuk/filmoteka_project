@@ -1,3 +1,4 @@
+import throttle from 'lodash.throttle';
 import { getTotalPage } from './js/pagination';
 import { pagination, moviePagination } from './js/pagination';
 import { onSearchMovieByKeyword } from './js/searchMovies';
@@ -8,6 +9,7 @@ import { onFilterButtonClick } from './js/filter';
 import { openModalFilm, closeModalFilm } from './js/modal-film';
 import { onAddToWatchedBtnClick, onAddToQueueBtnClick } from './js/user-data';
 import { openModalTrailer, addLink } from './js/modal-trailer';
+import { onInputSearch } from './js/searchMovies';
 import refs from './js/refs';
 //
 refs.form.addEventListener('submit', onFormSubmit);
@@ -24,7 +26,8 @@ refs.btnTrailerNext.addEventListener("click", () => addLink(2));
 
 //
 
-refs.searchForm.addEventListener('submit', onSearchMovieByKeyword);
+refs.searchForm.addEventListener('submit', throttle(onSearchMovieByKeyword, 1000));
+refs.inputSearch.addEventListener('input', onInputSearch);
 
 refs.buttonWrap.addEventListener('click', onFilterButtonClick);
 
