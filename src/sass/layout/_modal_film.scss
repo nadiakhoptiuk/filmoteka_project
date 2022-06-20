@@ -60,6 +60,7 @@ width: 80vw;
         }
       
         @include media(1280px) {
+          min-width: 375px;
           margin-right: 16px;
         }
 }
@@ -127,24 +128,35 @@ width: 80vw;
     line-height: 1.66;
   }
 
-  &__to-watched {
-    margin-right: 20px;
+  // &__to-watched {
+  //   margin-right: 20px;
 
-    @include media(768px) {
-      margin-right: 15px;
-    }
-  }
+  //   @include media(768px) {
+  //     margin-right: 15px;
+  //   }
+  // }
 
   &__to-queue {
     border: 1px solid var(--gallery-text-color);
     color: var(--gallery-text-color);
   }
-
+&__style{
+  width: 100%;
+  @include media(768px) {
+    width: 264px;
+  }
+    @include media(1280px) {
+      width: 387px;
+    }
+}
   &__buttons {
     width: 100%;
     display: flex;
+    
+    
 
     @include media(767px, max-width) {
+      flex-wrap: wrap;
       justify-content: center;
     }
 
@@ -156,10 +168,17 @@ width: 80vw;
 
 .btns {
   width: 110px;
+  margin-bottom: 10px;
   border-radius: 5px;
+  margin-right: 20px;
+  // &:not(:last-child){margin-right: 20px;}
 
   @include media(768px) {
+    margin-bottom: 0px;
     width: 125px;
+    &:not(:last-child) {
+        margin-right: 15px;
+      }
   }
 
   @include media(1280px) {
