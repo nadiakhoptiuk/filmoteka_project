@@ -2,8 +2,7 @@
   margin: 0 auto;
   //padding: 0;
   height: 230px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url('../images/main_bg_img_mobile_1x-min.jpeg');
+  background-image: url('../images/main_bg_img_mobile_1x-min.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
@@ -34,13 +33,15 @@
 
   @include media(768px, min-width) {
     height: 216px;
-    background-image: url('../images/library_bg_img_tablet_1x-min.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/library_bg_img_tablet_1x-min.jpg');
     background-repeat: no-repeat;
     background-size: cover;
   }
 
   @include media(1280px, min-width) {
-    background-image: url('../images/library_bg_img_desktop_1x-min.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/library_bg_img_desktop_1x-min.jpg');
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -48,7 +49,8 @@
 
 .logo {
   display: block;
-  width: 100%;
+  margin-right: auto;
+  // width: 100%;
 }
 
 .logo_header {
@@ -78,7 +80,7 @@
   padding-top: 40px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
 }
 
 .menu-nav-container {
@@ -199,8 +201,11 @@
 }
 
 .search-btn {
-  width: 24px;
-  height: 24px;
+  position: absolute;
+  left: 85%;
+  bottom: -10px;
+  width: 48px;
+  height: 48px;
   border: transparent;
   background-color: transparent;
 }
@@ -225,6 +230,8 @@
   border-radius: 5px;
   min-width: 130px;
   height: 44px;
+  transform: scale(1);
+  transition: transform 200ms ease-in-out;
 
   @include centeredFlex;
   cursor: pointer;
@@ -239,14 +246,20 @@
     min-width: 148px;
     height: 42px;
   }
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 }
 
 .active {
   background-color: var(--accent-text-color);
+  box-shadow: 0px 8px 43px rgb(255 107 1 / 60%);
   border: none;
 }
 
-.form-text{
+.form-text {
   position: absolute;
   top: 30px;
   @include centeredFlex;
@@ -257,5 +270,5 @@
   @include media(767px, max-width) {
     display: block;
     width: 280px;
-    }
+  }
 }
