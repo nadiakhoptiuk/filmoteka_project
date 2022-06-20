@@ -44,7 +44,7 @@ function onAddToQueueBtnClick(evt) {
   if (isUserSignIn(userId) && btnTitle.trim() === 'add to queue') {
     addMovieToQueue(data);
   }
-  
+
   if (isUserSignIn(userId) && btnTitle.trim() === 'remove from queue') {
     removeMovieFromQueue(data);
   }
