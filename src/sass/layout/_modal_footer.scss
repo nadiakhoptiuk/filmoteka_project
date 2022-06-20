@@ -79,7 +79,7 @@
   fill: var(--accent-text-color);
 }
 
-// 
+//
 .card-list {
   display: flex;
   flex-wrap: wrap;
@@ -96,7 +96,6 @@
     // width: calc((100% - 40px) / 2);
   }
   @include media(1280px) {
-    
   }
 }
 .photo-teammate {
@@ -105,17 +104,17 @@
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  object-fit:cover;
-@include media(768px) {
-  max-width: 277px;
-  height: 300px;
-}
-@include media(1280px) {
-  max-width: 120px;
-  height: 120px;
-  margin: auto;
-  border-radius: 50%;
-}
+  object-fit: cover;
+  @include media(768px) {
+    max-width: 277px;
+    height: 300px;
+  }
+  @include media(1280px) {
+    max-width: 120px;
+    height: 120px;
+    margin: auto;
+    border-radius: 50%;
+  }
 }
 .card-info__title {
   text-align: center;
