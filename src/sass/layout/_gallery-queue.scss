@@ -1,12 +1,4 @@
-.no-films-in-list {
-  display: block;
-  max-width: 500px;
-  margin: 0 auto;
-  color: var(--accent-text-color);
-  font-size: 50px;
-}
-
-.gallery-watched__list {
+.gallery-queue__list {
   @include media(768px, min-width) {
     display: flex;
     flex-wrap: wrap;

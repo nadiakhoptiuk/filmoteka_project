@@ -12,9 +12,14 @@ import {
 export function onMyLibraryButton() {
   if (userAuthId === null) {
     openModalAuth();
+  } else {
+    getWatchedFilms(userAuthId);
   }
-  togglePages();
+  if (userAuthId !== null) {
+    getWatchedFilms(userAuthId);
+  }
   changeHeaderBtnStyles(refs.myLibraryBtn, refs.btnHome);
+  togglePages();
 }
 
 // Функция обработчик клика Watched

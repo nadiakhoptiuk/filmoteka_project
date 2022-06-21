@@ -9,10 +9,15 @@ export let userAuthId = 'null';
 //  Функция забирает Watched фильмы из стораджа
 export function getWatchedFilms(userKey) {
   console.log('RENDER WATCHED');
-  const getWathed = ref(db, `${userKey}` + '/watched');
+  const getWatched = ref(db, `${userKey}` + '/watched');
 
-  onValue(getWathed, snapshot => {
+  onValue(getWatched, snapshot => {
     const data = snapshot.val();
+    if (data === null) {
+      refs.galleryWatchedList.innerHTML =
+        '<p class="no-films-in-list">You haven`t added anything yet...</p>';
+      return;
+    }
     const watchedFilms = Object.values(data);
     console.log(watchedFilms);
     renderWatchedGallery(watchedFilms, 'watched');
@@ -25,6 +30,11 @@ export function getQueueFilms(userKey) {
   const getQueue = ref(db, `${userKey}` + '/queue');
   onValue(getQueue, snapshot => {
     const data = snapshot.val();
+    if (data === null) {
+      refs.galleryWatchedList.innerHTML =
+        '<p class="no-films-in-list">You haven`t added anything yet...</p>';
+      return;
+    }
     const queuedFilms = Object.values(data);
     console.log(queuedFilms);
     renderWatchedGallery(queuedFilms, 'queue');
