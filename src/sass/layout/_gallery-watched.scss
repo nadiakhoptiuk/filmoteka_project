@@ -1,9 +1,14 @@
 .no-films-in-list {
-  display: block;
-  max-width: 500px;
   margin: 0 auto;
-  color: var(--accent-text-color);
-  font-size: 50px;
+  @include centeredFlex;
+  font-family: inherit;
+  @include font(400, 30px, 1.14, null, null);
+  color: var(--category-text-color);
+
+  @include media(767px, max-width) {
+    display: block;
+    width: 280px;
+  }
 }
 
 .gallery-watched__list {

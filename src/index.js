@@ -7,14 +7,13 @@ import {
   scrollToTopButton,
 } from './js/pagination';
 import { onSearchMovieByKeyword } from './js/searchMovies';
-import { closeModalAuth } from './js/modal-auth';
+import { closeModalAuth, onCloseBtnModalAuth } from './js/modal-auth';
 import { onFormSubmit, updateForm } from './js/authForm';
 import { userSignInWithGoogle } from './js/service/service_fb';
 import { onFilterButtonClick } from './js/filter';
 import { openModalFilm } from './js/modal-film';
 import { onModalOpen, onClickBackdrop } from './js/modal-close';
 import { onAddToWatchedBtnClick, onAddToQueueBtnClick } from './js/user-data';
-
 import {
   onMyLibraryButton,
   onBtnQueue,
@@ -39,6 +38,18 @@ refs.btnHome.addEventListener('click', onBtnHome);
 
 refs.btnQueue.addEventListener('click', onBtnQueue);
 refs.btnWatched.addEventListener('click', onBtnWatched);
+
+refs.form.addEventListener('submit', onFormSubmit);
+refs.formSwitchBtn.addEventListener('click', updateForm);
+refs.modalAuthEl.addEventListener('click', onCloseBtnModalAuth);
+refs.formSignInWithGoogle.addEventListener('click', userSignInWithGoogle);
+refs.galleryList.addEventListener('click', openModalFilm);
+refs.btnCloseFilm.addEventListener('click', closeModalFilm);
+refs.addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
+refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
+refs.btnFilmTrailer.addEventListener('click', openModalTrailer);
+refs.btnTrailerPrev.addEventListener('click', () => addLink());
+refs.btnTrailerNext.addEventListener('click', () => addLink(2));
 
 refs.modalDevBtn.addEventListener('click', onModalOpen);
 

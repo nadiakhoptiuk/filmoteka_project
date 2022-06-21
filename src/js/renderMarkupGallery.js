@@ -30,6 +30,7 @@ export async function markupMoviesGallery(arr) {
       })
       .join('');
 
+    refs.galleryWatchedList.innerHTML = '';
     refs.galleryList.innerHTML = markup;
   } catch (error) {
     Notify.failure(error.message);
