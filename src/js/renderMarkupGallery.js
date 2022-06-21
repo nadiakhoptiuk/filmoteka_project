@@ -11,11 +11,26 @@ export async function markupMoviesGallery(arr) {
       .map(item => {
         return `<li class="card">
         <a href="#" data-id="${item.id}">
-          <img
-            class="card__img" loading="lazy"
-            src="https://image.tmdb.org/t/p/w500/${item.poster_path}"
-            alt="${item.title}"
-          />
+        <picture>
+        <source
+          srcset="https://image.tmdb.org/t/p/w780/${item.poster_path}"
+          media="(min-width: 1280px)"
+        />
+        <source
+          media="(min-width: 768px)"
+          srcset="https://image.tmdb.org/t/p/w500/${item.poster_path}"
+        />
+        <source
+          media="(min-width: 320px)"
+          srcset="https://image.tmdb.org/t/p/w342/${item.poster_path}"
+        />
+        <img
+          srcset="https://image.tmdb.org/t/p/w342/${item.poster_path}"
+          src="https://image.tmdb.org/t/p/w342/${item.poster_path}"
+          alt="${item.title}"
+          class="card__img" loading="lazy"
+        />
+      </picture>
           <h2 class="card__title">${item.title}</h2>
           <p class="card__description" data-id="${item.id}">
             <span class="card__genre tooltip">${

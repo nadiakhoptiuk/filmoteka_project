@@ -10,6 +10,7 @@ import {
 
 // Функция обработчик клика My Library
 export function onMyLibraryButton() {
+  refs.formTextErrSearch.classList.add('visually-hidden');
   if (!userAuthId) {
     openModalAuth();
   } else {
