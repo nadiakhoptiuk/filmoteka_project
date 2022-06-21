@@ -6,7 +6,7 @@ import {
   scrollTo,
   scrollToTopButton,
 } from './js/pagination';
-import { onSearchMovieByKeyword } from './js/searchMovies';
+import { onSearchMovieByKeyword, onInputSearch } from './js/searchMovies';
 import { closeModalAuth, onCloseBtnModalAuth } from './js/modal-auth';
 import { onFormSubmit, updateForm } from './js/authForm';
 import { userSignInWithGoogle } from './js/service/service_fb';
@@ -49,6 +49,7 @@ refs.modalDevBtn.addEventListener('click', onModalOpen);
 refs.closeModalDevBtn.addEventListener('click', onModalOpen);
 refs.backdrop.addEventListener('click', onClickBackdrop);
 
+refs.inputSearch.addEventListener('input', onInputSearch);
 refs.searchForm.addEventListener(
   'submit',
   throttle(onSearchMovieByKeyword, 1000)

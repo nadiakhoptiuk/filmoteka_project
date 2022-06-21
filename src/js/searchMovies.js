@@ -25,6 +25,15 @@ const loadMoreBtn = new LoadMoreBtn({
   }
 })
 
+export function onInputSearch(e) {
+  if (e.target.value.trim().length >= 1) {
+      refs.searchButton.removeAttribute('disabled');
+  }
+  if (e.target.value.trim().length === 0) {
+      refs.searchButton.disabled = true;
+    }
+}
+
 export async function onSearchMovieByKeyword(e) {
   e.preventDefault();
   try {
