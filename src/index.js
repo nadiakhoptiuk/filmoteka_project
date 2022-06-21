@@ -1,7 +1,7 @@
 import throttle from 'lodash.throttle';
 import { pagination, moviePagination, getTotalPage } from './js/pagination';
 import { onSearchMovieByKeyword } from './js/searchMovies';
-import { closeModalAuth } from './js/modal-auth';
+import { closeModalAuth, onCloseBtnModalAuth } from './js/modal-auth';
 import { onFormSubmit, updateForm } from './js/authForm';
 import { userSignInWithGoogle } from './js/service/service_fb';
 import { onFilterButtonClick } from './js/filter';
@@ -9,8 +9,6 @@ import { openModalFilm, closeModalFilm } from './js/modal-film';
 import { onAddToWatchedBtnClick, onAddToQueueBtnClick } from './js/user-data';
 import { openModalTrailer, addLink } from './js/modal-trailer';
 import { onModalOpen, onClickBackdrop } from './js/modal-close';
-import { togglePages, colorSwitch } from './js/my-library';
-import { getWatchedFilms, getQueueFilm } from './js/render-gallery-my-library';
 import {
   onMyLibraryButton,
   onBtnQueue,
@@ -42,7 +40,7 @@ refs.btnTrailerNext.addEventListener('click', () => addLink(2));
 //
 refs.form.addEventListener('submit', onFormSubmit);
 refs.formSwitchBtn.addEventListener('click', updateForm);
-refs.modalAuthEl.addEventListener('click', closeModalAuth);
+refs.modalAuthEl.addEventListener('click', onCloseBtnModalAuth);
 refs.formSignInWithGoogle.addEventListener('click', userSignInWithGoogle);
 refs.galleryList.addEventListener('click', openModalFilm);
 refs.btnCloseFilm.addEventListener('click', closeModalFilm);

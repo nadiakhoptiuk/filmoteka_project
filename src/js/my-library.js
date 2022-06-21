@@ -46,7 +46,7 @@ export function onBtnHome() {
 export function togglePages() {
   refs.galleryHome.innerHTML = '';
   refs.galleryWatchedList.innerHTML =
-    '<p class="no-films-in-list">You haven`t added anything yet...</p>';
+    '<p class="no-films-in-list">You haven`t added anything yet... &#128546</p>';
   refs.btnContainer.classList.remove('visually-hidden');
   refs.searchContainer.classList.add('visually-hidden');
 
