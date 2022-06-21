@@ -12,7 +12,7 @@ export function createModalFilm(ev) {
     popularity,
     allGenres,
   } = object;
-  const htmlImg = `<img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="poster ${title}" class="modal-film__img">`;
+  const htmlImg = `<img src="https://image.tmdb.org/t/p/w500${poster_path === null ? '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg' : poster_path}" alt="poster ${title}" class="modal-film__img">`;
   const htmlPoint = `
             <h2 class="modal-film__name">${title}</h2>
             <div class="modal-film__rating">

@@ -2,6 +2,7 @@ import 'js-loading-overlay';
 import { loadingSpinnerConfig } from '../settings/spinner-config';
 import { LoadMoreBtn } from "./load-more-btn-constructor";
 import { MoviesService } from '../service/service-fetch';
+import { markupMoviesGalleryBySearch } from '../templates/markup-search-movie';
 
 export const loadMoreBtn = new LoadMoreBtn({
   selector: '.load-more',
