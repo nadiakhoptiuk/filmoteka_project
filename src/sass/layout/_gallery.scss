@@ -53,17 +53,15 @@
 
   &__img {
     width: 280px;
-    height: 398px;
+    height: auto;
     border-radius: 5px;
 
     @include media(768px, min-width) {
       width: 336px;
-      height: 455px;
     }
 
     @include media(1280px, min-width) {
       width: 394px;
-      height: 574px;
     }
   }
 

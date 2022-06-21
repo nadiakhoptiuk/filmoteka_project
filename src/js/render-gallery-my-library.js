@@ -51,7 +51,7 @@ async function renderWatchedGallery(data, nameGallery) {
         <a href="#" data-id="${item.movie.id}">
           <img
             class="card__img" loading="lazy"
-            src="https://image.tmdb.org/t/p/original/${item.movie.poster_path}"
+            src="https://image.tmdb.org/t/p/w500/${item.movie.poster_path}"
             alt="${item.movie.title}"
           />
           <h2 class="card__title">${item.movie.title}</h2>
