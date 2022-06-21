@@ -29,13 +29,15 @@
 }
 .modal-wrapper {
   position: sticky;
-  padding-top: 5px;
+  padding:10px;
+
   top: 0%;
   background-color: var(--header-text-color);
   @include media(1280px) {
     display: flex;
     align-items: center;
     justify-content: center;
+    
   }
 }
 .modal-logo {
