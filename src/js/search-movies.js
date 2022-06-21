@@ -1,6 +1,7 @@
 import 'js-loading-overlay';
 import { loadingSpinnerConfig } from './pagination/pagination';
-import { LoadMoreBtn } from './pagination/load-more-btn';
+import { loadMoreBtn } from './refs/refs';
+import { loadMoreBtn } from './pagination/load-more-btn';
 import { MoviesService } from './service/service-fetch';
 import { markupMoviesGalleryBySearch } from './templates/markup-search-movie';
 import {
@@ -12,25 +13,6 @@ import {
   galleryList,
 } from './refs/refs';
 
-const loadMoreBtn = new LoadMoreBtn({
-  selector: '.load-more',
-  className: 'visually-hidden',
-  isHide: true,
-  callback: async e => {
-    try {
-      JsLoadingOverlay.show(loadingSpinnerConfig);
-      MoviesService.page += 1;
-      const { results, total_pages } = await MoviesService.getMoviesBySearch();
-      if (MoviesService.page === total_pages || results.length === 0) {
-        loadMoreBtn.hide();
-      }
-      markupMoviesGalleryBySearch(results);
-      JsLoadingOverlay.hide();
-    } catch (error) {
-      console.log(error);
-    }
-  },
-});
 
 export function onInputSearch(e) {
   if (e.target.value.trim().length >= 1) {
@@ -61,6 +43,7 @@ export async function onSearchMovieByKeyword(e) {
     galleryList.innerHTML = '';
     markupMoviesGalleryBySearch(results);
     JsLoadingOverlay.hide();
+    
     if (total_pages > 1) {
       loadMoreBtn.show();
     }

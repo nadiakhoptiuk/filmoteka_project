@@ -13,20 +13,20 @@ export async function markupMoviesGallery(arr) {
         
         <picture>
         <source
-          srcset="https://image.tmdb.org/t/p/w780/${item.poster_path}"
+          srcset="https://image.tmdb.org/t/p/w780/${item.poster_path === null ? '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg' : item.poster_path}"
           media="(min-width: 1280px)"
         />
         <source
           media="(min-width: 768px)"
-          srcset="https://image.tmdb.org/t/p/w500/${item.poster_path}"
+          srcset="https://image.tmdb.org/t/p/w500/${item.poster_path === null ? '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg' : item.poster_path}"
         />
         <source
           media="(min-width: 320px)"
-          srcset="https://image.tmdb.org/t/p/w342/${item.poster_path}"
+          srcset="https://image.tmdb.org/t/p/w342/${item.poster_path === null ? '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg' : item.poster_path}"
         />
         <img
-          srcset="https://image.tmdb.org/t/p/w342/${item.poster_path}"
-          src="https://image.tmdb.org/t/p/w342/${item.poster_path}"
+          srcset="https://image.tmdb.org/t/p/w342/${item.poster_path === null ? '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg' : item.poster_path}"
+          src="https://image.tmdb.org/t/p/w342/${item.poster_path === null ? '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg' : item.poster_path}"
           alt="${item.title}"
           class="card__img" loading="lazy"
         />
@@ -51,6 +51,6 @@ export async function markupMoviesGallery(arr) {
     galleryWatchedList.innerHTML = '';
     galleryList.innerHTML = markup;
   } catch (error) {
-    Notify.failure(error.message);
+    Notify.failure('Something went wrong &#128543;');
   }
 }

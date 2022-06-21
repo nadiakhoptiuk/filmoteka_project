@@ -1,29 +1,13 @@
 import axios from 'axios';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import 'tui-pagination/dist/tui-pagination.min.css';
-
-const API_KEY = 'e7e97d56d25ec1e4b049a81d5db4fb3b';
-
-axios.defaults.baseURL = 'https://api.themoviedb.org/3';
-
-function getFilteredMovies(arr, genres) {
-  return arr.map(result => {
-    const arrayOfGenresName = result.genre_ids.map(
-      id => genres.find(genre => genre.id === id).name
-    );
-    return {
-      ...result,
-      allGenres: arrayOfGenresName.join(', '),
-      previewGenres: `${arrayOfGenresName.slice(0, 2).join(', ')}${
-        arrayOfGenresName.length > 2 ? `, ...` : ''
-      }`,
-    };
-  });
-}
+import { getFilteredMovies } from '../utils/fetch-utils';
+import { API_KEY, BASE_URL } from '../constants';
 
 export async function getGenres() {
   try {
     const response = await axios.get(
-      `genre/movie/list?api_key=${API_KEY}&language=en-US`
+      `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
     );
     return response.data.genres;
   } catch (error) {
@@ -39,7 +23,24 @@ export const MoviesService = {
   async getMovies() {
     try {
       const response = await axios.get(
-        `/movie/${this.param}?api_key=${API_KEY}&page=${this.page}`
+        `${BASE_URL}/movie/${this.param}?api_key=${API_KEY}&page=${this.page}`
+      );
+      const genres = await getGenres();
+      let { results, total_pages } = response.data;
+
+      results = getFilteredMovies(results, genres);
+      copy = JSON.stringify({ results });
+      console.log(results.poster_path)
+      return { results, total_pages };
+    } catch (error) {
+      Notify.failure('Something went wrong &#128543;');
+    }
+  },
+
+  async getMoviesBySearch() {
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/search/movie?api_key=${API_KEY}&page=${this.page}&query=${this._query}&include_adult=false`
       );
       const genres = await getGenres();
       let { results, total_pages } = response.data;
@@ -48,7 +49,7 @@ export const MoviesService = {
       copy = JSON.stringify({ results });
       return { results, total_pages };
     } catch (error) {
-      console.log(error.message);
+      Notify.failure('Something went wrong &#128543;');
     }
   },
 
@@ -68,22 +69,6 @@ export const MoviesService = {
     this._param = newParam;
   },
 
-  async getMoviesBySearch() {
-    try {
-      const response = await axios.get(
-        `/search/movie?api_key=${API_KEY}&page=${this.page}&query=${this._query}&include_adult=false`
-      );
-      const genres = await getGenres();
-      let { results, total_pages } = response.data;
-
-      results = getFilteredMovies(results, genres);
-      copy = JSON.stringify({ results });
-      return { results, total_pages };
-    } catch (error) {
-      console.log(error.message);
-    }
-  },
-
   get query() {
     return this._query;
   },
@@ -96,10 +81,10 @@ export const MoviesService = {
 export async function getMovieTrailer(idMovie) {
   try {
     const response = await axios.get(
-      `/movie/${idMovie}/videos?api_key=${API_KEY}&language=en-US`
+      `${BASE_URL}/movie/${idMovie}/videos?api_key=${API_KEY}&language=en-US`
     );
     return response;
   } catch (error) {
-    console.log(error.message);
+    Notify.failure('Something went wrong &#128543;');
   }
 }

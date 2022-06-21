@@ -19,7 +19,7 @@ export async function onFilterButtonClick(e) {
   JsLoadingOverlay.show(loadingSpinnerConfig);
 
   const response = await MoviesService.getMovies();
-   galleryList.innerHTML = '';
+  galleryList.innerHTML = '';
 
   let totalPages = response.total_pages;
   if (totalPages > 1000) totalPages = 1000;
@@ -33,10 +33,8 @@ export async function onFilterButtonClick(e) {
   e.target.classList.add('btn-accent');
 
   if (MoviesService.param === 'popular') setButtonAttribute(true, false, false);
-  if (MoviesService.param === 'top_rated')
-    setButtonAttribute(false, true, false);
-  if (MoviesService.param === 'now_playing')
-    setButtonAttribute(false, false, true);
+  if (MoviesService.param === 'top_rated') setButtonAttribute(false, true, false);
+  if (MoviesService.param === 'now_playing') setButtonAttribute(false, false, true);
 }
 
 // Function for removing accent class

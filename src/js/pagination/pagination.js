@@ -3,26 +3,15 @@ import 'tui-pagination/dist/tui-pagination.min.css';
 import 'js-loading-overlay';
 import { MoviesService } from '../service/service-fetch';
 import { markupMoviesGallery } from '../templates/render-markup-gallery';
+import { loadingSpinnerConfig } from '../settings/spinner-config';
+import { scrollTo } from './scroll-to-top-btn';
 import {
   buttonWrap,
   paginationWrapper,
   buttonPopular,
   galleryList,
   paginationRef,
-  backToTopBtn,
 } from '../refs/refs';
-
-// configs for spinner loader
-export const loadingSpinnerConfig = {
-  overlayBackgroundColor: '#666666',
-  overlayOpacity: 0.2,
-  spinnerIcon: 'ball-grid-pulse',
-  spinnerColor: '#ff6b08',
-  spinnerSize: '3x',
-  offsetY: 0,
-  overlayZIndex: 10,
-  spinnerZIndex: 20,
-};
 
 // Function for getting quantity of pages and render markup for home page('Popular')
 export async function getTotalPage() {
@@ -65,18 +54,5 @@ export async function moviePagination(e) {
     scrollTo();
   } catch (error) {
     console.log(error.message);
-  }
-}
-
-// Function for scroll to top(gallery) after move
-export function scrollTo() {
-  window.scrollTo({ top: 20, behavior: 'smooth' });
-}
-
-export function scrollToTopButton() {
-  if (window.scrollY > 600) {
-    backToTopBtn.classList.remove('visually-hidden');
-  } else {
-    backToTopBtn.classList.add('visually-hidden');
   }
 }
