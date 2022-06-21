@@ -1,4 +1,11 @@
+body {
+  min-height: 100vh;
+}
 .page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
   font-family: Roboto, sans-serif;
   color: var(--gallery-text-color);
   font-size: 12px;
