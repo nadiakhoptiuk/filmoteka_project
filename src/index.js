@@ -30,7 +30,6 @@ refs.modalAuthEl.addEventListener('click', closeModalAuth);
 refs.formSignInWithGoogle.addEventListener('click', userSignInWithGoogle);
 refs.galleryList.addEventListener('click', openModalFilm);
 
-// refs.btnCloseFilm.addEventListener('click', closeModalFilm);
 refs.addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
 refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
 
