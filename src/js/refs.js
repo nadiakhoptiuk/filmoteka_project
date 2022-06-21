@@ -20,6 +20,7 @@ const refs = {
   galleryQueueList: document.querySelector('.gallery-queue__list'),
   btnWatched: document.querySelector('.button.watched'),
   btnQueue: document.querySelector('.button.queued'),
+  galleryHome: document.querySelector('.gallery'),
 
   btnContainer: document.querySelector('.btns-container'),
   searchContainer: document.querySelector('.search-form'),
@@ -29,7 +30,7 @@ const refs = {
   buttonTopRated: document.querySelector('[data-id="top_rated"]'),
   buttonNowPlaying: document.querySelector('[data-id="now_playing"]'),
   paginationWrapper: document.querySelector('.pagination-wrapper'),
-  navbarBtn: document.querySelector('.navbar-item_btn'),
+  myLibraryBtn: document.querySelector('.navbar-item_btn'),
   headerEl: document.querySelector('.js-header'),
   btnHome: document.querySelector('.navbar-item_link'),
 
@@ -42,6 +43,8 @@ const refs = {
   iframeAtr: document.querySelector('#youtube'),
   btnTrailerPrev: document.querySelector('.trailer__btn.prev'),
   btnTrailerNext: document.querySelector('.trailer__btn.next'),
+   trailerInformationLength: document.querySelector('.modal-trailer__information'),
+  trailerInformationPage: document.querySelector('.modal-trailer__information2'),
 
   body: document.body,
 

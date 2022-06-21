@@ -2,10 +2,10 @@ import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import { copy } from './fetch';
 import refs from './refs';
-import { openModalTrailer, addLink } from './modal-trailer';
+import { openModalTrailer,} from './modal-trailer';
 import { createModalFilm } from './created-modal-film';
 import { getMovieData, onAddToWatchedBtnClick, onAddToQueueBtnClick } from './user-data';
-import { watchedFilmsData,queuedFilmsData } from './render-gallery-my-library';
+import { watchedFilms,queuedFilms } from './render-gallery-my-library';
 export let openedFilmId = null;
 const modal = basicLightbox.create(document.querySelector('#html'), {
   onClose: () => {
@@ -14,13 +14,18 @@ const modal = basicLightbox.create(document.querySelector('#html'), {
     refs.addToQueueBtn.removeEventListener('click', onAddToQueueBtnClick);
     refs.btnCloseFilm.removeEventListener('click', closeModalFilm);
     refs.btnFilmTrailer.removeEventListener('click', openModalTrailer);
+    window.removeEventListener('keydown', closeModalFilmKey);
      },
   onShow: () => {
     refs.btnCloseFilm.addEventListener('click', closeModalFilm);
     refs.addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
     refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
-    refs.btnFilmTrailer.addEventListener('click', openModalTrailer);
-   
+    // refs.btnFilmTrailer.addEventListener('click', openModalTrailer);
+   refs.btnFilmTrailer.addEventListener('click', () => {
+      openModalTrailer();
+      window.removeEventListener('keydown', closeModalFilmKey);
+    });
+    window.addEventListener('keydown', closeModalFilmKey);
     refs.body.classList.add('modal-film-is-open');
   },
 });
@@ -46,21 +51,22 @@ async function acceptIdInformation(id) {
   //
   modal.show();
   createModalFilm(filteredFilmById);
-  window.addEventListener('keydown', closeModalFilmKey);
 }
-function closeModalFilmKey(event) {
+export function closeModalFilmKey(event) {
   if (event.code === 'Escape') {
     closeModalFilm();
   }
 }
 export function closeModalFilm() {
   modal.close();
-  window.removeEventListener('keydown', closeModalFilmKey);
+ 
 }
 export function filterFilmByBtn(id) {
-  const filteredFilmBtnByWatch = watchedFilmsData.some(ev => ev.movie.id === id);
-  const filteredFilmBtnByQueue = queuedFilmsData.some(ev => ev.movie.id === id);
-  renameBtnFilm(filteredFilmBtnByWatch, filteredFilmBtnByQueue)
+  if (watchedFilms !== null || queuedFilms !== null) {
+    const filteredFilmBtnByWatch = watchedFilms.some(ev => ev.movie.id === id);
+    const filteredFilmBtnByQueue = queuedFilms.some(ev => ev.movie.id === id);
+    renameBtnFilm(filteredFilmBtnByWatch, filteredFilmBtnByQueue)
+  }
 }
 function renameBtnFilm(watch, queue) {
   queue ? refs.addToQueueBtn.textContent = 'remove from queue' : refs.addToQueueBtn.textContent = 'add to queue';

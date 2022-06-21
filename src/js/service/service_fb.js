@@ -90,6 +90,7 @@ onAuthStateChanged(auth, user => {
   } else {
     console.log(null);
     getUserId(null);
+    getUserAuthId(null);
     // User is signed out
     // ...
   }
