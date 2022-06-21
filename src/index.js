@@ -41,15 +41,13 @@ refs.btnWatched.addEventListener('click', onBtnWatched);
 
 refs.modalDevBtn.addEventListener('click', onModalOpen);
 
+refs.closeModalDevBtn.addEventListener('click', onModalOpen);
+refs.backdrop.addEventListener('click', onClickBackdrop);
+
 refs.searchForm.addEventListener(
   'submit',
   throttle(onSearchMovieByKeyword, 1000)
 );
-
-refs.closeModalDevBtn.addEventListener('click', onModalOpen);
-refs.backdrop.addEventListener('click', onClickBackdrop);
-
-refs.searchForm.addEventListener('submit', onSearchMovieByKeyword);
 refs.buttonWrap.addEventListener('click', onFilterButtonClick);
 
 document.addEventListener('DOMContentLoaded', getTotalPage);
