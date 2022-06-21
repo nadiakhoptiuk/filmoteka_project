@@ -13,6 +13,7 @@ import { userSignInWithGoogle } from './js/service/service_fb';
 import { onFilterButtonClick } from './js/filter';
 import { openModalFilm, closeModalFilm } from './js/modal-film';
 import { onModalOpen, onClickBackdrop } from './js/modal-close';
+import { onAddToWatchedBtnClick, onAddToQueueBtnClick } from './js/user-data';
 
 import {
   onMyLibraryButton,
