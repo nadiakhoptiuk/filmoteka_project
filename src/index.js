@@ -3,9 +3,8 @@ import {
   getTotalPage,
   pagination,
   moviePagination,
-  scrollTo,
-  scrollToTopButton,
 } from './js/pagination/pagination';
+import { scrollTo, scrollToTopButton } from './js/pagination/scroll-to-top-btn';
 import { onSearchMovieByKeyword, onInputSearch } from './js/search-movies';
 import { closeModalAuth, onCloseBtnModalAuth } from './js/modals/modal-auth';
 import { onFormSubmit, updateForm } from './js/modals/auth-form';

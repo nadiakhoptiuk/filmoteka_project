@@ -51,6 +51,6 @@ export async function markupMoviesGallery(arr) {
     galleryWatchedList.innerHTML = '';
     galleryList.innerHTML = markup;
   } catch (error) {
-    Notify.failure(error.message);
+    Notify.failure('Something went wrong &#128543;');
   }
 }

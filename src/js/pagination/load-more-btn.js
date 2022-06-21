@@ -1,25 +1,24 @@
-export class LoadMoreBtn {
-  constructor({ selector, className, isHide = false, callback = () => null }) {
-    this.selector = document.querySelector(selector);
-    this.className = className;
-    this.callback = callback;
+import 'js-loading-overlay';
+import { loadingSpinnerConfig } from '../settings/spinner-config';
+import { LoadMoreBtn } from "./load-more-btn-constructor";
+import { MoviesService } from '../service/service-fetch';
 
-    if (isHide) {
-        this.hide();
+export const loadMoreBtn = new LoadMoreBtn({
+  selector: '.load-more',
+  className: 'visually-hidden',
+  isHide: true,
+  callback: async e => {
+    try {
+      JsLoadingOverlay.show(loadingSpinnerConfig);
+      MoviesService.page += 1;
+      const { results, total_pages } = await MoviesService.getMoviesBySearch();
+      if (MoviesService.page === total_pages || results.length === 0) {
+        loadMoreBtn.hide();
       }
-  
-      this.bindEvent();
+      markupMoviesGalleryBySearch(results);
+      JsLoadingOverlay.hide();
+    } catch (error) {
+      console.log(error);
     }
-
-  hide() {
-    this.selector.classList.add(this.className);
-  }
-
-  show() {
-    this.selector.classList.remove(this.className);
-  }
-
-  bindEvent() {
-    this.selector.addEventListener('click', this.callback);
-  }
-}
+  },
+});

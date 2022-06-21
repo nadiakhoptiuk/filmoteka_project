@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { galleryList } from '../refs/refs';
 
 export async function markupMoviesGalleryBySearch(arr) {
@@ -43,6 +44,6 @@ export async function markupMoviesGalleryBySearch(arr) {
 
     galleryList.insertAdjacentHTML('beforeend', markup);
   } catch (error) {
-    Notify.failure(error.message);
+    Notify.failure('Something went wrong &#128543;');
   }
 }
