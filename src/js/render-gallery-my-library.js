@@ -3,8 +3,8 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 import { db } from './user-data';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import moment from 'moment';
-export let watchedFilmsData = null;
-export let queuedFilmsData = null;
+export let watchedFilms = null;
+export let queuedFilms = null;
 export let userAuthId = 'null';
 
 //  Функция забирает Watched фильмы из стораджа
@@ -19,7 +19,7 @@ export function getWatchedFilms(userKey) {
         '<p class="no-films-in-list">You haven`t added anything yet...</p>';
       return;
     }
-    const watchedFilms = Object.values(data);
+    watchedFilms = Object.values(data);
     console.log(watchedFilms);
     renderWatchedGallery(watchedFilms, 'watched');
   });
@@ -36,7 +36,7 @@ export function getQueueFilms(userKey) {
         '<p class="no-films-in-list">You haven`t added anything yet...</p>';
       return;
     }
-    const queuedFilms = Object.values(data);
+    queuedFilms = Object.values(data);
     console.log(queuedFilms);
     renderWatchedGallery(queuedFilms, 'queue');
   });

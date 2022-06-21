@@ -43,6 +43,8 @@ const refs = {
   iframeAtr: document.querySelector('#youtube'),
   btnTrailerPrev: document.querySelector('.trailer__btn.prev'),
   btnTrailerNext: document.querySelector('.trailer__btn.next'),
+   trailerInformationLength: document.querySelector('.modal-trailer__information'),
+  trailerInformationPage: document.querySelector('.modal-trailer__information2'),
 
   body: document.body,
 

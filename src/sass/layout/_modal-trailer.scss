@@ -1,31 +1,44 @@
-.modal-trailer{
-// width: 100%;
-    &__btn{
-     
-        &--prev{
-            
-            fill: aqua;
-        }
-        &--next{
-            
-            stroke: aquamarine;
+.modal-trailer {
+    &__btn {
+        &--prev,
+        &--next {
+            width: 40px;
+            height: 100px;
+            stroke: var(--accent-text-color);
         }
     }
 }
-.trailer__btn{
-    position: fixed;
-    top: 10%;
-    height: 90vh;
-    &.prev{
-        left:-30px;
-    }
-    &.next{
-        right: -30px;
-    }
-    }
-   
 
-#youtube{
-    width: 90vw;
+.trailer__btn {
+    cursor: pointer;
+    display: block;
+    position: fixed;
+    top: 30%;
+
+    &.prev {
+        left: -90px;
+        padding: 50px 0 50px 50px;
+    }
+
+    &.next {
+        right: -90px;
+        padding: 50px 50px 50px 0;
+
+    }
+}
+
+#youtube {
+    width: 80vw;
     height: 90vh;
+}
+
+.info-conteiner {
+    display: flex;
+    height: 40px;
+    justify-content: center;
+}
+
+.modal-trailer__information,
+.modal-trailer__information2 {
+    color: var(--header-text-color)
 }
