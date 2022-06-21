@@ -43,12 +43,6 @@ refs.formSwitchBtn.addEventListener('click', updateForm);
 refs.modalAuthEl.addEventListener('click', onCloseBtnModalAuth);
 refs.formSignInWithGoogle.addEventListener('click', userSignInWithGoogle);
 refs.galleryList.addEventListener('click', openModalFilm);
-refs.btnCloseFilm.addEventListener('click', closeModalFilm);
-refs.addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
-refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
-refs.btnFilmTrailer.addEventListener('click', openModalTrailer);
-refs.btnTrailerPrev.addEventListener('click', () => addLink());
-refs.btnTrailerNext.addEventListener('click', () => addLink(2));
 
 refs.modalDevBtn.addEventListener('click', onModalOpen);
 

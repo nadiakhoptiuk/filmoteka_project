@@ -20,7 +20,6 @@ const modal = basicLightbox.create(document.querySelector('#html'), {
     refs.btnCloseFilm.addEventListener('click', closeModalFilm);
     refs.addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
     refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
-    // refs.btnFilmTrailer.addEventListener('click', openModalTrailer);
    refs.btnFilmTrailer.addEventListener('click', () => {
       openModalTrailer();
       window.removeEventListener('keydown', closeModalFilmKey);
