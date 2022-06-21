@@ -1,16 +1,20 @@
-import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, update, set } from 'firebase/database';
-import Notiflix from 'notiflix';
 import { filterFilmByBtn, openedFilmId } from '../modals/modal-film';
-
-import { firebaseConfig } from '../settings/fb-config';
+import {
+  addMovieToWatched,
+  removeMovieFromWatched,
+  removeMovieFromQueue,
+  removeMovieFromQueue,
+} from './db-manipulations';
 import { openModalAuth } from '../modals/modal-auth';
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase();
+import { userIsNotSignInYet } from './sign-in';
 
 let userId = null;
 let chosenMovie = null;
+const removeW = 'remove from watched';
+const addW = 'add to watched';
+const removeQ = 'remove from queue';
+const addQ = 'add to queue';
+const moveW = 'move to watched';
 
 function getUserId(id) {
   userId = id;
@@ -29,11 +33,11 @@ function onAddToWatchedBtnClick(evt) {
     return;
   }
 
-  if (btnTitle.trim() === 'add to watched') {
+  if (btnTitle.trim() === addW) {
     addMovieToWatched(dataObj);
-  } else if (btnTitle.trim() === 'remove from watched') {
+  } else if (btnTitle.trim() === removeW) {
     removeMovieFromWatched(dataObj);
-  } else if (btnTitle.trim() === 'move to watched') {
+  } else if (btnTitle.trim() === moveW) {
     removeMovieFromQueue(dataObj);
     addMovieToWatched(dataObj);
   }
@@ -48,9 +52,9 @@ function onAddToQueueBtnClick(evt) {
     return;
   }
 
-  if (btnTitle.trim() === 'add to queue') {
+  if (btnTitle.trim() === addQ) {
     addMovieToQueue(data);
-  } else if (btnTitle.trim() === 'remove from queue') {
+  } else if (btnTitle.trim() === removeQ) {
     removeMovieFromQueue(data);
   }
   filterFilmByBtn(openedFilmId);
@@ -59,7 +63,7 @@ function onAddToQueueBtnClick(evt) {
 function isUserSignIn(userId) {
   if (!userId) {
     openModalAuth();
-    Notiflix.Notify.info('Please sign in to your account or register');
+    userIsNotSignInYet();
 
     return false;
   }
@@ -74,39 +78,10 @@ function createMovieData(movieObj, userId) {
   };
 }
 
-// функція, яка додає у базу даних об'єкт з даними
-function addMovieToWatched(data) {
-  set(ref(db, userId + '/watched/' + data.movie.id), data);
-}
-
-function addMovieToQueue(data) {
-  set(ref(db, userId + '/queue/' + data.movie.id), data);
-}
-
-function removeMovieFromWatched(data) {
-  const folder = 'watched';
-  const movieId = data.movie.id;
-  removeMovieById(folder, movieId);
-}
-
-function removeMovieFromQueue(data) {
-  const folder = 'queue';
-  const movieId = data.movie.id;
-  removeMovieById(folder, movieId);
-}
-
-function removeMovieById(folder, movieId) {
-  const removedMovieData = {};
-  removedMovieData[userId + '/' + folder + '/' + movieId] = null;
-
-  return update(ref(db), removedMovieData);
-}
-
 export {
   getUserId,
   onAddToWatchedBtnClick,
   onAddToQueueBtnClick,
   chosenMovie,
   getMovieData,
-  db,
 };

@@ -6,7 +6,7 @@ import {
 } from './js/pagination/pagination';
 import { scrollTo, scrollToTopButton } from './js/pagination/scroll-to-top-btn';
 import { onSearchMovieByKeyword, onInputSearch } from './js/search-movies';
-import { closeModalAuth, onCloseBtnModalAuth } from './js/modals/modal-auth';
+import { onCloseBtnModalAuth } from './js/modals/modal-auth';
 import { onFormSubmit, updateForm } from './js/modals/auth-form';
 import { userSignInWithGoogle } from './js/service/service-firebase';
 import { onFilterButtonClick } from './js/filter';
