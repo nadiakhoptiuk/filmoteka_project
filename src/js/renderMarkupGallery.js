@@ -23,7 +23,7 @@ export async function markupMoviesGallery(arr) {
             } <span class="tooltiptext">${item.allGenres}</span> | ${moment(
           item.release_date
         ).format('YYYY')}</span>
-            <span class="card__rating">${item.vote_average}</span>
+            <span class="card__rating visually-hidden">${item.vote_average}</span>
           </p>
         </a>
       </li>`;
