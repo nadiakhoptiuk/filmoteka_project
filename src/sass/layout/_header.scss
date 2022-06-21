@@ -48,11 +48,13 @@
 }
 
 .logo {
-  display: block;
+  display: flex;
+  align-items: center;
   margin-right: auto;
 }
 
 .logo_header {
+  display: none;
   color: var(--header-text-color);
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
@@ -61,11 +63,11 @@
   line-height: calc(35 / 30);
 
   @include media(768px) {
-    display: inline;
+    display: block;
   }
 
   @include media(1280px) {
-    display: inline;
+    display: block;
   }
 }
 
