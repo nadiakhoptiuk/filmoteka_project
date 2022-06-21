@@ -10,7 +10,7 @@ import {
 
 // Функция обработчик клика My Library
 export function onMyLibraryButton() {
-  if (userAuthId === null) {
+  if (!userAuthId) {
     openModalAuth();
   } else {
     getWatchedFilms(userAuthId);

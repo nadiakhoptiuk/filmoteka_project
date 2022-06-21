@@ -13,7 +13,7 @@ export function getWatchedFilms(userKey) {
 
   onValue(getWatched, snapshot => {
     const data = snapshot.val();
-    if (data === null) {
+    if (!data) {
       refs.galleryWatchedList.innerHTML =
         '<p class="no-films-in-list">You haven`t added anything yet...</p>';
       return;
@@ -30,7 +30,7 @@ export function getQueueFilms(userKey) {
   const getQueue = ref(db, `${userKey}` + '/queue');
   onValue(getQueue, snapshot => {
     const data = snapshot.val();
-    if (data === null) {
+    if (!data) {
       refs.galleryWatchedList.innerHTML =
         '<p class="no-films-in-list">You haven`t added anything yet...</p>';
       return;
