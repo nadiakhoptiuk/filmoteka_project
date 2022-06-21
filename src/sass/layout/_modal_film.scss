@@ -51,6 +51,7 @@ width: 80vw;
 
   }
 &__img-cont{
+  position: relative;
   width: 100%;
   margin-bottom: 20px;
       @include media(768px) {
@@ -164,7 +165,35 @@ width: 80vw;
       justify-content: flex-start;
     }
   }
-}
+  &__to-trailer{
+    width: 80px;
+    height: 80px;
+    position: fixed;
+    display: block;
+    z-index: 1;
+    top: 190px;
+    left: 35%;
+    @include media(400px) {
+      left: 41%;}
+    @include media(767px) {
+      top: 35%;
+      left: 130px;
+      }
+    
+      @include media(1280px) {
+        top: 40%;
+        left: 200px;
+      }
+  }
+  &__youtube{
+    width: 80px;
+    height: 80px;
+    fill: #FF0000;
+    &:focus,&:hover{
+      fill: #282828;
+    };
+    
+}}
 
 .btns {
   width: 110px;

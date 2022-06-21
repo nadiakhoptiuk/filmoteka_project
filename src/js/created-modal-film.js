@@ -3,7 +3,7 @@ export function createModalFilm(ev) {
     const object = ev[0]
       const { original_title, title, vote_average, vote_count, poster_path, overview, popularity, allGenres
     } = object;
-    const htmlImg= `<img src="https://image.tmdb.org/t/p/original${poster_path}" alt="poster ${title}" class="modal-film__img">`
+    const htmlImg = `<img src="https://image.tmdb.org/t/p/original${poster_path}" alt="poster ${title}" class="modal-film__img">`
     const htmlPoint = `
             <h2 class="modal-film__name">${title}</h2>
             <div class="modal-film__rating">

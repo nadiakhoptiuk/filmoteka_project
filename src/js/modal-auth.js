@@ -9,8 +9,3 @@ export function closeModalAuth() {
   refs.overlayEl.classList.add('is-hidden');
   refs.body.classList.remove('modal-auth-is-open');
 }
-
-import { userId } from './user-data';
-
-openModalAuth();
-

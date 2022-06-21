@@ -1,12 +1,12 @@
 import moment from 'moment';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import refs from './refs';
-import { getWatchedFilms , getQueueFilm } from './render-gallery-my-library';
+import { getWatchedFilms, getQueueFilms } from './render-gallery-my-library';
 
 export async function markupMoviesGallery(arr) {
   try {
     getWatchedFilms();
-    getQueueFilm();
+    getQueueFilms();
     const markup = arr
       .map(item => {
         return `<li class="card">
@@ -23,7 +23,7 @@ export async function markupMoviesGallery(arr) {
             } <span class="tooltiptext">${item.allGenres}</span> | ${moment(
           item.release_date
         ).format('YYYY')}</span>
-            <span class="card__rating">${item.vote_average}</span>
+            <span class="card__rating visually-hidden">${item.vote_average}</span>
           </p>
         </a>
       </li>`;

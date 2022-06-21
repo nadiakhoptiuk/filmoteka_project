@@ -31,3 +31,11 @@
     width: 80vw;
     height: 90vh;
 }
+.info-conteiner{
+    display: flex;
+    height: 40px;
+    justify-content: center;
+}
+.modal-trailer__information, .modal-trailer__information2{
+     color: var(--header-text-color)
+   }

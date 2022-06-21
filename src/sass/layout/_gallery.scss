@@ -25,7 +25,9 @@
 }
 
 .card {
-  padding: 5px;
+  padding: 5px 5px 7px 5px;
+  border-radius: 5px;
+  transition: transform .5s linear;
   &:not(:last-child) {
     @include media(767px, max-width) {
       margin-bottom: 20px;
@@ -46,13 +48,13 @@
   &:hover,
   &:focus{
     box-shadow: 2px 7px 27px 1px var(--accent-text-color);
+    transform: scale(1.01);
   }
 
   &__img {
     width: 280px;
     height: 398px;
     border-radius: 5px;
-    padding-bottom: 8px;
 
     @include media(768px, min-width) {
       width: 336px;
@@ -60,7 +62,6 @@
     }
 
     @include media(1280px, min-width) {
-      padding-bottom: 12px;
       width: 394px;
       height: 574px;
     }
@@ -72,8 +73,11 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding-left: 5px;
+    margin-top: 8px;
 
     @include media(1280px, min-width) {
+      margin-top: 12px;
       font-size: 20px;
       line-height: 1.2;
     }
@@ -85,6 +89,7 @@
     display: flex;
     align-items: center;
     color: var(--accent-text-color);
+    padding-left: 5px;
 
     @include media(1280px, min-width) {
       font-size: 20px;
@@ -272,3 +277,34 @@
   color: var(--error-text-color);
 }
 
+.back-to-top-btn{
+  @include media(767px, max-width) {
+    width: 35px;
+    height: 35px;
+    right: 15px;
+    bottom: 15px;
+  } 
+  width: 45px;
+  height: 45px;
+  border-radius: 40%;
+  border: 1px solid var(--accent-text-color);
+  background-color: var(--header-text-color);
+  color: var(--accent-text-color);
+  box-shadow: 0px 0px 23px -3px rgba(245, 132, 47, 0.67);
+  font-size: 18px;
+  transform: rotate(270deg);
+  transition: background-color .3s linear;
+
+  text-align: center;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 1000;
+
+  &:hover{
+    border: 1px solid var(--header-text-color);
+    background-color: var(--accent-text-color);
+    color: var(--header-text-color);
+    box-shadow: 0px 0px 50px 4px rgba(245, 132, 47, 0.67);
+  }
+}

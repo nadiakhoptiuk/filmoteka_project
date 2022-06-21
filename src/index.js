@@ -5,7 +5,7 @@ import { closeModalAuth } from './js/modal-auth';
 import { onFormSubmit, updateForm } from './js/authForm';
 import { userSignInWithGoogle } from './js/service/service_fb';
 import { onFilterButtonClick } from './js/filter';
-import { openModalFilm, closeModalFilm } from './js/modal-film';
+import { openModalFilm } from './js/modal-film';
 import { onModalOpen, onClickBackdrop } from './js/modal-close';
 import { togglePages, colorSwitch } from './js/my-library';
 import { getWatchedFilms, getQueueFilm } from './js/render-gallery-my-library';
