@@ -17,22 +17,31 @@ function getFilteredMovies(arr, genres) {
 }
 
 export async function getGenres() {
-  const response = await axios.get(`genre/movie/list?api_key=${API_KEY}&language=en-US`);
-  return response.data.genres;
+  try {
+    const response = await axios.get(`genre/movie/list?api_key=${API_KEY}&language=en-US`);
+    return response.data.genres;
+  } catch (error) {
+    console.log(error.message)
+  }
 }
-export let copy=null;
+
+export let copy = null;
 export const MoviesService = {
   _page: 1,
   _param: 'popular',
   _query: '',
   async getMovies() {
+   try {
     const response = await axios.get(`/movie/${this.param}?api_key=${API_KEY}&page=${this.page}`);
     const genres = await getGenres();
     let { results, total_pages } = response.data;
     
-   results = getFilteredMovies(results, genres);
+    results = getFilteredMovies(results, genres);
     copy = JSON.stringify({ results });
-      return { results, total_pages };
+    return { results, total_pages };
+   } catch (error) {
+    console.log(error.message)
+   }
   },
   
     get page() {
@@ -51,14 +60,18 @@ export const MoviesService = {
       this._param = newParam;
   },
     
-    async getMoviesBySearch() {
-    const response = await axios.get(`/search/movie?api_key=${API_KEY}&page=${this.page}&query=${this._query}&include_adult=false`);
-    const genres = await getGenres();
-    let { results, total_pages } = response.data;
+  async getMoviesBySearch() {
+    try {
+      const response = await axios.get(`/search/movie?api_key=${API_KEY}&page=${this.page}&query=${this._query}&include_adult=false`);
+      const genres = await getGenres();
+      let { results, total_pages } = response.data;
 
-    results = getFilteredMovies(results, genres);
+      results = getFilteredMovies(results, genres);
       copy = JSON.stringify({ results });
       return { results, total_pages };
+    } catch (error) {
+      console.log(error.message)
+    }
   },
     
     get query() {
@@ -72,7 +85,11 @@ export const MoviesService = {
   
 
   export async function getMovieTrailer(idMovie) {
-    const response = await axios.get(`/movie/${idMovie}/videos?api_key=${API_KEY}&language=en-US`);
-    return response;
+    try {
+      const response = await axios.get(`/movie/${idMovie}/videos?api_key=${API_KEY}&language=en-US`);
+      return response;
+    } catch (error) {
+      console.log(error.message)
+    }
 }
 

@@ -64,7 +64,7 @@ async function renderWatchedGallery(data, nameGallery) {
         />
         <img
           srcset="https://image.tmdb.org/t/p/w342/${item.poster_path}"
-          src="https://image.tmdb.org/t/p/w42/${item.poster_path}"
+          src="https://image.tmdb.org/t/p/w342/${item.poster_path}"
           alt="${item.title}"
           class="card__img" loading="lazy"
         />
