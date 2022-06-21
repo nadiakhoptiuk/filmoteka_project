@@ -4,7 +4,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 998;
+  z-index: 1001;
 
   background-color: #000c;
   @include media(480px, max-width) {
@@ -20,7 +20,7 @@
   max-width: 360px;
   padding: 60px 30px;
   transform: translate(-50%, -50%);
-  z-index: 999;
+  z-index: 1001;
 
   background-color: var(--header-text-color);
   @include media(768px, min-width) {
