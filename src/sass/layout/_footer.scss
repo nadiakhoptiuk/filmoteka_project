@@ -6,10 +6,16 @@
   color: var(--footer-text-color);
   padding-top: 30px;
   padding-bottom: 30px;
+  // 
+  flex-shrink: 0;
+  // 
   @include media(768px) {
     font-size: 16px;
     line-height: 1.17;
   }
+} 
+.content {
+  flex: 1 0 auto;
 }
 .footer__svg {
   margin-right: 8px;
