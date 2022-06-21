@@ -13,7 +13,7 @@ export async function markupMoviesGallery(arr) {
         <a href="#" data-id="${item.id}">
           <img
             class="card__img" loading="lazy"
-            src="https://image.tmdb.org/t/p/original/${item.poster_path}"
+            src="https://image.tmdb.org/t/p/w500/${item.poster_path}"
             alt="${item.title}"
           />
           <h2 class="card__title">${item.title}</h2>
