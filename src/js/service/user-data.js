@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, update, set } from 'firebase/database';
 import Notiflix from 'notiflix';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { filterFilmByBtn, openedFilmId } from '../modals/modal-film';
 
 import { firebaseConfig } from '../settings/fb-config';

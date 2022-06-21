@@ -41,9 +41,15 @@ function onFormSubmit(evt) {
     userRegistration(email.value, password.value);
     updateForm();
   } else {
-    userSignIn(email.value, password.value);
-    closeModalAuth();
-    getWatchedFilms(userId);
+    userSignIn(email.value, password.value)
+      .then(() => {
+        closeModalAuth();
+        getWatchedFilms(userId);
+      })
+      .catch(error => {
+        errorSignIn();
+        form.reset();
+      });
   }
 }
 

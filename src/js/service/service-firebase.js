@@ -9,8 +9,15 @@ import {
   signOut,
 } from 'firebase/auth';
 import { firebaseConfig } from '../settings/fb-config';
-import { closeModalAuth } from '../modals/modal-auth';
+import { closeModalAuth, openModalAuth } from '../modals/modal-auth';
 import { getUserId } from '../service/user-data';
+import {
+  signOutBtnShow,
+  signOutBtnHide,
+  errorSignInOrOut,
+  errorSignIn,
+  successSignInWithGoogle,
+} from '../service/sign-in';
 import { getUserAuthId } from '../templates/render-gallery-my-library';
 import { getUserIdAfterSignIn } from '../modals/auth-form';
 import { signOutBtn, signOutWrap } from '../refs/refs';
@@ -36,13 +43,13 @@ function userSignIn(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       // Signed in
-      console.log(user);
-
       const user = userCredential.user;
-      signOutBtn.addEventListener('click', userSignOut);
-      signOutWrap.classList.remove('is-hidden');
+      signOutBtnShow();
+      closeModalAuth();
     })
     .catch(error => {
+      errorSignIn(email);
+      openModalAuth();
       const errorCode = error.code;
       const errorMessage = error.message;
     });
@@ -54,6 +61,7 @@ function userSignInWithGoogle(evt) {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
+      successSignInWithGoogle();
       // The signed-in user info.
       const user = result.user;
       closeModalAuth();
@@ -63,6 +71,7 @@ function userSignInWithGoogle(evt) {
       // ...
     })
     .catch(error => {
+      errorSignInOrOut();
       // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -86,7 +95,6 @@ onAuthStateChanged(auth, user => {
     signOutWrap.classList.remove('is-hidden');
 
     console.log(uid);
-    console.log(user);
 
     // ...
   } else {
@@ -102,13 +110,14 @@ onAuthStateChanged(auth, user => {
 function userSignOut(evt) {
   signOut(auth)
     .then(() => {
-      signOutWrap.classList.add('is-hidden');
-      signOutBtn.removeEventListener('click', userSignOut);
+      console.log('hi');
+      signOutBtnHide();
       // Sign-out successful.
     })
     .catch(error => {
+      errorSignInOrOut();
       // An error happened.
     });
 }
 
-export { userRegistration, userSignIn, userSignInWithGoogle };
+export { userRegistration, userSignIn, userSignInWithGoogle, userSignOut };
