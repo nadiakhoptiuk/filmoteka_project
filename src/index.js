@@ -62,7 +62,6 @@ btnWatched.addEventListener('click', onBtnWatched);
 modalAuthEl.addEventListener('click', onCloseBtnModalAuth);
 
 modalDevBtn.addEventListener('click', onModalOpen);
-
 closeModalDevBtn.addEventListener('click', onModalOpen);
 backdrop.addEventListener('click', onClickBackdrop);
 

@@ -1,4 +1,4 @@
-import { backdrop } from '../refs/refs';
+import { backdrop, closeModalDevBtn} from '../refs/refs';
 
 function onModalOpen() {
   backdrop.classList.toggle('is-hidden');
