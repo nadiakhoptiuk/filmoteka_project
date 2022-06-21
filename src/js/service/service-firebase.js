@@ -8,11 +8,11 @@ import {
   onAuthStateChanged,
   signOut,
 } from 'firebase/auth';
-import { firebaseConfig } from '../settings/fb_config';
-import { closeModalAuth } from '../modal-auth';
-import { getUserId } from '../user-data';
-import refs from '../refs';
-import { getUserAuthId } from '../render-gallery-my-library';
+import { firebaseConfig } from '../settings/fb-config';
+import { closeModalAuth } from '../modals/modal-auth';
+import { getUserId } from '../service/user-data';
+import { getUserAuthId } from '../templates/render-gallery-my-library';
+import { signOutBtn, signOutWrap } from '../refs/refs';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
@@ -38,8 +38,8 @@ function userSignIn(email, password) {
       console.log(user);
 
       const user = userCredential.user;
-      refs.signOutBtn.addEventListener('click', userSignOut);
-      refs.signOutWrap.classList.remove('is-hidden');
+      signOutBtn.addEventListener('click', userSignOut);
+      signOutWrap.classList.remove('is-hidden');
     })
     .catch(error => {
       const errorCode = error.code;
@@ -80,8 +80,8 @@ onAuthStateChanged(auth, user => {
     const uid = user.uid;
     getUserId(uid);
     getUserAuthId(uid);
-    refs.signOutBtn.addEventListener('click', userSignOut);
-    refs.signOutWrap.classList.remove('is-hidden');
+    signOutBtn.addEventListener('click', userSignOut);
+    signOutWrap.classList.remove('is-hidden');
 
     console.log(uid);
     console.log(user);
@@ -99,8 +99,8 @@ onAuthStateChanged(auth, user => {
 function userSignOut(evt) {
   signOut(auth)
     .then(() => {
-      refs.signOutWrap.classList.add('is-hidden');
-      refs.signOutBtn.removeEventListener('click', userSignOut);
+      signOutWrap.classList.add('is-hidden');
+      signOutBtn.removeEventListener('click', userSignOut);
       // Sign-out successful.
     })
     .catch(error => {

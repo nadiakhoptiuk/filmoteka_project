@@ -5,15 +5,18 @@ import {
   moviePagination,
   scrollTo,
   scrollToTopButton,
-} from './js/pagination';
-import { onSearchMovieByKeyword, onInputSearch } from './js/searchMovies';
-import { closeModalAuth, onCloseBtnModalAuth } from './js/modal-auth';
-import { onFormSubmit, updateForm } from './js/authForm';
-import { userSignInWithGoogle } from './js/service/service_fb';
+} from './js/pagination/pagination';
+import { onSearchMovieByKeyword, onInputSearch } from './js/search-movies';
+import { closeModalAuth, onCloseBtnModalAuth } from './js/modals/modal-auth';
+import { onFormSubmit, updateForm } from './js/modals/auth-form';
+import { userSignInWithGoogle } from './js/service/service-firebase';
 import { onFilterButtonClick } from './js/filter';
-import { openModalFilm } from './js/modal-film';
-import { onModalOpen, onClickBackdrop } from './js/modal-close';
-import { onAddToWatchedBtnClick, onAddToQueueBtnClick } from './js/user-data';
+import { openModalFilm } from './js/modals/modal-film';
+import { onModalOpen, onClickBackdrop } from './js/modals/modal-close';
+import {
+  onAddToWatchedBtnClick,
+  onAddToQueueBtnClick,
+} from './js/service/user-data';
 import {
   onMyLibraryButton,
   onBtnQueue,
@@ -21,43 +24,55 @@ import {
   onBtnHome,
 } from './js/my-library';
 
-import refs from './js/refs';
-//
-refs.form.addEventListener('submit', onFormSubmit);
-refs.formSwitchBtn.addEventListener('click', updateForm);
-refs.modalAuthEl.addEventListener('click', closeModalAuth);
-refs.formSignInWithGoogle.addEventListener('click', userSignInWithGoogle);
-refs.galleryList.addEventListener('click', openModalFilm);
+import {
+  form,
+  formSwitchBtn,
+  modalAuthEl,
+  formSignInWithGoogle,
+  galleryList,
+  addToWatchedBtn,
+  addToQueueBtn,
+  myLibraryBtn,
+  btnHome,
+  btnQueue,
+  btnWatched,
+  modalDevBtn,
+  closeModalDevBtn,
+  backdrop,
+  inputSearch,
+  searchForm,
+  buttonWrap,
+  backToTopBtn,
+} from './js/refs/refs';
 
-refs.addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
-refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
+form.addEventListener('submit', onFormSubmit);
+formSwitchBtn.addEventListener('click', updateForm);
 
-refs.myLibraryBtn.addEventListener('click', onMyLibraryButton);
-refs.btnHome.addEventListener('click', onBtnHome);
+formSignInWithGoogle.addEventListener('click', userSignInWithGoogle);
+galleryList.addEventListener('click', openModalFilm);
 
-refs.btnQueue.addEventListener('click', onBtnQueue);
-refs.btnWatched.addEventListener('click', onBtnWatched);
+addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
+addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
 
-refs.form.addEventListener('submit', onFormSubmit);
-refs.formSwitchBtn.addEventListener('click', updateForm);
-refs.modalAuthEl.addEventListener('click', onCloseBtnModalAuth);
-refs.formSignInWithGoogle.addEventListener('click', userSignInWithGoogle);
-refs.galleryList.addEventListener('click', openModalFilm);
+myLibraryBtn.addEventListener('click', onMyLibraryButton);
+btnHome.addEventListener('click', onBtnHome);
 
-refs.modalDevBtn.addEventListener('click', onModalOpen);
+btnQueue.addEventListener('click', onBtnQueue);
+btnWatched.addEventListener('click', onBtnWatched);
 
-refs.closeModalDevBtn.addEventListener('click', onModalOpen);
-refs.backdrop.addEventListener('click', onClickBackdrop);
+modalAuthEl.addEventListener('click', onCloseBtnModalAuth);
 
-refs.inputSearch.addEventListener('input', onInputSearch);
-refs.searchForm.addEventListener(
-  'submit',
-  throttle(onSearchMovieByKeyword, 1000)
-);
-refs.buttonWrap.addEventListener('click', onFilterButtonClick);
+modalDevBtn.addEventListener('click', onModalOpen);
+
+closeModalDevBtn.addEventListener('click', onModalOpen);
+backdrop.addEventListener('click', onClickBackdrop);
+
+inputSearch.addEventListener('input', onInputSearch);
+searchForm.addEventListener('submit', throttle(onSearchMovieByKeyword, 1000));
+buttonWrap.addEventListener('click', onFilterButtonClick);
 
 document.addEventListener('DOMContentLoaded', getTotalPage);
 pagination.on('afterMove', moviePagination);
 
 window.addEventListener('scroll', scrollToTopButton);
-refs.backToTopBtn.addEventListener('click', scrollTo);
+backToTopBtn.addEventListener('click', scrollTo);

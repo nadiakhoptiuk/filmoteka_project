@@ -1,35 +1,45 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
-import { copy } from './fetch';
-import refs from './refs';
+import { copy } from '../service/service-fetch';
 import { openModalTrailer } from './modal-trailer';
-import { createModalFilm } from './created-modal-film';
+import { createModalFilm } from '../templates/created-modal-film';
 import {
   getMovieData,
   onAddToWatchedBtnClick,
   onAddToQueueBtnClick,
-} from './user-data';
-import { watchedFilms, queuedFilms } from './render-gallery-my-library';
+} from '../service/user-data';
+import {
+  watchedFilms,
+  queuedFilms,
+} from '../templates/render-gallery-my-library';
+import {
+  homePage,
+  addToWatchedBtn,
+  addToQueueBtn,
+  btnCloseFilm,
+  btnFilmTrailer,
+} from '../refs/refs';
+
 export let openedFilmId = null;
 const modal = basicLightbox.create(document.querySelector('#html'), {
   onClose: () => {
-    refs.body.classList.remove('modal-film-is-open');
-    refs.addToWatchedBtn.removeEventListener('click', onAddToWatchedBtnClick);
-    refs.addToQueueBtn.removeEventListener('click', onAddToQueueBtnClick);
-    refs.btnCloseFilm.removeEventListener('click', closeModalFilm);
-    refs.btnFilmTrailer.removeEventListener('click', openModalTrailer);
+    homePage.classList.remove('modal-film-is-open');
+    addToWatchedBtn.removeEventListener('click', onAddToWatchedBtnClick);
+    addToQueueBtn.removeEventListener('click', onAddToQueueBtnClick);
+    btnCloseFilm.removeEventListener('click', closeModalFilm);
+    btnFilmTrailer.removeEventListener('click', openModalTrailer);
     window.removeEventListener('keydown', closeModalFilmKey);
   },
   onShow: () => {
-    refs.btnCloseFilm.addEventListener('click', closeModalFilm);
-    refs.addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
-    refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
-    refs.btnFilmTrailer.addEventListener('click', () => {
+    btnCloseFilm.addEventListener('click', closeModalFilm);
+    addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
+    addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
+    btnFilmTrailer.addEventListener('click', () => {
       openModalTrailer();
       window.removeEventListener('keydown', closeModalFilmKey);
     });
     window.addEventListener('keydown', closeModalFilmKey);
-    refs.body.classList.add('modal-film-is-open');
+    homePage.classList.add('modal-film-is-open');
   },
 });
 export function openModalFilm(ev) {
@@ -74,13 +84,13 @@ export function filterFilmByBtn(id) {
 }
 function renameBtnFilm(watch, queue) {
   queue
-    ? (refs.addToQueueBtn.textContent = 'remove from queue')
-    : (refs.addToQueueBtn.textContent = 'add to queue');
+    ? (addToQueueBtn.textContent = 'remove from queue')
+    : (addToQueueBtn.textContent = 'add to queue');
   if (watch) {
-    refs.addToQueueBtn.textContent === 'remove from queue'
-      ? (refs.addToWatchedBtn.textContent = 'move to watched')
-      : (refs.addToWatchedBtn.textContent = 'remove from watched');
+    addToQueueBtn.textContent === 'remove from queue'
+      ? (addToWatchedBtn.textContent = 'move to watched')
+      : (addToWatchedBtn.textContent = 'remove from watched');
   } else {
-    refs.addToWatchedBtn.textContent = 'add to watched';
+    addToWatchedBtn.textContent = 'add to watched';
   }
 }

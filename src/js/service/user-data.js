@@ -1,11 +1,11 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, update, set } from 'firebase/database';
 import Notiflix from 'notiflix';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { filterFilmByBtn, openedFilmId } from './modal-film';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { filterFilmByBtn, openedFilmId } from '../modals/modal-film';
 
-import { firebaseConfig } from './settings/fb_config';
-import { openModalAuth } from './modal-auth';
+import { firebaseConfig } from '../settings/fb-config';
+import { openModalAuth } from '../modals/modal-auth';
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
@@ -23,7 +23,7 @@ function getMovieData(data) {
 }
 
 function onAddToWatchedBtnClick(evt) {
-  const data = createMovieData(chosenMovie, userId);
+  const dataObj = createMovieData(chosenMovie, userId);
   const btnTitle = evt.currentTarget.textContent;
 
   if (!isUserSignIn(userId)) {
@@ -31,12 +31,12 @@ function onAddToWatchedBtnClick(evt) {
   }
 
   if (btnTitle.trim() === 'add to watched') {
-    addMovieToWatched(data);
+    addMovieToWatched(dataObj);
   } else if (btnTitle.trim() === 'remove from watched') {
-    removeMovieFromWatched(data);
+    removeMovieFromWatched(dataObj);
   } else if (btnTitle.trim() === 'move to watched') {
-    removeMovieFromQueue(data);
-    addMovieToWatched(data);
+    removeMovieFromQueue(dataObj);
+    addMovieToWatched(dataObj);
   }
   filterFilmByBtn(openedFilmId);
 }

@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import refs from './refs';
+import { galleryWatchedList, galleryList } from '../refs/refs';
 import { getWatchedFilms, getQueueFilms } from './render-gallery-my-library';
 
 export async function markupMoviesGallery(arr) {
@@ -48,8 +48,8 @@ export async function markupMoviesGallery(arr) {
       })
       .join('');
 
-    refs.galleryWatchedList.innerHTML = '';
-    refs.galleryList.innerHTML = markup;
+    galleryWatchedList.innerHTML = '';
+    galleryList.innerHTML = markup;
   } catch (error) {
     Notify.failure(error.message);
   }

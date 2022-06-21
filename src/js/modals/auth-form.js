@@ -1,6 +1,6 @@
-import refs from './refs';
-import { userRegistration, userSignIn } from './service/service_fb';
+import { userRegistration, userSignIn } from '../service/service-firebase';
 import { closeModalAuth } from './modal-auth';
+import { formSwitchBtn, formSubmitBtn, formTitle, form } from '../refs/refs';
 
 let formType = 'authorization';
 
@@ -15,15 +15,16 @@ function updateForm() {
     conditionsInfo.setAttribute('hidden', '');
   }
 
-  const formTitle = formType === 'authorization' ? 'Sign In' : 'Registration';
+  const formTitleText =
+    formType === 'authorization' ? 'Sign In' : 'Registration';
   const formSwitchBtnText =
     formType === 'authorization' ? 'Registration' : 'Sign In';
   const textSubmit = formType === 'authorization' ? 'Sign In' : 'Register now';
 
-  refs.formSwitchBtn.textContent = formSwitchBtnText;
-  refs.formSubmitBtn.textContent = textSubmit;
-  refs.formTitle.textContent = formTitle;
-  refs.form.reset();
+  formSwitchBtn.textContent = formSwitchBtnText;
+  formSubmitBtn.textContent = textSubmit;
+  formTitle.textContent = formTitleText;
+  form.reset();
 }
 
 function onFormSubmit(evt) {

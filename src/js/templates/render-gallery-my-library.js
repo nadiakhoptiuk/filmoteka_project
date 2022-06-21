@@ -1,8 +1,15 @@
-import refs from './refs';
-import { getDatabase, ref, onValue } from 'firebase/database';
-import { db } from './user-data';
+import { ref, onValue } from 'firebase/database';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import moment from 'moment';
+import { db } from '../service/user-data';
+import {
+  galleryHome,
+  galleryWatchedList,
+  galleryQueue,
+  galleryWatched,
+  galleryQueueList,
+} from '../refs/refs';
+
 export let watchedFilms = null;
 export let queuedFilms = null;
 export let userAuthId = 'null';
@@ -15,7 +22,7 @@ export function getWatchedFilms(userKey) {
   onValue(getWatched, snapshot => {
     const data = snapshot.val();
     if (!data) {
-      refs.galleryWatchedList.innerHTML =
+       galleryWatchedList.innerHTML =
         '<p class="no-films-in-list">You haven`t added anything yet...</p>';
       return;
     }
@@ -32,7 +39,7 @@ export function getQueueFilms(userKey) {
   onValue(getQueue, snapshot => {
     const data = snapshot.val();
     if (!data) {
-      refs.galleryWatchedList.innerHTML =
+       galleryWatchedList.innerHTML =
         '<p class="no-films-in-list">You haven`t added anything yet...</p>';
       return;
     }
@@ -48,7 +55,6 @@ async function renderWatchedGallery(data, nameGallery) {
     const markup = data
       .map(item => {
         return `<li class="card">
-        <a href="#" data-id="${item.movie.id}">
           <picture>
         <source
           srcset="https://image.tmdb.org/t/p/w780/${item.movie.poster_path}"
@@ -69,7 +75,9 @@ async function renderWatchedGallery(data, nameGallery) {
           class="card__img" loading="lazy"
         />
       </picture>
+      <a href="#" data-id="${item.movie.id}" class="card-link">
           <h2 class="card__title">${item.movie.title}</h2>
+          </a>
           <p class="card__description" data-id="${item.movie.id}">
             <span class="card__genre tooltip">${
               item.movie.previewGenres
@@ -78,20 +86,26 @@ async function renderWatchedGallery(data, nameGallery) {
         }</span> | ${moment(item.movie.release_date).format('YYYY')}</span>
             <span class="card__rating">${item.movie.vote_average}</span>
           </p>
-        </a>
       </li>`;
       })
       .join('');
 
     if (nameGallery === 'watched') {
-      refs.galleryQueueList.innerHTML = '';
-      refs.galleryWatchedList.innerHTML = '';
-      refs.galleryWatchedList.innerHTML = markup;
+       galleryHome.classList.add('is-hidden');
+       galleryQueue.classList.add('is-hidden');
+       galleryWatched.classList.remove('is-hidden');
+       galleryQueueList.innerHTML = '';
+       galleryWatchedList.innerHTML = '';
+       galleryWatchedList.innerHTML = markup;
     }
+
     if (nameGallery === 'queue') {
-      refs.galleryWatchedList.innerHTML = '';
-      refs.galleryQueueList.innerHTML = '';
-      refs.galleryQueueList.innerHTML = markup;
+       galleryHome.classList.add('is-hidden');
+       galleryWatched.classList.add('is-hidden');
+       galleryQueue.classList.remove('is-hidden');
+       galleryWatchedList.innerHTML = '';
+       galleryQueueList.innerHTML = '';
+       galleryQueueList.innerHTML = markup;
     }
   } catch (error) {
     Notify.failure(error.message);

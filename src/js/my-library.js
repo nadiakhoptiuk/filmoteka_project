@@ -1,16 +1,27 @@
-import refs from './refs';
-import { openModalAuth } from './modal-auth';
+import { openModalAuth } from './modals/modal-auth';
 import {
   changeMyLibraryBtnStyles,
   changeHeaderBtnStyles,
   userAuthId,
   getWatchedFilms,
   getQueueFilms,
-} from './render-gallery-my-library';
+} from './templates/render-gallery-my-library';
+import {
+  formTextErrSearch,
+  myLibraryBtn,
+  btnHome,
+  btnWatched,
+  btnQueue,
+  galleryHome,
+  galleryWatchedList,
+  btnContainer,
+  searchContainer,
+  headerEl,
+} from './refs/refs';
 
 // Функция обработчик клика My Library
 export function onMyLibraryButton() {
-  refs.formTextErrSearch.classList.add('visually-hidden');
+  formTextErrSearch.classList.add('visually-hidden');
   if (!userAuthId) {
     openModalAuth();
   } else {
@@ -19,13 +30,13 @@ export function onMyLibraryButton() {
   if (userAuthId !== null) {
     getWatchedFilms(userAuthId);
   }
-  changeHeaderBtnStyles(refs.myLibraryBtn, refs.btnHome);
+  changeHeaderBtnStyles(myLibraryBtn, btnHome);
   togglePages();
 }
 
 // Функция обработчик клика Watched
 export function onBtnWatched() {
-  changeMyLibraryBtnStyles(refs.btnWatched, refs.btnQueue);
+  changeMyLibraryBtnStyles(btnWatched, btnQueue);
   if (userAuthId !== null) {
     getWatchedFilms(userAuthId);
   }
@@ -33,7 +44,7 @@ export function onBtnWatched() {
 
 // Функция обработчик клика Queue
 export function onBtnQueue() {
-  changeMyLibraryBtnStyles(refs.btnQueue, refs.btnWatched);
+  changeMyLibraryBtnStyles(btnQueue, btnWatched);
   if (userAuthId !== null) {
     getQueueFilms(userAuthId);
   }
@@ -41,18 +52,18 @@ export function onBtnQueue() {
 
 // Функция обработчик клика Home
 export function onBtnHome() {
-  changeHeaderBtnStyles(refs.btnHome, refs.myLibraryBtn);
+  changeHeaderBtnStyles(btnHome, myLibraryBtn);
 }
 
 export function togglePages() {
-  refs.galleryHome.innerHTML = '';
-  refs.galleryWatchedList.innerHTML =
+  galleryHome.innerHTML = '';
+  galleryWatchedList.innerHTML =
     '<p class="no-films-in-list">You haven`t added anything yet... &#128546</p>';
-  refs.btnContainer.classList.remove('visually-hidden');
-  refs.searchContainer.classList.add('visually-hidden');
+  btnContainer.classList.remove('visually-hidden');
+  searchContainer.classList.add('visually-hidden');
 
-  refs.btnHome.classList.remove('current');
-  refs.myLibraryBtn.classList.add('current');
-  refs.headerEl.classList.remove('header-container');
-  refs.headerEl.classList.add('header-container-my-library');
+  btnHome.classList.remove('current');
+  myLibraryBtn.classList.add('current');
+  headerEl.classList.remove('header-container');
+  headerEl.classList.add('header-container-my-library');
 }

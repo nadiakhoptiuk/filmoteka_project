@@ -1,3 +1,11 @@
+.gallery-queue {
+  padding: 60px 0;
+
+  &.is-hidden {
+    display: none;
+  }
+}
+
 .gallery-queue__list {
   @include media(768px, min-width) {
     display: flex;
