@@ -3,6 +3,11 @@ import { closeModalAuth } from './modal-auth';
 import { formSwitchBtn, formSubmitBtn, formTitle, form } from '../refs/refs';
 
 let formType = 'authorization';
+let userId = null;
+
+function getUserIdAfterSignIn(id) {
+  userId = id;
+}
 
 function updateForm() {
   const conditionsInfo = document.querySelector('.js-conditions');
@@ -38,8 +43,8 @@ function onFormSubmit(evt) {
   } else {
     userSignIn(email.value, password.value);
     closeModalAuth();
-    // TODO і відкривається сторінка myLibrary
+    getWatchedFilms(userId);
   }
 }
 
-export { onFormSubmit, updateForm };
+export { onFormSubmit, updateForm, getUserIdAfterSignIn };
