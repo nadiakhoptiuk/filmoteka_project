@@ -1,11 +1,16 @@
+body {
+  min-height: 100vh;
+}
 .page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
   font-family: Roboto, sans-serif;
   color: var(--gallery-text-color);
   font-size: 12px;
   font-weight: 500;
   line-height: 1.33;
-
-  outline: 2px solid var(--accent-text-color);
 
   &.modal-film-is-open,
   &.modal-auth-is-open,

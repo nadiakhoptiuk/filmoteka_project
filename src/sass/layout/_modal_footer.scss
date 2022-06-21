@@ -1,4 +1,4 @@
-.developers.isDevModalHide {
+.developers.is-hidden {
   display: none;
 }
 .developers.modal {
@@ -16,7 +16,7 @@
   overflow-y: scroll;
   @include media(1280px) {
     width: 50%;
-    overflow-y: unset;
+    overflow: auto;
   }
 }
 .backdrop {
@@ -29,16 +29,15 @@
 }
 .modal-wrapper {
   position: sticky;
-  padding-top: 5px;
+  padding:10px;
+
   top: 0%;
   background-color: var(--header-text-color);
-  @include media(1280px) {
-    padding-top: 10px;
-  }
   @include media(1280px) {
     display: flex;
     align-items: center;
     justify-content: center;
+    
   }
 }
 .modal-logo {
@@ -76,17 +75,24 @@
   fill: var(--accent-text-color);
 }
 .card-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: 10px;
+
+  @include media(768px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   @include media(1280px) {
     gap: 0;
   }
 }
 .card-link {
-  width: 230px;
+  width: 235px;
   height: 100%;
+  margin: 0 auto;
+  @include media(768px) {
+    width: 250px;
+  }
   @include media(1280px) {
     width: 200px;
   }
@@ -140,8 +146,8 @@
   width: 28px;
   height: 28px;
   @include media(1280px) {
-    width: 20px;
-    height: 20px;
+    width: 26px;
+    height: 26px;
   }
 }
 .social-svg:hover,

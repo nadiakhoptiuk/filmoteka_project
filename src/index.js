@@ -1,14 +1,19 @@
 import throttle from 'lodash.throttle';
-import { pagination, moviePagination, getTotalPage } from './js/pagination';
+import {
+  getTotalPage,
+  pagination,
+  moviePagination,
+  scrollTo,
+  scrollToTopButton,
+} from './js/pagination';
 import { onSearchMovieByKeyword } from './js/searchMovies';
 import { closeModalAuth, onCloseBtnModalAuth } from './js/modal-auth';
 import { onFormSubmit, updateForm } from './js/authForm';
 import { userSignInWithGoogle } from './js/service/service_fb';
 import { onFilterButtonClick } from './js/filter';
-import { openModalFilm, closeModalFilm } from './js/modal-film';
-import { onAddToWatchedBtnClick, onAddToQueueBtnClick } from './js/user-data';
-import { openModalTrailer, addLink } from './js/modal-trailer';
+import { openModalFilm } from './js/modal-film';
 import { onModalOpen, onClickBackdrop } from './js/modal-close';
+import { onAddToWatchedBtnClick, onAddToQueueBtnClick } from './js/user-data';
 import {
   onMyLibraryButton,
   onBtnQueue,
@@ -23,7 +28,8 @@ refs.formSwitchBtn.addEventListener('click', updateForm);
 refs.modalAuthEl.addEventListener('click', closeModalAuth);
 refs.formSignInWithGoogle.addEventListener('click', userSignInWithGoogle);
 refs.galleryList.addEventListener('click', openModalFilm);
-refs.btnCloseFilm.addEventListener('click', closeModalFilm);
+
+// refs.btnCloseFilm.addEventListener('click', closeModalFilm);
 refs.addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
 refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
 
@@ -33,11 +39,6 @@ refs.btnHome.addEventListener('click', onBtnHome);
 refs.btnQueue.addEventListener('click', onBtnQueue);
 refs.btnWatched.addEventListener('click', onBtnWatched);
 
-refs.btnFilmTrailer.addEventListener('click', openModalTrailer);
-refs.btnTrailerPrev.addEventListener('click', () => addLink());
-refs.btnTrailerNext.addEventListener('click', () => addLink(2));
-
-//
 refs.form.addEventListener('submit', onFormSubmit);
 refs.formSwitchBtn.addEventListener('click', updateForm);
 refs.modalAuthEl.addEventListener('click', onCloseBtnModalAuth);
@@ -49,18 +50,20 @@ refs.addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
 refs.btnFilmTrailer.addEventListener('click', openModalTrailer);
 refs.btnTrailerPrev.addEventListener('click', () => addLink());
 refs.btnTrailerNext.addEventListener('click', () => addLink(2));
+
 refs.modalDevBtn.addEventListener('click', onModalOpen);
+
+refs.closeModalDevBtn.addEventListener('click', onModalOpen);
+refs.backdrop.addEventListener('click', onClickBackdrop);
 
 refs.searchForm.addEventListener(
   'submit',
   throttle(onSearchMovieByKeyword, 1000)
 );
-
-refs.closeModalDevBtn.addEventListener('click', onModalOpen);
-refs.backdrop.addEventListener('click', onClickBackdrop);
-
-refs.searchForm.addEventListener('submit', onSearchMovieByKeyword);
 refs.buttonWrap.addEventListener('click', onFilterButtonClick);
 
 document.addEventListener('DOMContentLoaded', getTotalPage);
 pagination.on('afterMove', moviePagination);
+
+window.addEventListener('scroll', scrollToTopButton);
+refs.backToTopBtn.addEventListener('click', scrollTo);
