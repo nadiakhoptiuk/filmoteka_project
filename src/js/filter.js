@@ -1,5 +1,6 @@
 import 'js-loading-overlay';
-import { loadingSpinnerConfig, pagination } from './pagination/pagination';
+import { pagination } from './pagination/pagination';
+import { loadingSpinnerConfig } from './settings/spinner-config';
 import { MoviesService } from './service/service-fetch';
 import { markupMoviesGallery } from './templates/render-markup-gallery';
 import {
@@ -33,20 +34,22 @@ export async function onFilterButtonClick(e) {
   e.target.classList.add('btn-accent');
 
   if (MoviesService.param === 'popular') setButtonAttribute(true, false, false);
-  if (MoviesService.param === 'top_rated') setButtonAttribute(false, true, false);
-  if (MoviesService.param === 'now_playing') setButtonAttribute(false, false, true);
+  if (MoviesService.param === 'top_rated')
+    setButtonAttribute(false, true, false);
+  if (MoviesService.param === 'now_playing')
+    setButtonAttribute(false, false, true);
 }
 
 // Function for removing accent class
 function removeClassAccentFromButton() {
-  const activeButton =  buttonWrap.querySelector('.btn-accent');
+  const activeButton = buttonWrap.querySelector('.btn-accent');
 
   if (activeButton) activeButton.classList.remove('btn-accent');
 }
 
 // Function for add/remove button attribute
 function setButtonAttribute(popularBtn, topRated, nowPlaying) {
-   buttonPopular.disabled = popularBtn;
-   buttonTopRated.disabled = topRated;
-   buttonNowPlaying.disabled = nowPlaying;
+  buttonPopular.disabled = popularBtn;
+  buttonTopRated.disabled = topRated;
+  buttonNowPlaying.disabled = nowPlaying;
 }

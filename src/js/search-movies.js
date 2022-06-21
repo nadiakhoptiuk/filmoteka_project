@@ -1,5 +1,5 @@
 import 'js-loading-overlay';
-import { loadingSpinnerConfig } from './pagination/pagination';
+import { loadingSpinnerConfig } from './settings/spinner-config';
 import { loadMoreBtn } from './refs/refs';
 import { loadMoreBtn } from './pagination/load-more-btn';
 import { MoviesService } from './service/service-fetch';
@@ -12,7 +12,6 @@ import {
   errorContainer,
   galleryList,
 } from './refs/refs';
-
 
 export function onInputSearch(e) {
   if (e.target.value.trim().length >= 1) {
@@ -43,7 +42,7 @@ export async function onSearchMovieByKeyword(e) {
     galleryList.innerHTML = '';
     markupMoviesGalleryBySearch(results);
     JsLoadingOverlay.hide();
-    
+
     if (total_pages > 1) {
       loadMoreBtn.show();
     }
