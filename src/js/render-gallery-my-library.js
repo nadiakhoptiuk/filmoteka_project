@@ -51,21 +51,21 @@ async function renderWatchedGallery(data, nameGallery) {
         <a href="#" data-id="${item.movie.id}">
           <picture>
         <source
-          srcset="https://image.tmdb.org/t/p/w780/${item.poster_path}"
+          srcset="https://image.tmdb.org/t/p/w780/${item.movie.poster_path}"
           media="(min-width: 1280px)"
         />
         <source
           media="(min-width: 768px)"
-          srcset="https://image.tmdb.org/t/p/w500/${item.poster_path}"
+          srcset="https://image.tmdb.org/t/p/w500/${item.movie.poster_path}"
         />
         <source
           media="(min-width: 320px)"
-          srcset="https://image.tmdb.org/t/p/w342/${item.poster_path}"
+          srcset="https://image.tmdb.org/t/p/w342/${item.movie.poster_path}"
         />
         <img
-          srcset="https://image.tmdb.org/t/p/w342/${item.poster_path}"
-          src="https://image.tmdb.org/t/p/w342/${item.poster_path}"
-          alt="${item.title}"
+          srcset="https://image.tmdb.org/t/p/w342/${item.movie.poster_path}"
+          src="https://image.tmdb.org/t/p/w342/${item.movie.poster_path}"
+          alt="${item.movie.title}"
           class="card__img" loading="lazy"
         />
       </picture>
