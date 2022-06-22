@@ -149,6 +149,9 @@ function userSignOut(evt) {
       showNotifyError('Something went wrong. Please try again');
       // An error happened.
     });
+  setTimeout(() => {
+    window.location.href = 'index.html';
+  }, 1500);
 }
 
 export { userRegistration, userSignIn, userSignInWithGoogle, userSignOut };
