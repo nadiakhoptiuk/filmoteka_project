@@ -1,7 +1,5 @@
 import { openModalAuth } from './modals/modal-auth';
 import {
-  changeMyLibraryBtnStyles,
-  changeHeaderBtnStyles,
   userAuthId,
   getWatchedFilms,
   getQueueFilms,
@@ -18,6 +16,10 @@ import {
   searchContainer,
   headerEl,
 } from './refs/refs';
+import {
+  changeMyLibraryBtnStyles,
+  changeHeaderBtnStyles,
+} from './service/heafer-button-swith';
 
 // Функция обработчик клика My Library
 export function onMyLibraryButton() {
