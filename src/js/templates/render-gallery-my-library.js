@@ -54,6 +54,8 @@ async function renderWatchedGallery(data, nameGallery) {
   try {
     const markup = data
       .map(item => {
+        const genresArr = item.movie.genres?.map(item => item.name);
+        const genresShort = genresArr?.length > 2 ? genresArr?.slice(0, 2)?.join(', ') + ', ...' : genresArr?.join(', ');
         return `<li class="card">
         <div class="img-thumb">
           <picture>
@@ -101,8 +103,8 @@ async function renderWatchedGallery(data, nameGallery) {
           <h2 class="card__title">${item.movie.title}</h2>
           </a>
           <p class="card__description" data-id="${item.movie.id}">
-            <span class="card__genre tooltip">${!item.movie.previewGenres ? `unknown genre` : item.movie.previewGenres} 
-            <span class="tooltiptext">${!item.movie.allGenres ? `unknown genre` : item.movie.allGenres}</span> | ${
+            <span class="card__genre tooltip">${genresShort ?? `unknown genre`} 
+            <span class="tooltiptext">${genresArr ?? `unknown genre`}</span> | ${
           !item.movie.release_date ? 'released' : moment(item.movie.release_date).format('YYYY')}</span>
             <span class="card__rating">${item.movie.vote_average}</span>
           </p>

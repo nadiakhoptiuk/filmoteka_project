@@ -6,7 +6,7 @@ export function scrollTo() {
 }
 
 export function scrollToTopButton() {
-  if (window.scrollY > 600) {
+  if (window.scrollY > window.outerHeight) {
     backToTopBtn.classList.remove('visually-hidden');
   } else {
     backToTopBtn.classList.add('visually-hidden');

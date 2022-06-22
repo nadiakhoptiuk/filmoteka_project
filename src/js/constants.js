@@ -6,3 +6,4 @@ export const moveW = 'move to watched';
 export const popular = 'popular';
 export const topRated = 'top_rated';
 export const nowPlaying = 'now_playing';
+export const quantityPages = 1000;

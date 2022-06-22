@@ -5,6 +5,7 @@ import { MoviesService } from '../service/service-fetch';
 import { markupMoviesGallery } from '../templates/render-markup-gallery';
 import { loadingSpinnerConfig } from '../settings/spinner-config';
 import { scrollTo } from './scroll-to-top-btn';
+import { quantityPages } from '../constants';
 import {
   buttonWrap,
   paginationWrapper,
@@ -20,7 +21,7 @@ export async function getTotalPage() {
     const listOfMovies = await MoviesService.getMovies();
     const getListOfMovies = listOfMovies.results;
     let quantityOfPages = listOfMovies.total_pages;
-    if (quantityOfPages > 1000) quantityOfPages = 1000;
+    if (quantityOfPages > quantityPages) quantityOfPages = quantityPages;
 
     JsLoadingOverlay.hide();
     markupMoviesGallery(getListOfMovies);
