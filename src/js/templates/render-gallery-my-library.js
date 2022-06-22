@@ -109,7 +109,7 @@ async function renderWatchedGallery(data, nameGallery) {
           <p class="card__description" data-id="${item.movie.id}">
             <span class="card__genre tooltip">${genresShort ?? `unknown genre`} 
             <span class="tooltiptext">${
-              genresArr.join(', ') ?? `unknown genre`
+              genresArr ?? `unknown genre`
             }</span> | ${
           !item.movie.release_date
             ? 'released'

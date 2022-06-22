@@ -32,7 +32,7 @@ export async function onFilterButtonClick(e) {
   pagination.reset(totalPages);
 
   removeClassAccentFromButton();
-  e.target.classList.add('btn-accent');
+  e.target.classList.add('button-accent-filter');
 
   // Checking for button title
   if (MoviesService.param === popular)
@@ -45,9 +45,9 @@ export async function onFilterButtonClick(e) {
 
 // Function for removing accent class
 function removeClassAccentFromButton() {
-  const activeButton = buttonWrap.querySelector('.btn-accent');
+  const activeButton = buttonWrap.querySelector('.button-accent-filter');
 
-  if (activeButton) activeButton.classList.remove('btn-accent');
+  if (activeButton) activeButton.classList.remove('button-accent-filter');
 }
 
 // Function for add/remove button attribute
