@@ -1,6 +1,7 @@
 import { filterFilmByBtn, openedFilmId } from '../modals/modal-film';
 import {
   addMovieToWatched,
+   addMovieToQueue,
   removeMovieFromWatched,
   removeMovieFromQueue,
   removeMovieFromQueue,
