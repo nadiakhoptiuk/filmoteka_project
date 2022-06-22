@@ -8,10 +8,7 @@ import {
   onAddToWatchedBtnClick,
   onAddToQueueBtnClick,
 } from '../service/user-data';
-import {
- 
-   userAuthId,
-} from '../templates/render-gallery-my-library';
+import { userAuthId } from '../templates/render-gallery-my-library';
 import {
   homePage,
   addToWatchedBtn,
@@ -19,7 +16,7 @@ import {
   btnCloseFilm,
   btnFilmTrailer,
 } from '../refs/refs';
-import { getDataFromFirebase, watch,queue} from '../utils/get-data-from-fb';
+import { getDataFromFirebase, watch, queue } from '../utils/get-data-from-fb';
 export let openedFilmId = null;
 const modal = basicLightbox.create(document.querySelector('#html'), {
   onClose: () => {
@@ -44,7 +41,7 @@ const modal = basicLightbox.create(document.querySelector('#html'), {
 });
 export function openModalFilm(ev) {
   ev.preventDefault();
-  getDataFromFirebase(userAuthId)
+  getDataFromFirebase(userAuthId);
   const evn = ev.target;
   if (evn.nodeName !== 'A' && evn.nodeName !== 'P') {
     return;
@@ -82,7 +79,6 @@ export function filterFilmByBtn(id) {
       filteredFilmBtnByWatch = watch.some(ev => ev.movie.id === id);
     }
     if (queue) {
-      console.log(queue);
       filteredFilmBtnByQueue = queue.some(ev => ev.movie.id === id);
     }
     renameBtnFilm(filteredFilmBtnByWatch, filteredFilmBtnByQueue);
