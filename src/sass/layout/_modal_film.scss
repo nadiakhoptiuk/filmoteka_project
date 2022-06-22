@@ -1,14 +1,22 @@
+table {
+  table-layout: fixed;
+  width: 100%;
+padding-bottom: 20px;
+}
+
 .modal-film {
-  width: 80vw;
-  height: 90vw;
+  width: 280px;
+  height: 500px;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+ 
+transform: translate(-50%, -50%);
   overflow: scroll;
   background-color: var(--header-text-color);
 
   @include media(768px) {
+top: 50%;
+    left: 50%;
+  transform: translate(-50%, -50%);
     width: 704px;
     height: 552px;
     overflow: hidden;
@@ -41,6 +49,7 @@
     background: var(--accent-text-color);
     border-radius: 5px;
     padding: 1px 10px;
+    color: var(--header-text-color);
   }
 
   &__btn {
@@ -52,6 +61,8 @@
 
   &__close {
     stroke: var(--gallery-text-color);
+    width: 30px;
+    height: 30px;
 
   }
 
@@ -103,22 +114,14 @@
     }
   }
 
-  &__rating {
-    display: flex;
-    margin-bottom: 20px;
-  }
+  // &__rating {
+  //   display: table;
+  //   text-indent: initial;
+  // }
 
   &__item-name {
-    margin-right: 41px;
-    color: var(--category-text-color);
-
-    @include media(1280px) {
-      margin-right: 85px;
-    }
-
-    &:not(:last-child) {
-      margin-bottom: 8px;
-    }
+    width: 100px;
+     color: var(--category-text-color);
   }
 
   &__item-description {
@@ -186,9 +189,7 @@
     top: 190px;
     left: 35%;
 
-    @include media(400px) {
-      left: 41%;
-    }
+
 
     @include media(767px) {
       top: 35%;

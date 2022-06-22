@@ -12,15 +12,14 @@ export function createModalFilm(ev) {
     popularity,
     genres,
   } = ev;
-  console.log(overview);
   const htmlImg = `<img src="https://image.tmdb.org/t/p/w500${poster_path === null ? '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg' : poster_path}" alt="poster ${title}" class="modal-film__img">`;
   const htmlPoint = `
    ${audit(title) !== null ? `<h2 class="modal-film__name">${title}</h2> `:""}
             <table class="modal-film__rating">
-             ${audit(vote_average) !== null ?
+             ${vote_average !== 0 ?
               `<tr>
-                <th class="modal-film__item-name vote">Vote / Votes</th>
-                <th class="modal-film__item-description" vote><span class="modal-film--style">${vote_average}</span> / ${vote_count}</th>
+                <td class="modal-film__item-name vote">Vote / Votes</th>
+                <td class="modal-film__item-description" vote><span class="modal-film--style">${vote_average}</span> / ${vote_count}</th>
               </tr>`:""}
               ${audit(popularity) !== null ?
                 `<tr>
@@ -39,7 +38,7 @@ export function createModalFilm(ev) {
               </tr>`:""}
             </table>
             </div>
-            ${audit(overview) !== null ?
+            ${overview !== "" ?
             `<h3 class="modal-film__title" about>ABOUT</h3>
             <p class="modal-film__description"about>${overview}</p>`:""}
        `;
