@@ -7,14 +7,10 @@ import {
 } from './db-manipulations';
 import { openModalAuth } from '../modals/modal-auth';
 import { userIsNotSignInYet } from './sign-in';
+import { removeW, addW, removeQ, addQ, moveW } from '../constants';
 
 let userId = null;
 let chosenMovie = null;
-const removeW = 'remove from watched';
-const addW = 'add to watched';
-const removeQ = 'remove from queue';
-const addQ = 'add to queue';
-const moveW = 'move to watched';
 
 function getUserId(id) {
   userId = id;
