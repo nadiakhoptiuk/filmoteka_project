@@ -1,6 +1,7 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
-import { getMovieById } from '../service/service-fetch';
+import { getMovieById, getMovieTrailer } from '../service/service-fetch';
+import { removeQ, removeW, addQ, addW } from '../constants';
 import { openModalTrailer } from './modal-trailer';
 import { createModalFilm } from '../templates/created-modal-film';
 import {
@@ -21,6 +22,7 @@ import { getDataFromFirebase, watch, queue } from '../utils/get-data-from-fb';
 export let openedFilmId = null;
 
 const modal = basicLightbox.create(document.querySelector('#html'), {
+ // action on open modal film 
   onClose: () => {
     homePage.classList.remove('modal-film-is-open');
     addToWatchedBtn.removeEventListener('click', onAddToWatchedBtnClick);
@@ -29,6 +31,7 @@ const modal = basicLightbox.create(document.querySelector('#html'), {
     btnFilmTrailer.removeEventListener('click', openModalTrailer);
     window.removeEventListener('keydown', closeModalFilmKey);
   },
+  // action on close modal film 
   onShow: () => {
     btnCloseFilm.addEventListener('click', closeModalFilm);
     addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
@@ -41,28 +44,28 @@ const modal = basicLightbox.create(document.querySelector('#html'), {
     homePage.classList.add('modal-film-is-open');
   },
 });
+// register click from gallery and take id
 export function openModalFilm(ev) {
   ev.preventDefault();
   getDataFromFirebase(userAuthId);
   const evn = ev.target;
-  if (evn.nodeName !== 'A' && evn.nodeName !== 'P') {
+  if (evn.nodeName !== 'A' && evn.nodeName !== 'P')
+  {
     return;
   }
   const id = evn.dataset.id;
   openedFilmId = Number(id);
-
   acceptIdInformation(openedFilmId);
 }
 
 async function acceptIdInformation(id) {
-  // const arr = JSON.parse(copy);
   const filteredFilmById = await getMovieById(id);
+  const trailer = await getMovieTrailer(id);
+  if (trailer.data.results.length === 0) { btnFilmTrailer.classList.add("none") }
+  else{btnFilmTrailer.classList.remove("none")}
   filterFilmByBtn(id);
-  //
   const movieData = filteredFilmById;
-
   getMovieData(movieData);
-  //
   modal.show();
   createModalFilm(filteredFilmById);
 }
@@ -71,9 +74,11 @@ export function closeModalFilmKey(event) {
     closeModalFilm();
   }
 }
+
 export function closeModalFilm() {
   modal.close();
 }
+//accept name film
 export function filterFilmByBtn(id) {
   if (userAuthId) {
     let filteredFilmBtnByWatch = null;
@@ -87,15 +92,11 @@ export function filterFilmByBtn(id) {
     renameBtnFilm(filteredFilmBtnByWatch, filteredFilmBtnByQueue);
   }
 }
+//rename btn film
 function renameBtnFilm(watch, queue) {
   queue
-    ? (addToQueueBtn.textContent = 'remove from queue')
-    : (addToQueueBtn.textContent = 'add to queue');
-  if (watch) {
-    addToQueueBtn.textContent === 'remove from queue'
-      ? (addToWatchedBtn.textContent = 'move to watched')
-      : (addToWatchedBtn.textContent = 'remove from watched');
-  } else {
-    addToWatchedBtn.textContent = 'add to watched';
-  }
+    ? (addToQueueBtn.textContent = removeQ)
+    : (addToQueueBtn.textContent = addQ);
+  watch ? (addToWatchedBtn.textContent = removeW)
+    : addToWatchedBtn.textContent = addW;
 }
