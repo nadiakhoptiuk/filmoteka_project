@@ -54,11 +54,13 @@ async function renderWatchedGallery(data, nameGallery) {
   try {
     const markup = data
       .map(item => {
+        console.log(item.movie.poster_path)
         return `<li class="card">
+        <div class="img-thumb">
           <picture>
         <source
           srcset="https://image.tmdb.org/t/p/w780/${
-            item.movie.poster_path === null
+            !item.movie.poster_path
               ? '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg'
               : item.movie.poster_path
           }"
@@ -67,7 +69,7 @@ async function renderWatchedGallery(data, nameGallery) {
         <source
           media="(min-width: 768px)"
           srcset="https://image.tmdb.org/t/p/w500/${
-            item.movie.poster_path === null
+            !item.movie.poster_path
               ? '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg'
               : item.movie.poster_path
           }"
@@ -75,19 +77,19 @@ async function renderWatchedGallery(data, nameGallery) {
         <source
           media="(min-width: 320px)"
           srcset="https://image.tmdb.org/t/p/w342/${
-            item.movie.poster_path === null
+            !item.movie.poster_path
               ? '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg'
               : item.movie.poster_path
           }"
         />
         <img
           srcset="https://image.tmdb.org/t/p/w342/${
-            item.movie.poster_path === null
+            !item.movie.poster_path
               ? '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg'
               : item.movie.poster_path
           }"
           src="https://image.tmdb.org/t/p/w342/${
-            item.movie.poster_path === null
+            !item.movie.poster_path
               ? '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg'
               : item.movie.poster_path
           }"
@@ -95,6 +97,7 @@ async function renderWatchedGallery(data, nameGallery) {
           class="card__img" loading="lazy"
         />
       </picture>
+      </div>
       <a href="#" data-id="${item.movie.id}" class="card-link">
           <h2 class="card__title">${item.movie.title}</h2>
           </a>
