@@ -54,7 +54,6 @@ async function renderWatchedGallery(data, nameGallery) {
   try {
     const markup = data
       .map(item => {
-        console.log(item.movie.poster_path)
         return `<li class="card">
         <div class="img-thumb">
           <picture>

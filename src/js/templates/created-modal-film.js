@@ -1,7 +1,6 @@
 import { modalFilmImg, modalFilmHtml } from '../refs/refs';
 
 export function createModalFilm(ev) {
-  const object = ev[0];
   const {
     original_title,
     title,
@@ -11,7 +10,7 @@ export function createModalFilm(ev) {
     overview,
     popularity,
     allGenres,
-  } = object;
+  } = ev;
   const htmlImg = `<img src="https://image.tmdb.org/t/p/w500${poster_path === null ? '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg' : poster_path}" alt="poster ${title}" class="modal-film__img">`;
   const htmlPoint = `
             <h2 class="modal-film__name">${title}</h2>

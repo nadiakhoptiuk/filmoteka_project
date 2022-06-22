@@ -3,6 +3,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import 'tui-pagination/dist/tui-pagination.min.css';
 import { getFilteredMovies } from '../utils/fetch-utils';
 import { API_KEY, BASE_URL } from '../settings/fetch-config';
+import { async } from '@firebase/util';
 
 export async function getGenres() {
   try {
@@ -84,6 +85,16 @@ export async function getMovieTrailer(idMovie) {
       `${BASE_URL}/movie/${idMovie}/videos?api_key=${API_KEY}&language=en-US`
     );
     return response;
+  } catch (error) {
+    Notify.failure('Something went wrong &#128543;');
+  }
+}
+export async function getMovieById(idMovie) {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/movie/${idMovie}?api_key=${API_KEY}&language=en-US`
+    );
+    return response.data;
   } catch (error) {
     Notify.failure('Something went wrong &#128543;');
   }

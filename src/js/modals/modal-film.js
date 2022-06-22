@@ -1,6 +1,6 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
-import { copy } from '../service/service-fetch';
+import { copy, getMovieById} from '../service/service-fetch';
 import { openModalTrailer } from './modal-trailer';
 import { createModalFilm } from '../templates/created-modal-film';
 import {
@@ -48,15 +48,16 @@ export function openModalFilm(ev) {
   }
   const id = evn.dataset.id;
   openedFilmId = Number(id);
+
   acceptIdInformation(openedFilmId);
 }
 
 async function acceptIdInformation(id) {
-  const arr = JSON.parse(copy);
-  const filteredFilmById = await arr.results.filter(ev => ev.id === id);
+  // const arr = JSON.parse(copy);
+  const filteredFilmById = await getMovieById(id);
   filterFilmByBtn(id);
   //
-  const movieData = filteredFilmById[0];
+  const movieData = filteredFilmById;
 
   getMovieData(movieData);
   //
