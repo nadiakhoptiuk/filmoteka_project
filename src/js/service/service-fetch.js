@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import 'tui-pagination/dist/tui-pagination.min.css';
 import { getFilteredMovies } from '../utils/fetch-utils';
-import { API_KEY, BASE_URL } from '../constants';
+import { API_KEY, BASE_URL } from '../settings/fetch-config';
 
 export async function getGenres() {
   try {
