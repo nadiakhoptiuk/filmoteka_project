@@ -72,9 +72,9 @@
 
 export const errorContainer = document.querySelector('.error_container');
 export const galleryList = document.querySelector('.gallery__list');
-export const paginationRef = document.querySelector(
-  '#tui-pagination-container'
-);
+export const galleryListWatch = document.querySelector('.gallery-watched__list');
+export const galleryListQueue = document.querySelector('.gallery-queue__list');
+export const paginationRef = document.querySelector('#tui-pagination-container');
 
 export const formTitle = document.querySelector('.js-form-auth__title');
 export const form = document.querySelector('.js-form-auth');

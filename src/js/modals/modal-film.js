@@ -9,8 +9,8 @@ import {
   onAddToQueueBtnClick,
 } from '../service/user-data';
 import {
-  watchedFilms,
-  queuedFilms,
+ 
+   userAuthId,
 } from '../templates/render-gallery-my-library';
 import {
   homePage,
@@ -19,7 +19,7 @@ import {
   btnCloseFilm,
   btnFilmTrailer,
 } from '../refs/refs';
-
+import { getDataFromFirebase, watch,queue} from '../utils/firebase';
 export let openedFilmId = null;
 const modal = basicLightbox.create(document.querySelector('#html'), {
   onClose: () => {
@@ -44,9 +44,8 @@ const modal = basicLightbox.create(document.querySelector('#html'), {
 });
 export function openModalFilm(ev) {
   ev.preventDefault();
+  getDataFromFirebase(userAuthId)
   const evn = ev.target;
-  console.log(evn.nodeName);
-
   if (evn.nodeName !== 'A' && evn.nodeName !== 'P') {
     return;
   }
@@ -76,9 +75,16 @@ export function closeModalFilm() {
   modal.close();
 }
 export function filterFilmByBtn(id) {
-  if (watchedFilms !== null || queuedFilms !== null) {
-    const filteredFilmBtnByWatch = watchedFilms.some(ev => ev.movie.id === id);
-    const filteredFilmBtnByQueue = queuedFilms.some(ev => ev.movie.id === id);
+  if (userAuthId) {
+    let filteredFilmBtnByWatch = null;
+    let filteredFilmBtnByQueue = null;
+    if (watch) {
+      filteredFilmBtnByWatch = watch.some(ev => ev.movie.id === id);
+    }
+    if (queue) {
+      console.log(queue);
+      filteredFilmBtnByQueue = queue.some(ev => ev.movie.id === id);
+    }
     renameBtnFilm(filteredFilmBtnByWatch, filteredFilmBtnByQueue);
   }
 }
