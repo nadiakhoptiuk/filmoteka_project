@@ -43,6 +43,8 @@ import {
   searchForm,
   buttonWrap,
   backToTopBtn,
+  galleryListQueue,
+  galleryListWatch,
 } from './js/refs/refs';
 
 form.addEventListener('submit', onFormSubmit);
@@ -50,6 +52,8 @@ formSwitchBtn.addEventListener('click', updateForm);
 
 formSignInWithGoogle.addEventListener('click', userSignInWithGoogle);
 galleryList.addEventListener('click', openModalFilm);
+galleryListQueue.addEventListener('click', openModalFilm);
+galleryListWatch.addEventListener('click', openModalFilm);
 
 addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
 addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);

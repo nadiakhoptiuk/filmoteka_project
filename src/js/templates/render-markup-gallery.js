@@ -1,12 +1,9 @@
 import moment from 'moment';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { galleryWatchedList, galleryList } from '../refs/refs';
-import { getWatchedFilms, getQueueFilms } from './render-gallery-my-library';
 
 export async function markupMoviesGallery(arr) {
   try {
-    getWatchedFilms();
-    getQueueFilms();
     const markup = arr
       .map(item => {
         return `<li class="card">

@@ -77,17 +77,17 @@
     margin-right: auto;
     display: block;
     width: 240px;
-    height: 357px;
+    height: auto;
     border-radius: 5px;
 
     @include media(768px) {
       width: 264px;
-      height: 374px;
+      height: auto;
     }
 
     @include media(1280px) {
-      width: 375px;
-      height: 478px;
+      width: 300px;
+      height: auto;
     }
   }
 
@@ -197,7 +197,7 @@
 
     @include media(1280px) {
       top: 40%;
-      left: 200px;
+      left: 160px;
     }
   }
 
@@ -217,7 +217,7 @@
 }
 
 .btns {
-  width: 110px;
+  width: 150px;
   margin-bottom: 10px;
   border-radius: 5px;
   margin-right: 20px;
@@ -225,7 +225,7 @@
 
   @include media(768px) {
     margin-bottom: 0px;
-    width: 125px;
+    width: 140px;
 
     &:not(:last-child) {
       margin-right: 15px;
@@ -233,6 +233,6 @@
   }
 
   @include media(1280px) {
-    width: 136px;
+    width: 150px;
   }
 }
