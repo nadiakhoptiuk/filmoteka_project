@@ -13,6 +13,9 @@ export function closeModalAuth() {
 
 export function onCloseBtnModalAuth() {
   closeModalAuth();
+  if (homePage.classList.contains('modal-film-is-open') === true) {
+    return;
+  }
   if (userAuthId === null) {
     window.location.href = 'index.html';
   }

@@ -1,6 +1,11 @@
 import moment from 'moment';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { galleryWatchedList, galleryList } from '../refs/refs';
+import {
+  galleryWatchedList,
+  galleryList,
+  galleryQueue,
+  galleryWatched,
+} from '../refs/refs';
 
 export async function markupMoviesGallery(arr) {
   try {
@@ -68,6 +73,10 @@ export async function markupMoviesGallery(arr) {
 
     galleryWatchedList.innerHTML = '';
     galleryList.innerHTML = markup;
+    console.log(galleryQueue);
+
+    galleryQueue.classList.add('is-hidden');
+    galleryWatched.classList.add('is-hidden');
   } catch (error) {
     Notify.failure('Something went wrong &#128543;');
   }
