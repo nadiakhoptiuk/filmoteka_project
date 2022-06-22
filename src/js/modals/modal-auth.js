@@ -13,10 +13,10 @@ export function closeModalAuth() {
 
 export function onCloseBtnModalAuth() {
   closeModalAuth();
-  if (homePage.classList.contains('modal-film-is-open') === true) {
+  if (homePage.classList.contains('modal-film-is-open')) {
     return;
   }
-  if (userAuthId === null) {
+  if (!userAuthId) {
     window.location.href = 'index.html';
   }
 }

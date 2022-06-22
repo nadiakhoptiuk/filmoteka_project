@@ -7,7 +7,7 @@ import {
   removeMovieFromQueue,
 } from './db-manipulations';
 import { openModalAuth } from '../modals/modal-auth';
-import { userIsNotSignInYet } from './sign-in';
+import { showNotifyInfo } from './notifications';
 import { removeW, addW, removeQ, addQ, moveW } from '../constants';
 
 let userId = null;
@@ -60,7 +60,8 @@ function onAddToQueueBtnClick(evt) {
 function isUserSignIn(userId) {
   if (!userId) {
     openModalAuth();
-    userIsNotSignInYet();
+    // userIsNotSignInYet();
+    showNotifyInfo('Please sign in to your account or register');
 
     return false;
   }
