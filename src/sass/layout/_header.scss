@@ -261,7 +261,7 @@
   background-color: transparent;
   color: var(--header-text-color);
 
-  transition: transform 200ms ease-in-out;
+  transition: transform 0.5s linear;
 
   @include centeredFlex;
   cursor: pointer;
