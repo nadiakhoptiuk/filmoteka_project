@@ -151,7 +151,7 @@ function userSignOut(evt) {
     });
   setTimeout(() => {
     window.location.href = 'index.html';
-  }, 1500);
+  }, 400);
 }
 
 export { userRegistration, userSignIn, userSignInWithGoogle, userSignOut };
