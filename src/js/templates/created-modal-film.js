@@ -28,6 +28,25 @@ export function createModalFilm(ev) {
                     <p class="modal-film__item-description origin">${audit(original_title)}</p>
                     <p class="modal-film__item-description genre">${genres.flatMap(ev=> ev.name).join(", ")}</p >
                 </div>
+            <table class="modal-film__rating">
+              <tr>
+                <th class="modal-film__item-name">Vote / Votes</th>
+                <th class="modal-film__item-description"><span class="modal-film--style">${vote_average}</span> / ${vote_count}</th>
+              </tr>
+              <tr>
+                <td class="modal-film__item-name">Popularity</td>
+                <td class="modal-film__item-description">${popularity}</td>
+              </tr>
+              <tr>
+                <td class="modal-film__item-name">Original Title</td>
+                <td class="modal-film__item-description">${original_title}</td>
+              </tr>
+              <tr>
+                <td class="modal-film__item-name">Genre</td>
+                <td class="modal-film__item-description">${allGenres}</td>
+              </tr>
+            </table>
+                
             </div>
             <h3 class="modal-film__title">ABOUT</h3>
             <p class="modal-film__description">${overview}</p>
