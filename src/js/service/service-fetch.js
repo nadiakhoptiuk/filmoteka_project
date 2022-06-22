@@ -31,7 +31,6 @@ export const MoviesService = {
 
       results = getFilteredMovies(results, genres);
       copy = JSON.stringify({ results });
-      console.log(results.poster_path)
       return { results, total_pages };
     } catch (error) {
       Notify.failure('Something went wrong &#128543;');
@@ -47,6 +46,7 @@ export const MoviesService = {
       let { results, total_pages } = response.data;
 
       results = getFilteredMovies(results, genres);
+      
       copy = JSON.stringify({ results });
       return { results, total_pages };
     } catch (error) {
