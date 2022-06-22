@@ -1,6 +1,6 @@
 import { userRegistration, userSignIn } from '../service/service-firebase';
-import { closeModalAuth } from './modal-auth';
 import { formSwitchBtn, formSubmitBtn, formTitle, form } from '../refs/refs';
+
 
 let formType = 'authorization';
 let userId = null;
@@ -36,20 +36,12 @@ function onFormSubmit(evt) {
   evt.preventDefault();
   const { email, password } = evt.target.elements;
 
-  console.log(formType);
   if (formType === 'registration') {
     userRegistration(email.value, password.value);
     updateForm();
-  } else {
-    userSignIn(email.value, password.value)
-      .then(() => {
-        closeModalAuth();
-        getWatchedFilms(userId);
-      })
-      .catch(error => {
-        errorSignIn();
-        form.reset();
-      });
+  } else if (formType === 'authorization') {
+    userSignIn(email.value, password.value);
+
   }
 }
 

@@ -23,7 +23,7 @@ function errorSignIn(email) {
   Notiflix.Notify.failure(
     `Wrong email or password. Please try again or register.`
   );
-  form.reset();
+
 }
 
 function successSignInWithGoogle() {
