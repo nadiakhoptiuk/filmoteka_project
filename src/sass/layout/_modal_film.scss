@@ -150,6 +150,13 @@ top: 50%;
   &__to-queue {
     border: 1px solid var(--gallery-text-color);
     color: var(--gallery-text-color);
+    transition: transform 0.5s linear, box-shadow 0.5s linear;
+
+    &:hover,
+    &:focus{
+      transform: scale(1.07);
+      box-shadow: 2px 7px 27px 1px var(--category-text-color);
+    }
   }
 
   &__style {
