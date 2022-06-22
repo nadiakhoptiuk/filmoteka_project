@@ -8,7 +8,7 @@ import {
 } from './db-manipulations';
 import { openModalAuth } from '../modals/modal-auth';
 import { showNotifyInfo } from './notifications';
-import { removeW, addW, removeQ, addQ, moveW } from '../constants';
+import { removeW, addW, removeQ, addQ } from '../constants';
 
 let userId = null;
 let chosenMovie = null;
@@ -17,11 +17,12 @@ function getUserId(id) {
   userId = id;
 }
 
+//повертає об'єкт фільму з модалки
 function getMovieData(data) {
-  //повертає об'єкт фільму з модалки
   chosenMovie = data;
 }
 
+// функція, яка запускається при кліку по кнопці в модальному вікні фільму (додати до списку переглянутих)
 function onAddToWatchedBtnClick(evt) {
   const dataObj = createMovieData(chosenMovie, userId);
   const btnTitle = evt.currentTarget.textContent;
@@ -30,17 +31,18 @@ function onAddToWatchedBtnClick(evt) {
     return;
   }
 
+  // додає або видаляє зі списку переглянутих бази даних фільм
   if (btnTitle.trim() === addW) {
     addMovieToWatched(dataObj);
   } else if (btnTitle.trim() === removeW) {
     removeMovieFromWatched(dataObj);
-  } else if (btnTitle.trim() === moveW) {
-    removeMovieFromQueue(dataObj);
-    addMovieToWatched(dataObj);
   }
+  console.log(openedFilmId);
   filterFilmByBtn(openedFilmId);
+  console.log(openedFilmId);
 }
 
+// функція, яка запускається при кліку по кнопці в модальному вікні фільму (додати до списку черги)
 function onAddToQueueBtnClick(evt) {
   const data = createMovieData(chosenMovie, userId);
   const btnTitle = evt.currentTarget.textContent;
@@ -49,18 +51,21 @@ function onAddToQueueBtnClick(evt) {
     return;
   }
 
+  // додає або видаляє зі списку черги бази даних фільм
   if (btnTitle.trim() === addQ) {
     addMovieToQueue(data);
   } else if (btnTitle.trim() === removeQ) {
     removeMovieFromQueue(data);
   }
+  console.log(openedFilmId);
   filterFilmByBtn(openedFilmId);
+  console.log(openedFilmId);
 }
 
+// функція, яка перевіряє, чи користувач залогінений і у разі, якщо ні, відкриває модальне вікно входу
 function isUserSignIn(userId) {
   if (!userId) {
     openModalAuth();
-    // userIsNotSignInYet();
     showNotifyInfo('Please sign in to your account or register');
 
     return false;
