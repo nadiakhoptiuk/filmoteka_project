@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, update, set } from 'firebase/database';
 
 import { firebaseConfig } from '../settings/fb-config';
+import { showNotifyError } from './notifications';
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 
@@ -13,11 +14,19 @@ function getUserIdFromDB(id) {
 
 // функція, яка додає у базу даних об'єкт з даними
 function addMovieToWatched(data) {
-  set(ref(db, userId + '/watched/' + data.movie.id), data);
+  try {
+    set(ref(db, userId + '/watched/' + data.movie.id), data);
+  } catch (error) {
+    showNotifyError(error.message);
+  }
 }
 
 function addMovieToQueue(data) {
-  set(ref(db, userId + '/queue/' + data.movie.id), data);
+  try {
+    set(ref(db, userId + '/queue/' + data.movie.id), data);
+  } catch (error) {
+    showNotifyError(error.message);
+  }
 }
 
 function removeMovieFromWatched(data) {

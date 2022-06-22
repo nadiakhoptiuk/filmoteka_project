@@ -1,6 +1,6 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
-import { copy, getMovieById} from '../service/service-fetch';
+import { getMovieById } from '../service/service-fetch';
 import { openModalTrailer } from './modal-trailer';
 import { createModalFilm } from '../templates/created-modal-film';
 import {
@@ -17,7 +17,9 @@ import {
   btnFilmTrailer,
 } from '../refs/refs';
 import { getDataFromFirebase, watch, queue } from '../utils/get-data-from-fb';
+
 export let openedFilmId = null;
+
 const modal = basicLightbox.create(document.querySelector('#html'), {
   onClose: () => {
     homePage.classList.remove('modal-film-is-open');
