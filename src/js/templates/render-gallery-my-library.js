@@ -22,14 +22,16 @@ export function getWatchedFilms(userKey) {
   onValue(getWatched, snapshot => {
     const data = snapshot.val();
     console.log(data);
-    if (!data) {
-      galleryWatchedList.innerHTML =
-        '<p class="no-films-in-list">You haven`t added anything yet...</p>';
-      return;
+    if (data !== null) {
+      watchedFilms = Object.values(data);
     }
-    watchedFilms = Object.values(data);
-    console.log(watchedFilms);
-    renderWatchedGallery(watchedFilms, 'watched');
+    galleryWatchedList.innerHTML =
+      '<p class="no-films-in-list">You haven`t added anything yet...&#128546</p>';
+    galleryWatched.classList.remove('is-hidden');
+
+    if (data !== null) {
+      renderWatchedGallery(watchedFilms, 'watched');
+    }
   });
 }
 
@@ -37,16 +39,17 @@ export function getWatchedFilms(userKey) {
 export function getQueueFilms(userKey) {
   console.log('RENDER QUEUE');
   const getQueue = ref(db, `${userKey}` + '/queue');
+
   onValue(getQueue, snapshot => {
     const data = snapshot.val();
-    if (!data) {
-      galleryWatchedList.innerHTML =
-        '<p class="no-films-in-list">You haven`t added anything yet...</p>';
-      return;
+    if (data !== null) {
+      queuedFilms = Object.values(data);
     }
-    queuedFilms = Object.values(data);
-    console.log(queuedFilms);
-    renderWatchedGallery(queuedFilms, 'queue');
+    galleryQueueList.innerHTML =
+      '<p class="no-films-in-list">You haven`t added anything yet...&#128546</p>';
+    if (data !== null) {
+      renderWatchedGallery(queuedFilms, 'queue');
+    }
   });
 }
 
