@@ -19,9 +19,12 @@ import {
   errorSignIn,
   successSignInWithGoogle,
 } from '../service/sign-in';
-import { getUserAuthId } from '../templates/render-gallery-my-library';
+import {
+  getUserAuthId,
+  getWatchedFilms,
+} from '../templates/render-gallery-my-library';
 import { getUserIdAfterSignIn } from '../modals/auth-form';
-import { signOutBtn, signOutWrap } from '../refs/refs';
+import { signOutBtn, signOutWrap, form } from '../refs/refs';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
@@ -46,14 +49,22 @@ function userSignIn(email, password) {
     .then(userCredential => {
       // Signed in
       const user = userCredential.user;
+      console.log(user.uid);
+
       signOutBtnShow();
       closeModalAuth();
+      getWatchedFilms(user.uid);
+      console.log(user);
     })
     .catch(error => {
-      errorSignIn(email);
-      openModalAuth();
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.log(error.message);
+
+      errorSignIn(email);
+      openModalAuth();
+      form.reset();
+      return errorMessage;
     });
 }
 
@@ -67,7 +78,7 @@ function userSignInWithGoogle(evt) {
       // The signed-in user info.
       const user = result.user;
       closeModalAuth();
-
+      getWatchedFilms(user.uid);
       console.log(user);
 
       // ...
