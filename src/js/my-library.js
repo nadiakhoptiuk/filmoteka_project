@@ -32,6 +32,7 @@ export function onMyLibraryButton() {
   }
   changeHeaderBtnStyles(myLibraryBtn, btnHome);
   togglePages();
+  getWatchedFilms(userAuthId);
 }
 
 // Функция обработчик клика Watched
