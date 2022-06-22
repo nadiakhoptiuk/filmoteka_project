@@ -19,7 +19,7 @@ import {
   btnCloseFilm,
   btnFilmTrailer,
 } from '../refs/refs';
-import { getDataFromFirebase, watch,queue} from '../utils/firebase';
+import { getDataFromFirebase, watch,queue} from '../utils/get-data-from-fb';
 export let openedFilmId = null;
 const modal = basicLightbox.create(document.querySelector('#html'), {
   onClose: () => {
