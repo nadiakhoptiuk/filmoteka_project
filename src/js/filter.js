@@ -3,7 +3,7 @@ import { pagination } from './pagination/pagination';
 import { loadingSpinnerConfig } from './settings/spinner-config';
 import { MoviesService } from './service/service-fetch';
 import { markupMoviesGallery } from './templates/render-markup-gallery';
-import { popular, topRated, nowPlaying } from './constants';
+import { popular, topRated, nowPlaying, quantityPages } from './constants';
 import {
   galleryList,
   buttonWrap,
@@ -24,7 +24,7 @@ export async function onFilterButtonClick(e) {
   galleryList.innerHTML = '';
 
   let totalPages = response.total_pages;
-  if (totalPages > 1000) totalPages = 1000;
+  if (totalPages > quantityPages) totalPages = quantityPages;
 
   JsLoadingOverlay.hide();
 
@@ -34,6 +34,7 @@ export async function onFilterButtonClick(e) {
   removeClassAccentFromButton();
   e.target.classList.add('btn-accent');
 
+  // Checking for button title
   if (MoviesService.param === popular)
     setButtonAttribute(true, false, false);
   if (MoviesService.param === topRated)
