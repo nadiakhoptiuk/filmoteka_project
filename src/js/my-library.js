@@ -29,18 +29,15 @@ export function onMyLibraryButton() {
   } else {
     getWatchedFilms(userAuthId);
   }
-  if (userAuthId !== null) {
-    getWatchedFilms(userAuthId);
-  }
   changeHeaderBtnStyles(myLibraryBtn, btnHome);
   togglePages();
-  getWatchedFilms(userAuthId);
+  // getWatchedFilms(userAuthId);
 }
 
 // Функция обработчик клика Watched
 export function onBtnWatched() {
   changeMyLibraryBtnStyles(btnWatched, btnQueue);
-  if (userAuthId !== null) {
+  if (userAuthId) {
     getWatchedFilms(userAuthId);
   }
 }
@@ -48,7 +45,7 @@ export function onBtnWatched() {
 // Функция обработчик клика Queue
 export function onBtnQueue() {
   changeMyLibraryBtnStyles(btnQueue, btnWatched);
-  if (userAuthId !== null) {
+  if (userAuthId) {
     getQueueFilms(userAuthId);
   }
 }

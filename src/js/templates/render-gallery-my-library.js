@@ -21,6 +21,7 @@ export function getWatchedFilms(userKey) {
 
   onValue(getWatched, snapshot => {
     const data = snapshot.val();
+    console.log(data);
     if (!data) {
       galleryWatchedList.innerHTML =
         '<p class="no-films-in-list">You haven`t added anything yet...</p>';
@@ -121,6 +122,7 @@ async function renderWatchedGallery(data, nameGallery) {
       .join('');
 
     if (nameGallery === 'watched') {
+      console.log('WATCHED');
       galleryHome.classList.add('is-hidden');
       galleryQueue.classList.add('is-hidden');
       galleryWatched.classList.remove('is-hidden');
@@ -130,6 +132,7 @@ async function renderWatchedGallery(data, nameGallery) {
     }
 
     if (nameGallery === 'queue') {
+      console.log('QUEUE');
       galleryHome.classList.add('is-hidden');
       galleryWatched.classList.add('is-hidden');
       galleryQueue.classList.remove('is-hidden');
