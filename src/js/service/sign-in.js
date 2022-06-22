@@ -10,7 +10,7 @@ function signOutBtnShow() {
 }
 
 function signOutBtnHide() {
-  Notiflix.Notify.warning('You are not authorized');
+  Notiflix.Notify.warning('You have signed out');
   signOutWrap.classList.add('is-hidden');
   signOutBtn.removeEventListener('click', userSignOut);
 }
@@ -21,7 +21,7 @@ function errorSignInOrOut() {
 
 function errorSignIn(email) {
   Notiflix.Notify.failure(
-    `User with mail ${email} not found. Please try again or register.`
+    `Wrong email or password. Please try again or register.`
   );
   form.reset();
 }
@@ -30,10 +30,15 @@ function successSignInWithGoogle() {
   Notiflix.Notify.success('You are successfully authorized');
 }
 
+function userIsNotSignInYet() {
+  Notiflix.Notify.info('Please sign in to your account or register');
+}
+
 export {
   signOutBtnShow,
   signOutBtnHide,
   errorSignInOrOut,
   errorSignIn,
   successSignInWithGoogle,
+  userIsNotSignInYet,
 };

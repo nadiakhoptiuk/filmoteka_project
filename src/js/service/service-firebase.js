@@ -11,6 +11,7 @@ import {
 import { firebaseConfig } from '../settings/fb-config';
 import { closeModalAuth, openModalAuth } from '../modals/modal-auth';
 import { getUserId } from '../service/user-data';
+import { getUserIdFromDB } from './db-manipulations';
 import {
   signOutBtnShow,
   signOutBtnHide,
@@ -34,6 +35,7 @@ function userRegistration(email, password) {
       console.log(user);
     })
     .catch(error => {
+      errorSignInOrOut();
       const errorCode = error.code;
       const errorMessage = error.message;
     });
@@ -89,6 +91,7 @@ onAuthStateChanged(auth, user => {
     // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = user.uid;
     getUserId(uid);
+    getUserIdFromDB(uid);
     getUserAuthId(uid);
     getUserIdAfterSignIn(uid);
     signOutBtn.addEventListener('click', userSignOut);
@@ -100,6 +103,7 @@ onAuthStateChanged(auth, user => {
   } else {
     console.log(null);
     getUserId(null);
+    getUserIdFromDB(null);
     getUserAuthId(null);
     getUserIdAfterSignIn(null);
     // User is signed out
