@@ -1,3 +1,4 @@
+// Constructor for load-more-button
 export class LoadMoreBtn {
   constructor({ selector, className, isHide = false, callback = () => null }) {
     this.selector = document.querySelector(selector);

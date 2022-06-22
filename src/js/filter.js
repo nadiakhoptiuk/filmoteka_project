@@ -33,7 +33,8 @@ export async function onFilterButtonClick(e) {
   removeClassAccentFromButton();
   e.target.classList.add('btn-accent');
 
-  if (MoviesService.param === 'popular') setButtonAttribute(true, false, false);
+  if (MoviesService.param === 'popular')
+    setButtonAttribute(true, false, false);
   if (MoviesService.param === 'top_rated')
     setButtonAttribute(false, true, false);
   if (MoviesService.param === 'now_playing')
