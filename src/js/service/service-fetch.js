@@ -3,7 +3,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import 'tui-pagination/dist/tui-pagination.min.css';
 import { getFilteredMovies } from '../utils/fetch-utils';
 import { API_KEY, BASE_URL } from '../settings/fetch-config';
-import { async } from '@firebase/util';
+
 
 export async function getGenres() {
   try {

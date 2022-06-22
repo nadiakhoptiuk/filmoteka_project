@@ -55,8 +55,6 @@ function check(ev) {
     ev = 0;
   }
   iframeAtr.setAttribute('data-value', ev);
-  console.log(ev);
-  console.log(length);
   createIframeMarkup(links, ev);
 }
 

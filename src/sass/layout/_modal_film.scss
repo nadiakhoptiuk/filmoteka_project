@@ -189,7 +189,9 @@ top: 50%;
     top: 190px;
     left: 35%;
 
-
+    &.none{
+      display: none;
+    }
 
     @include media(767px) {
       top: 35%;
