@@ -1,5 +1,5 @@
 import { ref, onValue } from "firebase/database";
-import { db } from '../service/user-data';
+import { db } from '../service/db-manipulations';
 export let watch = null;
 export let queue = null;
 
