@@ -58,11 +58,9 @@ export async function markupMoviesGallery(arr) {
           <h2 class="card__title">${item.title}</h2>
           </a>
           <p class="card__description" data-id="${item.id}">
-            <span class="card__genre tooltip">${
-              item.previewGenres
-            } <span class="tooltiptext">${item.allGenres}</span> | ${moment(
-          item.release_date
-        ).format('YYYY')}</span>
+            <span class="card__genre tooltip">${!item.previewGenres ? `unknown genre` : item.previewGenres} 
+            <span class="tooltiptext">${!item.allGenres ? `unknown genre` : item.allGenres}</span> | ${
+          !item.release_date ? 'released' : moment(item.release_date).format('YYYY')}</span>
             <span class="card__rating visually-hidden">${
               item.vote_average
             }</span>
@@ -77,7 +75,7 @@ export async function markupMoviesGallery(arr) {
 
     galleryQueue.classList.add('is-hidden');
     galleryWatched.classList.add('is-hidden');
-  } catch (error) {
+  } catch (error) { 
     Notify.failure('Something went wrong &#128543;');
   }
 }

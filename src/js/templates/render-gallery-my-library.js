@@ -101,11 +101,9 @@ async function renderWatchedGallery(data, nameGallery) {
           <h2 class="card__title">${item.movie.title}</h2>
           </a>
           <p class="card__description" data-id="${item.movie.id}">
-            <span class="card__genre tooltip">${
-              item.movie.previewGenres
-            } <span class="tooltiptext">${
-          item.movie.allGenres
-        }</span> | ${moment(item.movie.release_date).format('YYYY')}</span>
+            <span class="card__genre tooltip">${!item.movie.previewGenres ? `unknown genre` : item.movie.previewGenres} 
+            <span class="tooltiptext">${!item.movie.allGenres ? `unknown genre` : item.movie.allGenres}</span> | ${
+          !item.movie.release_date ? 'released' : moment(item.movie.release_date).format('YYYY')}</span>
             <span class="card__rating">${item.movie.vote_average}</span>
           </p>
       </li>`;
