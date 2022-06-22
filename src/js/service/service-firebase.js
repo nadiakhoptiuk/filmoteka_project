@@ -145,6 +145,9 @@ function userSignOut(evt) {
       errorSignInOrOut();
       // An error happened.
     });
+  setTimeout(() => {
+    window.location.href = 'index.html';
+  }, 1500);
 }
 
 export { userRegistration, userSignIn, userSignInWithGoogle, userSignOut };

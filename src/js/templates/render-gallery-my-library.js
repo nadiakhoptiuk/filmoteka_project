@@ -12,7 +12,7 @@ import {
 
 export let watchedFilms = null;
 export let queuedFilms = null;
-export let userAuthId = 'null';
+export let userAuthId = null;
 
 //  Функция забирает Watched фильмы из стораджа
 export function getWatchedFilms(userKey) {
@@ -55,7 +55,10 @@ async function renderWatchedGallery(data, nameGallery) {
     const markup = data
       .map(item => {
         const genresArr = item.movie.genres?.map(item => item.name);
-        const genresShort = genresArr?.length > 2 ? genresArr?.slice(0, 2)?.join(', ') + ', ...' : genresArr?.join(', ');
+        const genresShort =
+          genresArr?.length > 2
+            ? genresArr?.slice(0, 2)?.join(', ') + ', ...'
+            : genresArr?.join(', ');
         return `<li class="card">
         <div class="img-thumb">
           <picture>
@@ -104,8 +107,13 @@ async function renderWatchedGallery(data, nameGallery) {
           </a>
           <p class="card__description" data-id="${item.movie.id}">
             <span class="card__genre tooltip">${genresShort ?? `unknown genre`} 
-            <span class="tooltiptext">${genresArr ?? `unknown genre`}</span> | ${
-          !item.movie.release_date ? 'released' : moment(item.movie.release_date).format('YYYY')}</span>
+            <span class="tooltiptext">${
+              genresArr ?? `unknown genre`
+            }</span> | ${
+          !item.movie.release_date
+            ? 'released'
+            : moment(item.movie.release_date).format('YYYY')
+        }</span>
             <span class="card__rating">${item.movie.vote_average}</span>
           </p>
       </li>`;
@@ -132,22 +140,6 @@ async function renderWatchedGallery(data, nameGallery) {
   } catch (error) {
     Notify.failure(error.message);
   }
-}
-
-// Функция для переключения стилей кнопок Watched и Queue
-export function changeMyLibraryBtnStyles(activeButton, disabledButton) {
-  activeButton.classList.add('active');
-  activeButton.setAttribute('disabled', 'disabled');
-  disabledButton.classList.remove('active');
-  disabledButton.removeAttribute('disabled', 'disabled');
-}
-
-// Функция для переключения стилей кнопок Home и My Library
-export function changeHeaderBtnStyles(activeButton, disabledButton) {
-  activeButton.classList.add('nav-link--current');
-  activeButton.setAttribute('disabled', 'disabled');
-  disabledButton.classList.remove('nav-link--current');
-  disabledButton.removeAttribute('disabled', 'disabled');
 }
 
 // Функция для получения ID
