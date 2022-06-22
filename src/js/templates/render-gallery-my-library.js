@@ -16,12 +16,10 @@ export let userAuthId = null;
 
 //  Функция забирает Watched фильмы из стораджа
 export function getWatchedFilms(userKey) {
-  console.log('RENDER WATCHED');
   const getWatched = ref(db, `${userKey}` + '/watched');
 
   onValue(getWatched, snapshot => {
     const data = snapshot.val();
-    console.log(data);
     if (data !== null) {
       watchedFilms = Object.values(data);
     }
@@ -37,7 +35,6 @@ export function getWatchedFilms(userKey) {
 
 //  Функция забирает Queue фильмы из стораджа
 export function getQueueFilms(userKey) {
-  console.log('RENDER QUEUE');
   const getQueue = ref(db, `${userKey}` + '/queue');
 
   onValue(getQueue, snapshot => {
@@ -125,7 +122,6 @@ async function renderWatchedGallery(data, nameGallery) {
       .join('');
 
     if (nameGallery === 'watched') {
-      console.log('WATCHED');
       galleryHome.classList.add('is-hidden');
       galleryQueue.classList.add('is-hidden');
       galleryWatched.classList.remove('is-hidden');
@@ -135,7 +131,6 @@ async function renderWatchedGallery(data, nameGallery) {
     }
 
     if (nameGallery === 'queue') {
-      console.log('QUEUE');
       galleryHome.classList.add('is-hidden');
       galleryWatched.classList.add('is-hidden');
       galleryQueue.classList.remove('is-hidden');
@@ -151,5 +146,4 @@ async function renderWatchedGallery(data, nameGallery) {
 // Функция для получения ID
 export function getUserAuthId(id) {
   userAuthId = id;
-  console.log(userAuthId);
 }
