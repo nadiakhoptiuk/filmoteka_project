@@ -3,6 +3,7 @@ import { pagination } from './pagination/pagination';
 import { loadingSpinnerConfig } from './settings/spinner-config';
 import { MoviesService } from './service/service-fetch';
 import { markupMoviesGallery } from './templates/render-markup-gallery';
+import { popular, topRated, nowPlaying } from './constants';
 import {
   galleryList,
   buttonWrap,
@@ -33,11 +34,11 @@ export async function onFilterButtonClick(e) {
   removeClassAccentFromButton();
   e.target.classList.add('btn-accent');
 
-  if (MoviesService.param === 'popular')
+  if (MoviesService.param === popular)
     setButtonAttribute(true, false, false);
-  if (MoviesService.param === 'top_rated')
+  if (MoviesService.param === topRated)
     setButtonAttribute(false, true, false);
-  if (MoviesService.param === 'now_playing')
+  if (MoviesService.param === nowPlaying)
     setButtonAttribute(false, false, true);
 }
 
