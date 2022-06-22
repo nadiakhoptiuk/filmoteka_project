@@ -22,7 +22,7 @@ import { getDataFromFirebase, watch, queue } from '../utils/get-data-from-fb';
 export let openedFilmId = null;
 
 const modal = basicLightbox.create(document.querySelector('#html'), {
- // action on open modal film 
+  // action on open modal film
   onClose: () => {
     homePage.classList.remove('modal-film-is-open');
     addToWatchedBtn.removeEventListener('click', onAddToWatchedBtnClick);
@@ -31,7 +31,7 @@ const modal = basicLightbox.create(document.querySelector('#html'), {
     btnFilmTrailer.removeEventListener('click', openModalTrailer);
     window.removeEventListener('keydown', closeModalFilmKey);
   },
-  // action on close modal film 
+  // action on close modal film
   onShow: () => {
     btnCloseFilm.addEventListener('click', closeModalFilm);
     addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
@@ -49,8 +49,7 @@ export function openModalFilm(ev) {
   ev.preventDefault();
   getDataFromFirebase(userAuthId);
   const evn = ev.target;
-  if (evn.nodeName !== 'A' && evn.nodeName !== 'P')
-  {
+  if (evn.nodeName !== 'A' && evn.nodeName !== 'P') {
     return;
   }
   const id = evn.dataset.id;
@@ -61,8 +60,11 @@ export function openModalFilm(ev) {
 async function acceptIdInformation(id) {
   const filteredFilmById = await getMovieById(id);
   const trailer = await getMovieTrailer(id);
-  if (trailer.data.results.length === 0) { btnFilmTrailer.classList.add("none") }
-  else{btnFilmTrailer.classList.remove("none")}
+  if (trailer.data.results.length === 0) {
+    btnFilmTrailer.classList.add('none');
+  } else {
+    btnFilmTrailer.classList.remove('none');
+  }
   filterFilmByBtn(id);
   const movieData = filteredFilmById;
   getMovieData(movieData);
@@ -97,6 +99,7 @@ function renameBtnFilm(watch, queue) {
   queue
     ? (addToQueueBtn.textContent = removeQ)
     : (addToQueueBtn.textContent = addQ);
-  watch ? (addToWatchedBtn.textContent = removeW)
-    : addToWatchedBtn.textContent = addW;
+  watch
+    ? (addToWatchedBtn.textContent = removeW)
+    : (addToWatchedBtn.textContent = addW);
 }
