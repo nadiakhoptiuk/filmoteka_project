@@ -5,8 +5,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  max-height: 90%;
-  width: 80%;
+  height: 500px;
+  width: 260px;
   transform: translate(-50%, -50%);
   padding: 10px;
   padding-top: 0px;
@@ -14,8 +14,12 @@
   border-radius: 5px;
   display: block;
   overflow-y: scroll;
+  @include media(768px) {
+    width: 600px;
+  }
   @include media(1280px) {
-    width: 50%;
+    width: 650px;
+    height: 600px;
     overflow: auto;
   }
 }
@@ -74,21 +78,16 @@
   fill: var(--accent-text-color);
 }
 .card-list {
-  gap: 10px;
-
   @include media(768px) {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
-  @include media(1280px) {
-    gap: 0;
-  }
 }
 .card-link_footer {
   width: 235px;
   height: 100%;
-  margin: 0 auto;
+  margin: 0 auto 10px;
   @include media(768px) {
     width: 250px;
   }
