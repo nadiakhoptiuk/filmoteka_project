@@ -7,7 +7,7 @@ export async function markupMoviesGalleryBySearch(arr) {
     const markup = arr
       .map(item => {
         return `<li class="card">
-        
+        <div class="img-thumb">
         <picture>
         <source
           srcset="https://image.tmdb.org/t/p/w780/${
@@ -48,6 +48,7 @@ export async function markupMoviesGalleryBySearch(arr) {
           class="card__img" loading="lazy"
         />
       </picture>
+      </div>
       <a href="#" data-id="${item.id}" class="card-link">
           <h2 class="card__title">${item.title}</h2>
           </a>
