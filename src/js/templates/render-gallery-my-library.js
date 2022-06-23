@@ -8,6 +8,7 @@ import {
   galleryQueue,
   galleryWatched,
   galleryQueueList,
+  homePage,
 } from '../refs/refs';
 import { getDataFromFirebase } from '../utils/get-data-from-fb';
 
@@ -23,14 +24,8 @@ export function getWatchedFilms(userKey) {
     const data = snapshot.val();
     if (data !== null) {
       watchedFilms = Object.values(data);
-    }
-    galleryWatchedList.innerHTML =
-      '<p class="no-films-in-list">You haven`t added anything yet...&#128546</p>';
-    galleryWatched.classList.remove('is-hidden');
-
-    if (data !== null) {
-      renderWatchedGallery(watchedFilms, 'watched');
-    }
+       renderWatchedGallery(watchedFilms, 'watched');
+    } else  renderWatchedGallery(data, 'watched');
   });
 }
 
@@ -42,19 +37,34 @@ export function getQueueFilms(userKey) {
     const data = snapshot.val();
     if (data !== null) {
       queuedFilms = Object.values(data);
-    }
-    galleryQueueList.innerHTML =
-      '<p class="no-films-in-list">You haven`t added anything yet...&#128546</p>';
-    if (data !== null) {
       renderWatchedGallery(queuedFilms, 'queue');
-    }
+    }else renderWatchedGallery(data, 'queue');
   });
 }
 
 // Функция рендерит Wathed Gallery
 async function renderWatchedGallery(data, nameGallery) {
+  rendering(data, nameGallery)
+  if (homePage.classList.contains("page modal-film-is-open")) {
+    const vikno = document.querySelector(`.modal-film__to-${nameGallery}`);
+    vikno.addEventListener("click", () => { rendering(data, nameGallery) })
+  } else { return }
+ 
+  // const vikno = document.querySelector(`.modal-film__to-${nameGallery}`);
+  // if (vikno.addEventListener("click", () => true)) {
+  //   console.log(11111111111);
+  // }
+  // console.log(document.querySelector(`.modal-film__to-${nameGallery}`));
+  // vikno.addEventListener("click", ()=>{})
+    
+}
+function rendering(data, nameGallery) {
+  let markup = "";
   try {
-    const markup = data
+    if (data === null) {
+    markup = '<p class="no-films-in-list">You haven`t added anything yet...&#128546</p>';
+    } else {
+      markup = data
       .map(item => {
         const genresArr = item.movie.genres?.map(item => item.name);
         const genresShort =
@@ -120,15 +130,18 @@ async function renderWatchedGallery(data, nameGallery) {
           </p>
       </li>`;
       })
-      .join('');
-
+      .join('');}
+    
+ 
     if (nameGallery === 'watched') {
+     
       galleryHome.classList.add('is-hidden');
       galleryQueue.classList.add('is-hidden');
       galleryWatched.classList.remove('is-hidden');
       galleryQueueList.innerHTML = '';
       galleryWatchedList.innerHTML = '';
       galleryWatchedList.innerHTML = markup;
+     
     }
 
     if (nameGallery === 'queue') {
@@ -142,8 +155,8 @@ async function renderWatchedGallery(data, nameGallery) {
   } catch (error) {
     Notify.failure(error.message);
   }
+  
 }
-
 // Функция для получения ID
 export function getUserAuthId(id) {
   userAuthId = id;
