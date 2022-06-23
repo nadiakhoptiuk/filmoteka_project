@@ -36,13 +36,12 @@ body {
 
   box-shadow: 0px 8px 43px rgb(255 107 1 / 60%);
   @include font(500, 12, 1.33, null, uppercase);
-  transform: scale(1);
   transition: transform 0.5s linear;
 
   &:hover,
   &:focus {
     border: 1px solid var(--accent-text-color);
-    transform: scale(1.1);
+    transform: scale(1.07);
   }
 }
 
