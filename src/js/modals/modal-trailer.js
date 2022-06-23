@@ -9,27 +9,24 @@ import {
   btnTrailerNext,
   trailerInformationPage,
 } from '../refs/refs';
-
+import {manipulationEventListener} from '../utils/event-list'
 let links = null;
-
+const nameBtn = [btnTrailerPrev, btnTrailerNext];
+const listEv= [undoLink,nextLink]
 const modal = basicLightbox.create(document.querySelector('#htmls'), {
+  // action on open modal film 
   onClose: () => {
     window.addEventListener('keydown', closeModalFilmKey);
-    btnTrailerPrev.removeEventListener('click', undoLink);
-    btnTrailerNext.removeEventListener('click', nextLink);
+   manipulationEventListener(nameBtn,"remove",'click',listEv)
     iframeAtr.setAttribute('data-value', 0);
   },
+  // action on close modal film
   onShow: () => {
     window.addEventListener('keydown', closeModalTrailerKey);
-    btnTrailerPrev.addEventListener('click', undoLink);
-    btnTrailerNext.addEventListener('click', nextLink);
+   manipulationEventListener(nameBtn,"add",'click',listEv)
   },
 });
-function closeModalTrailerKey(event) {
-  if (event.code === 'Escape') {
-    modal.close();
-  }
-}
+// created request for movie db
 export function openModalTrailer() {
   getMovieTrailer(openedFilmId)
     .then(createModalTrailer)
@@ -37,16 +34,19 @@ export function openModalTrailer() {
       console.error(error);
     });
 }
+//add function btn next
 function nextLink() {
   let nows = Number(iframeAtr.getAttribute('data-value'));
   nows += 1;
   check(nows);
 }
+//add function btn prev
 function undoLink() {
   let nows = Number(iframeAtr.getAttribute('data-value'));
   nows -= 1;
   check(nows);
 }
+//marking count list video
 function check(ev) {
   const length = links.length - 1;
   if (ev === -1) {
@@ -57,13 +57,13 @@ function check(ev) {
   iframeAtr.setAttribute('data-value', ev);
   createIframeMarkup(links, ev);
 }
-
+//open trailer film
 function createModalTrailer(ev) {
   links = ev.data.results;
   createIframeMarkup(links);
   modal.show();
 }
-
+//add attribute video 
 function createIframeMarkup(ev, now = 0) {
   iframeAtr.setAttribute(
     'src',
@@ -71,4 +71,11 @@ function createIframeMarkup(ev, now = 0) {
   );
   trailerInformationLength.textContent = ev.length;
   trailerInformationPage.textContent = now + 1 + ' / ';
+}
+
+// register event of key escape
+function closeModalTrailerKey(event) {
+  if (event.code === 'Escape') {
+    modal.close();
+  }
 }
