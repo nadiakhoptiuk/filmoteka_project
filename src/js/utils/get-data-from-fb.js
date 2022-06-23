@@ -6,12 +6,12 @@ export let queue = null;
 export function getDataFromFirebase(ev) {
   const watched = ref(db, `${ev}` + '/watched');
   const queued = ref(db, `${ev}` + '/queue');
-  onValue(watched, snapshot => {
-    const data = snapshot.val();
-    data ? (watch = Object.values(data)) : (watch = false);
+   onValue(watched, snapshot => {
+     const dataDb = snapshot.val();
+    dataDb ? (watch = Object.values(dataDb)) : (watch = false);
   });
   onValue(queued, snapshot => {
-    const data = snapshot.val();
-    data ? (queue = Object.values(data)) : (queue = false);
+    const dataDb = snapshot.val();
+    dataDb ? (queue =  Object.values(dataDb)) : (queue = false);
   });
 }

@@ -9,6 +9,7 @@ import {
   galleryWatched,
   galleryQueueList,
 } from '../refs/refs';
+import { getDataFromFirebase } from '../utils/get-data-from-fb';
 
 export let watchedFilms = null;
 export let queuedFilms = null;
@@ -153,5 +154,6 @@ export function changeHeaderBtnStyles(activeButton, disabledButton) {
 // Функция для получения ID
 export function getUserAuthId(id) {
   userAuthId = id;
+  getDataFromFirebase(userAuthId)
   console.log(userAuthId);
 }

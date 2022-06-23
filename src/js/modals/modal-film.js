@@ -19,21 +19,21 @@ import {
 } from '../refs/refs';
 import { getDataFromFirebase, watch, queue } from '../utils/get-data-from-fb';
 export let openedFilmId = null;
+import { manipulationEventListener } from '../utils/event-list';
+const nameBtn = [addToWatchedBtn, addToQueueBtn, btnCloseFilm]
+const listEv =[onAddToWatchedBtnClick,onAddToQueueBtnClick,closeModalFilm]  
 const modal = basicLightbox.create(document.querySelector('#html'), {
  // action on open modal film 
   onClose: () => {
     homePage.classList.remove('modal-film-is-open');
-    addToWatchedBtn.removeEventListener('click', onAddToWatchedBtnClick);
-    addToQueueBtn.removeEventListener('click', onAddToQueueBtnClick);
-    btnCloseFilm.removeEventListener('click', closeModalFilm);
+    manipulationEventListener(nameBtn,"remove",'click',listEv)
     btnFilmTrailer.removeEventListener('click', openModalTrailer);
     window.removeEventListener('keydown', closeModalFilmKey);
   },
   // action on close modal film 
   onShow: () => {
-    btnCloseFilm.addEventListener('click', closeModalFilm);
-    addToWatchedBtn.addEventListener('click', onAddToWatchedBtnClick);
-    addToQueueBtn.addEventListener('click', onAddToQueueBtnClick);
+    getDataFromFirebase(userAuthId);
+    manipulationEventListener(nameBtn,"add",'click',listEv)
     btnFilmTrailer.addEventListener('click', () => {
       openModalTrailer();
       window.removeEventListener('keydown', closeModalFilmKey);
@@ -45,34 +45,36 @@ const modal = basicLightbox.create(document.querySelector('#html'), {
 // register click from gallery and take id
 export function openModalFilm(ev) {
   ev.preventDefault();
-  getDataFromFirebase(userAuthId);
   const evn = ev.target;
   if (evn.nodeName !== 'A' && evn.nodeName !== 'P')
-  {
-    return;
-  }
+  { return; }
   const id = evn.dataset.id;
   openedFilmId = Number(id);
   acceptIdInformation(openedFilmId);
 }
-
+// audit information of film and open modal film
 async function acceptIdInformation(id) {
   const filteredFilmById = await getMovieById(id);
   const trailer = await getMovieTrailer(id);
-  if (trailer.data.results.length === 0) { btnFilmTrailer.classList.add("none") }
-  else{btnFilmTrailer.classList.remove("none")}
+  visibleBtnTrailer(trailer);
   filterFilmByBtn(id);
   const movieData = filteredFilmById;
   getMovieData(movieData);
   modal.show();
   createModalFilm(filteredFilmById);
 }
+// register event of key escape
 export function closeModalFilmKey(event) {
   if (event.code === 'Escape') {
     closeModalFilm();
   }
 }
-
+//review btn trailer on visible
+function visibleBtnTrailer(ev) {
+   if (ev.data.results.length === 0) { btnFilmTrailer.classList.add("none") }
+  else{btnFilmTrailer.classList.remove("none")}
+} 
+ //close modal film
 export function closeModalFilm() {
   modal.close();
 }
