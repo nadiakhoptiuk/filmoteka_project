@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { async } from '@firebase/util';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import 'tui-pagination/dist/tui-pagination.min.css';
 import { getFilteredMovies } from '../utils/fetch-utils';
 import { API_KEY, BASE_URL } from '../settings/fetch-config';
-
+import { showNotifyError } from './notifications';
 
 export async function getGenres() {
   try {
@@ -13,6 +14,7 @@ export async function getGenres() {
     return response.data.genres;
   } catch (error) {
     console.log(error.message);
+    showNotifyError('Something went wrong &#128543;');
   }
 }
 
@@ -33,7 +35,7 @@ export const MoviesService = {
       copy = JSON.stringify({ results });
       return { results, total_pages };
     } catch (error) {
-      Notify.failure('Something went wrong &#128543;');
+      showNotifyError('Something went wrong &#128543;');
     }
   },
 
@@ -46,11 +48,11 @@ export const MoviesService = {
       let { results, total_pages } = response.data;
 
       results = getFilteredMovies(results, genres);
-      
+
       copy = JSON.stringify({ results });
       return { results, total_pages };
     } catch (error) {
-      Notify.failure('Something went wrong &#128543;');
+      showNotifyError('Something went wrong &#128543;');
     }
   },
 
@@ -86,9 +88,10 @@ export async function getMovieTrailer(idMovie) {
     );
     return response;
   } catch (error) {
-    Notify.failure('Something went wrong &#128543;');
+    showNotifyError('Something went wrong &#128543;');
   }
 }
+
 export async function getMovieById(idMovie) {
   try {
     const response = await axios.get(
@@ -96,6 +99,6 @@ export async function getMovieById(idMovie) {
     );
     return response.data;
   } catch (error) {
-    Notify.failure('Something went wrong &#128543;');
+    showNotifyError('Something went wrong &#128543;');
   }
 }

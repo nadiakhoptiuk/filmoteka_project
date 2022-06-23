@@ -13,40 +13,41 @@ import { getDataFromFirebase } from '../utils/get-data-from-fb';
 
 export let watchedFilms = null;
 export let queuedFilms = null;
-export let userAuthId = 'null';
+export let userAuthId = null;
 
 //  Функция забирает Watched фильмы из стораджа
 export function getWatchedFilms(userKey) {
-  console.log('RENDER WATCHED');
   const getWatched = ref(db, `${userKey}` + '/watched');
 
   onValue(getWatched, snapshot => {
     const data = snapshot.val();
-    if (!data) {
-      galleryWatchedList.innerHTML =
-        '<p class="no-films-in-list">You haven`t added anything yet...</p>';
-      return;
+    if (data !== null) {
+      watchedFilms = Object.values(data);
     }
-    watchedFilms = Object.values(data);
-    console.log(watchedFilms);
-    renderWatchedGallery(watchedFilms, 'watched');
+    galleryWatchedList.innerHTML =
+      '<p class="no-films-in-list">You haven`t added anything yet...&#128546</p>';
+    galleryWatched.classList.remove('is-hidden');
+
+    if (data !== null) {
+      renderWatchedGallery(watchedFilms, 'watched');
+    }
   });
 }
 
 //  Функция забирает Queue фильмы из стораджа
 export function getQueueFilms(userKey) {
-  console.log('RENDER QUEUE');
   const getQueue = ref(db, `${userKey}` + '/queue');
+
   onValue(getQueue, snapshot => {
     const data = snapshot.val();
-    if (!data) {
-      galleryWatchedList.innerHTML =
-        '<p class="no-films-in-list">You haven`t added anything yet...</p>';
-      return;
+    if (data !== null) {
+      queuedFilms = Object.values(data);
     }
-    queuedFilms = Object.values(data);
-    console.log(queuedFilms);
-    renderWatchedGallery(queuedFilms, 'queue');
+    galleryQueueList.innerHTML =
+      '<p class="no-films-in-list">You haven`t added anything yet...&#128546</p>';
+    if (data !== null) {
+      renderWatchedGallery(queuedFilms, 'queue');
+    }
   });
 }
 
@@ -56,7 +57,10 @@ async function renderWatchedGallery(data, nameGallery) {
     const markup = data
       .map(item => {
         const genresArr = item.movie.genres?.map(item => item.name);
-        const genresShort = genresArr?.length > 2 ? genresArr?.slice(0, 2)?.join(', ') + ', ...' : genresArr?.join(', ');
+        const genresShort =
+          genresArr?.length > 2
+            ? genresArr?.slice(0, 2)?.join(', ') + ', ...'
+            : genresArr?.join(', ');
         return `<li class="card">
         <div class="img-thumb">
           <picture>
@@ -105,8 +109,13 @@ async function renderWatchedGallery(data, nameGallery) {
           </a>
           <p class="card__description" data-id="${item.movie.id}">
             <span class="card__genre tooltip">${genresShort ?? `unknown genre`} 
-            <span class="tooltiptext">${genresArr ?? `unknown genre`}</span> | ${
-          !item.movie.release_date ? 'released' : moment(item.movie.release_date).format('YYYY')}</span>
+            <span class="tooltiptext">${
+              genresArr.join(', ') ?? `unknown genre`
+            }</span> | ${
+          !item.movie.release_date
+            ? 'released'
+            : moment(item.movie.release_date).format('YYYY')
+        }</span>
             <span class="card__rating">${item.movie.vote_average}</span>
           </p>
       </li>`;
@@ -135,25 +144,10 @@ async function renderWatchedGallery(data, nameGallery) {
   }
 }
 
-// Функция для переключения стилей кнопок Watched и Queue
-export function changeMyLibraryBtnStyles(activeButton, disabledButton) {
-  activeButton.classList.add('active');
-  activeButton.setAttribute('disabled', 'disabled');
-  disabledButton.classList.remove('active');
-  disabledButton.removeAttribute('disabled', 'disabled');
-}
-
-// Функция для переключения стилей кнопок Home и My Library
-export function changeHeaderBtnStyles(activeButton, disabledButton) {
-  activeButton.classList.add('nav-link--current');
-  activeButton.setAttribute('disabled', 'disabled');
-  disabledButton.classList.remove('nav-link--current');
-  disabledButton.removeAttribute('disabled', 'disabled');
-}
-
 // Функция для получения ID
 export function getUserAuthId(id) {
   userAuthId = id;
+
   getDataFromFirebase(userAuthId)
   console.log(userAuthId);
 }

@@ -15,10 +15,10 @@ import { getUserIdFromDB } from './db-manipulations';
 import {
   signOutBtnShow,
   signOutBtnHide,
-  errorSignInOrOut,
-  errorSignIn,
-  successSignInWithGoogle,
-} from '../service/sign-in';
+  showNotifyError,
+  showNotifySuccess,
+  showNotifyWarn,
+} from './notifications';
 import {
   getUserAuthId,
   getWatchedFilms,
@@ -40,7 +40,8 @@ function userRegistration(email, password) {
       console.log(user);
     })
     .catch(error => {
-      errorSignInOrOut();
+      showNotifyError('Something went wrong. Please try again');
+      // errorSignInOrOut();
       const errorCode = error.code;
       const errorMessage = error.message;
     });
@@ -54,6 +55,7 @@ function userSignIn(email, password) {
       console.log(user.uid);
 
       signOutBtnShow();
+      showNotifySuccess('You are successfully authorized');
       closeModalAuth();
       if (homePage.classList.contains('modal-film-is-open') !== true) {
         getWatchedFilms(user.uid);
@@ -68,7 +70,7 @@ function userSignIn(email, password) {
       const errorMessage = error.message;
       console.log(error.message);
 
-      errorSignIn(email);
+      showNotifyError('Wrong email or password. Please try again or register.');
       openModalAuth();
       form.reset();
       return errorMessage;
@@ -81,7 +83,8 @@ function userSignInWithGoogle(evt) {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
-      successSignInWithGoogle();
+      // successSignInWithGoogle();
+      showNotifySuccess('You are successfully authorized');
       // The signed-in user info.
       const user = result.user;
       closeModalAuth();
@@ -96,7 +99,8 @@ function userSignInWithGoogle(evt) {
       // ...
     })
     .catch(error => {
-      errorSignInOrOut();
+      // errorSignInOrOut();
+      showNotifyError('Something went wrong. Please try again');
       // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -120,8 +124,6 @@ onAuthStateChanged(auth, user => {
     signOutBtn.addEventListener('click', userSignOut);
     signOutWrap.classList.remove('is-hidden');
 
-    console.log(uid);
-
     // ...
   } else {
     console.log(null);
@@ -137,14 +139,19 @@ onAuthStateChanged(auth, user => {
 function userSignOut(evt) {
   signOut(auth)
     .then(() => {
-      console.log('hi');
+      showNotifyWarn('You have signed out');
       signOutBtnHide();
       // Sign-out successful.
     })
     .catch(error => {
-      errorSignInOrOut();
+      // errorSignInOrOut();
+      signOutBtnHide();
+      showNotifyError('Something went wrong. Please try again');
       // An error happened.
     });
+  setTimeout(() => {
+    window.location.href = 'index.html';
+  }, 400);
 }
 
 export { userRegistration, userSignIn, userSignInWithGoogle, userSignOut };

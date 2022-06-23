@@ -1,7 +1,5 @@
 import { openModalAuth } from './modals/modal-auth';
 import {
-  changeMyLibraryBtnStyles,
-  changeHeaderBtnStyles,
   userAuthId,
   getWatchedFilms,
   getQueueFilms,
@@ -18,6 +16,10 @@ import {
   searchContainer,
   headerEl,
 } from './refs/refs';
+import {
+  changeMyLibraryBtnStyles,
+  changeHeaderBtnStyles,
+} from './service/heafer-button-swith';
 
 // Функция обработчик клика My Library
 export function onMyLibraryButton() {
@@ -25,9 +27,6 @@ export function onMyLibraryButton() {
   if (!userAuthId) {
     openModalAuth();
   } else {
-    getWatchedFilms(userAuthId);
-  }
-  if (userAuthId !== null) {
     getWatchedFilms(userAuthId);
   }
   changeHeaderBtnStyles(myLibraryBtn, btnHome);
@@ -38,7 +37,7 @@ export function onMyLibraryButton() {
 // Функция обработчик клика Watched
 export function onBtnWatched() {
   changeMyLibraryBtnStyles(btnWatched, btnQueue);
-  if (userAuthId !== null) {
+  if (userAuthId) {
     getWatchedFilms(userAuthId);
   }
 }
@@ -46,7 +45,7 @@ export function onBtnWatched() {
 // Функция обработчик клика Queue
 export function onBtnQueue() {
   changeMyLibraryBtnStyles(btnQueue, btnWatched);
-  if (userAuthId !== null) {
+  if (userAuthId) {
     getQueueFilms(userAuthId);
   }
 }

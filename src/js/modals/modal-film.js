@@ -18,19 +18,22 @@ import {
   btnFilmTrailer,
 } from '../refs/refs';
 import { getDataFromFirebase, watch, queue } from '../utils/get-data-from-fb';
+
 export let openedFilmId = null;
+
 import { manipulationEventListener } from '../utils/event-list';
 const nameBtn = [addToWatchedBtn, addToQueueBtn, btnCloseFilm]
 const listEv =[onAddToWatchedBtnClick,onAddToQueueBtnClick,closeModalFilm]  
+
 const modal = basicLightbox.create(document.querySelector('#html'), {
- // action on open modal film 
+  // action on open modal film
   onClose: () => {
     homePage.classList.remove('modal-film-is-open');
     manipulationEventListener(nameBtn,"remove",'click',listEv)
     btnFilmTrailer.removeEventListener('click', openModalTrailer);
     window.removeEventListener('keydown', closeModalFilmKey);
   },
-  // action on close modal film 
+  // action on close modal film
   onShow: () => {
     getDataFromFirebase(userAuthId);
     manipulationEventListener(nameBtn,"add",'click',listEv)
@@ -46,8 +49,11 @@ const modal = basicLightbox.create(document.querySelector('#html'), {
 export function openModalFilm(ev) {
   ev.preventDefault();
   const evn = ev.target;
-  if (evn.nodeName !== 'A' && evn.nodeName !== 'P')
-  { return; }
+
+  if (evn.nodeName !== 'A' && evn.nodeName !== 'P') {
+    return;
+  }
+
   const id = evn.dataset.id;
   openedFilmId = Number(id);
   acceptIdInformation(openedFilmId);
@@ -56,7 +62,9 @@ export function openModalFilm(ev) {
 async function acceptIdInformation(id) {
   const filteredFilmById = await getMovieById(id);
   const trailer = await getMovieTrailer(id);
+
   visibleBtnTrailer(trailer);
+
   filterFilmByBtn(id);
   const movieData = filteredFilmById;
   getMovieData(movieData);
@@ -97,6 +105,7 @@ function renameBtnFilm(watch, queue) {
   queue
     ? (addToQueueBtn.textContent = removeQ)
     : (addToQueueBtn.textContent = addQ);
-  watch ? (addToWatchedBtn.textContent = removeW)
-    : addToWatchedBtn.textContent = addW;
+  watch
+    ? (addToWatchedBtn.textContent = removeW)
+    : (addToWatchedBtn.textContent = addW);
 }
