@@ -38,7 +38,7 @@ export const buttonWrap = document.querySelector('.button-wrap');
 export const buttonPopular = document.querySelector('[data-id ="popular"]');
 export const buttonTopRated = document.querySelector('[data-id ="top_rated"]');
 export const buttonNowPlaying = document.querySelector(
-  '[data-id ="now_playing"]'
+  '[data-id ="upcoming"]'
 );
 export const paginationWrapper = document.querySelector('.pagination-wrapper');
 export const myLibraryBtn = document.querySelector('.navbar-item_btn');
