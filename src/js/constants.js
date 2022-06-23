@@ -5,6 +5,6 @@ export const addQ = 'add to queue';
 
 export const popular = 'popular';
 export const topRated = 'top_rated';
-export const nowPlaying = 'now_playing';
+export const nowPlaying = 'upcoming';
 
 export const quantityPages = 1000;
