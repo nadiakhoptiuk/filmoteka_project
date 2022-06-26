@@ -48,9 +48,9 @@ export function getQueueFilms(userKey) {
      rendering(data, nameGallery);
    } else if (homePage.classList.contains("modal-film-is-open")) {
      const openWindow = document.querySelector(`.gallery-${nameGallery}`)
-     const vikno = document.querySelector(`.modal-film__to-${nameGallery}`);
+     const usingBtn = document.querySelector(`.modal-film__to-${nameGallery}`);
      if (!openWindow.classList.contains("is-hidden")) {
-       vikno.addEventListener("click", rendering(data, nameGallery))
+       usingBtn.addEventListener("click", rendering(data, nameGallery))
      }
    } else return; 
 }
