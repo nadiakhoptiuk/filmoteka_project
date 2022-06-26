@@ -37,9 +37,9 @@ function onAddToWatchedBtnClick(evt) {
   } else if (btnTitle.trim() === removeW) {
     removeMovieFromWatched(dataObj);
   }
-  console.log(openedFilmId);
+  // console.log(openedFilmId);
   filterFilmByBtn(openedFilmId);
-  console.log(openedFilmId);
+  // console.log(openedFilmId);
 }
 
 // функція, яка запускається при кліку по кнопці в модальному вікні фільму (додати до списку черги)
@@ -57,9 +57,9 @@ function onAddToQueueBtnClick(evt) {
   } else if (btnTitle.trim() === removeQ) {
     removeMovieFromQueue(data);
   }
-  console.log(openedFilmId);
+  // console.log(openedFilmId);
   filterFilmByBtn(openedFilmId);
-  console.log(openedFilmId);
+  // console.log(openedFilmId);
 }
 
 // функція, яка перевіряє, чи користувач залогінений і у разі, якщо ні, відкриває модальне вікно входу

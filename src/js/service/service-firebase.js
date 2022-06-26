@@ -57,9 +57,9 @@ function userSignIn(email, password) {
       signOutBtnShow();
       showNotifySuccess('You are successfully authorized');
       closeModalAuth();
-      if (homePage.classList.contains('modal-film-is-open') !== true) {
-        getWatchedFilms(user.uid);
-      }
+      // if (homePage.classList.contains('modal-film-is-open') !== true) {
+      //   getWatchedFilms(user.uid);
+      // }
 
       getDataFromFirebase(user.uid);
       filterFilmByBtn(user.uid);
@@ -90,9 +90,9 @@ function userSignInWithGoogle(evt) {
       closeModalAuth();
       getDataFromFirebase(user.uid);
 
-      if (homePage.classList.contains('modal-film-is-open') !== true) {
-        getWatchedFilms(user.uid);
-      }
+      // if (homePage.classList.contains('modal-film-is-open') !== true) {
+      //   getWatchedFilms(user.uid);
+      // }
       filterFilmByBtn(user.uid);
       console.log(user);
 

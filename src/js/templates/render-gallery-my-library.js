@@ -43,20 +43,16 @@ export function getQueueFilms(userKey) {
 }
 
 // Функция рендерит Wathed Gallery
-async function renderWatchedGallery(data, nameGallery) {
-  rendering(data, nameGallery)
-  if (homePage.classList.contains("page modal-film-is-open")) {
-    const vikno = document.querySelector(`.modal-film__to-${nameGallery}`);
-    vikno.addEventListener("click", () => { rendering(data, nameGallery) })
-  } else { return }
- 
-  // const vikno = document.querySelector(`.modal-film__to-${nameGallery}`);
-  // if (vikno.addEventListener("click", () => true)) {
-  //   console.log(11111111111);
-  // }
-  // console.log(document.querySelector(`.modal-film__to-${nameGallery}`));
-  // vikno.addEventListener("click", ()=>{})
-    
+ function renderWatchedGallery(data, nameGallery) {
+   if (!homePage.classList.contains("modal-film-is-open")) {
+     rendering(data, nameGallery);
+   } else if (homePage.classList.contains("modal-film-is-open")) {
+     const openWindow = document.querySelector(`.gallery-${nameGallery}`)
+     const vikno = document.querySelector(`.modal-film__to-${nameGallery}`);
+     if (!openWindow.classList.contains("is-hidden")) {
+       vikno.addEventListener("click", rendering(data, nameGallery))
+     }
+   } else return; 
 }
 function rendering(data, nameGallery) {
   let markup = "";
