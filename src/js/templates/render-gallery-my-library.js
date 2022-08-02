@@ -157,6 +157,5 @@ function rendering(data, nameGallery) {
 export function getUserAuthId(id) {
   userAuthId = id;
 
-  getDataFromFirebase(userAuthId)
-  console.log(userAuthId);
+  getDataFromFirebase(userAuthId);
 }

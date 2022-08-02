@@ -37,11 +37,9 @@ function userRegistration(email, password) {
     .then(userCredential => {
       // Signed in
       const user = userCredential.user;
-      console.log(user);
     })
     .catch(error => {
       showNotifyError('Something went wrong. Please try again');
-      // errorSignInOrOut();
       const errorCode = error.code;
       const errorMessage = error.message;
     });
@@ -52,7 +50,6 @@ function userSignIn(email, password) {
     .then(userCredential => {
       // Signed in
       const user = userCredential.user;
-      console.log(user.uid);
 
       signOutBtnShow();
       showNotifySuccess('You are successfully authorized');
@@ -63,12 +60,9 @@ function userSignIn(email, password) {
 
       getDataFromFirebase(user.uid);
       filterFilmByBtn(user.uid);
-      console.log(user);
     })
     .catch(error => {
-      const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(error.message);
 
       showNotifyError('Wrong email or password. Please try again or register.');
       openModalAuth();
@@ -83,7 +77,7 @@ function userSignInWithGoogle(evt) {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
-      // successSignInWithGoogle();
+
       showNotifySuccess('You are successfully authorized');
       // The signed-in user info.
       const user = result.user;
@@ -94,7 +88,6 @@ function userSignInWithGoogle(evt) {
       //   getWatchedFilms(user.uid);
       // }
       filterFilmByBtn(user.uid);
-      console.log(user);
 
       // ...
     })
@@ -126,7 +119,6 @@ onAuthStateChanged(auth, user => {
 
     // ...
   } else {
-    console.log(null);
     getUserId(null);
     getUserIdFromDB(null);
     getUserAuthId(null);
