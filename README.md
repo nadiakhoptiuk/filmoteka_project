@@ -22,7 +22,7 @@ User registration/authorization is implemented with the Firebase, data for lists
 
 Developed by team "Друга окрема ІТ бригада" (DO IT)
 
-###Members:
+### Members:
 - Nadiia Khoptiuk
 - Alexander Pustosmekhov
 - Alina Lemishko
