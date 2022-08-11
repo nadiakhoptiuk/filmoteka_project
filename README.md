@@ -1,10 +1,12 @@
 # Filmoteka
 
 Filmoteka is a movies database web application, which allows to search movies and save them to personal user lists. 
-Website is adaptive, wroted at vanilla JS.
+Website is adaptive for mobile, tablet and desktop, and wroted at vanilla JS.
 Simple page application.
+Webp images are added as alternative.
 
 [Hosted application link](https://nadiakhoptiuk.github.io/filmoteka_project/)
+[Presentation link](https://www.youtube.com/watch?t=938&v=m1Vv00u-r5c&feature=youtu.be)
 
 ## Used technologies
 
@@ -23,8 +25,8 @@ User registration/authorization is implemented with the Firebase, data for lists
 Developed by team "Друга окрема ІТ бригада" (DO IT)
 
 ### Members:
-- Nadiia Khoptiuk
-- Alexander Pustosmekhov
+- Nadiia Khoptiuk (Team Leader)
+- Alexander Pustosmekhov (Scrum Master)
 - Alina Lemishko
 - Maksym Shumeiko
 - Volodymyr Bobanych
