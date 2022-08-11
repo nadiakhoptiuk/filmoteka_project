@@ -15,8 +15,8 @@ Simple page application.
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
 ### Utils:
-![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
-Backend - MovieDB, Firebase.
+
+Backend - MovieDB, ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white).
 User registration/authorization is implemented with the Firebase, data for lists Watched and Queue is saving at FB realtime DB.
 
 ## Contibutors
