@@ -6,6 +6,7 @@ Simple page application.
 Webp images are added as alternative.
 
 [Hosted application link](https://nadiakhoptiuk.github.io/filmoteka_project/)
+
 [Presentation link](https://www.youtube.com/watch?t=938&v=m1Vv00u-r5c&feature=youtu.be)
 
 ## Used technologies
